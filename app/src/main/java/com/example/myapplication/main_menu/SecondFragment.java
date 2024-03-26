@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.main_menu;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.myapplication.R;
 import com.example.myapplication.databinding.FragmentSecondBinding;
 
 public class SecondFragment extends Fragment {
