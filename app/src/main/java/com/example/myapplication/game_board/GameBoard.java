@@ -1,2 +1,4 @@
-package com.example.myapplication.game_board;public class GameBoard {
+package com.example.myapplication.game_board;
+
+public class GameBoard {
 }
