@@ -10,12 +10,4 @@ public class EnemyPiece extends Piece{
 
     // Value piece has in chess, used for score. 3 for bishops/knights, 5 for rooks 9 for queens
     private int value;
-
-    // Used to change a piece appearance. May be used if a piece can switch from a sentry to dynamic
-    // or if power ups change appearance of enemies, but if we don't end up using this, remove this
-    // function and the abstract in Piece.
-    @Override
-    void morph(int condition) {
-
-    }
 }
