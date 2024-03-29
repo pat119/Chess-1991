@@ -1,6 +1,7 @@
 package com.example.myapplication.pieces;
 
-public class PowerUp extends Piece{
+public class PowerUp{
+    String imageSource;
 
     // Tells what kind of power up from an internal list.
     private int type;
