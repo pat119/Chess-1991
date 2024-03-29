@@ -10,19 +10,18 @@
         android:name="com.example.myapplication.main_menu.FirstFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_first">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.myapplication.main_menu.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        android:id="@+id/GameFragment"
+        android:name="com.example.myapplication.game_board.GameBoardFragment"
+        android:label="@string/game_board_fragment_label"
+        tools:layout="@layout/game_main" />
 
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
+    <fragment
+        android:id="@+id/LeaderboardFragment"
+        android:name="com.example.myapplication.leaderboard.LeaderBoardFragment"
+        android:label="@string/leaderboard_fragment_label"
+        tools:layout="@layout/leaderboard" />
+
 </navigation>
