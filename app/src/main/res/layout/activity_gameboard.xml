@@ -518,6 +518,18 @@
         app:layout_constraintStart_toEndOf="@+id/F5Button"
         app:layout_constraintTop_toBottomOf="@+id/G6Button" />
 
+    <Button
+        android:id="@+id/boardBackButton"
+        android:layout_width="53dp"
+        android:layout_height="46dp"
+        android:textSize="34sp"
+        app:icon="@android:drawable/ic_media_rew"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <!--
     <TextView
         android:id="@+id/textView5"
