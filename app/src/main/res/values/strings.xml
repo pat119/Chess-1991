@@ -15,6 +15,9 @@
     <string name="Options">Options</string>
     <string name="Logout">Log Out</string>
     <string name="Name">Chess 1991</string>
+    <string name="Easy">EASY</string>
+    <string name="Medium">MEDIUM</string>
+    <string name="Hard">HARD</string>
 
 
     <string name="title_activity_main_menu">MainMenuActivity</string>
