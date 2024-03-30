@@ -90,9 +90,13 @@
         android:id="@+id/A8Button"
         android:layout_width="35dp"
         android:layout_height="35dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginBottom="250dp"
         android:src="@drawable/purplesquare"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/B8Button"
-        tools:layout_editor_absoluteY="184dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/E6Button"
@@ -156,6 +160,7 @@
         android:layout_height="35dp"
         android:src="@drawable/blacksquare"
         app:layout_constraintTop_toTopOf="@+id/A8Button"
+        app:layout_constraintStart_toEndOf="@+id/A8Button"
         tools:layout_editor_absoluteX="91dp" />
 
     <ImageButton
@@ -163,8 +168,8 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:src="@drawable/blacksquare"
-        app:layout_constraintTop_toBottomOf="@+id/A8Button"
-        tools:layout_editor_absoluteX="56dp" />
+        app:layout_constraintStart_toStartOf="@+id/A8Button"
+        app:layout_constraintTop_toBottomOf="@+id/A8Button" />
 
     <ImageButton
         android:id="@+id/A6Button"
