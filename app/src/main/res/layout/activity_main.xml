@@ -6,71 +6,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:background="@drawable/border"
     tools:context=".main_menu.MainActivity">
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="250sp"
-        android:layout_height="80sp"
-        android:layout_marginTop="50dp"
-        android:text="@string/play"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="250sp"
-        android:layout_height="80sp"
-        android:layout_marginTop="25dp"
-        android:text="@string/Leaderboard"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="250sp"
-        android:layout_height="80sp"
-        android:layout_marginTop="25dp"
-        android:text="@string/Customize"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="250sp"
-        android:layout_height="80sp"
-        android:layout_marginTop="25dp"
-        android:text="@string/Options"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="250sp"
-        android:layout_height="80sp"
-        android:layout_marginTop="25dp"
-        android:text="@string/Logout"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:text="@string/Name"
+        android:textColor="@color/purple"
         android:textSize="68sp"
+        app:layout_constraintBottom_toTopOf="@+id/play"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@id/play"
+        android:layout_width="350dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/purple"
+        android:text="@string/play"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/leaderboard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+
+    <Button
+        android:id="@id/leaderboard"
+        android:layout_width="350dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/purple"
+        android:text="@string/Leaderboard"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/customize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/play" />
+
+
+    <Button
+        android:id="@id/customize"
+        android:layout_width="350dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/purple"
+        android:text="@string/Customize"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/options"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/leaderboard" />
+
+
+    <Button
+        android:id="@id/options"
+        android:layout_width="350dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/purple"
+        android:text="@string/Options"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/customize" />
+
+
+    <Button
+        android:id="@id/logout"
+        android:layout_width="350dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/purple"
+        android:text="@string/Logout"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/options" />
 </androidx.constraintlayout.widget.ConstraintLayout>
