@@ -21,4 +21,8 @@
 
 
     <string name="title_activity_main_menu">MainMenuActivity</string>
+    <string name="help">HELP</string>
+    <string name="TutorialPlay">PLAY</string>
+    <string name="nextButton">Next</string>
+    <string name="backButton">Back</string>
 </resources>

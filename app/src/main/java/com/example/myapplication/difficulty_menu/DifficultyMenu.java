@@ -10,6 +10,7 @@ import android.widget.Button;
 import com.example.myapplication.R;
 import com.example.myapplication.game_board.GameboardActivity;
 import com.example.myapplication.main_menu.MainActivity;
+import com.example.myapplication.tutorial.Tutorial;
 
 public class DifficultyMenu extends AppCompatActivity {
 
@@ -50,6 +51,15 @@ public class DifficultyMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DifficultyMenu.this, GameboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button help = (Button)findViewById(R.id.helpButton);
+        help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DifficultyMenu.this, Tutorial.class);
                 startActivity(intent);
             }
         });

@@ -40,6 +40,17 @@
         app:layout_constraintTop_toBottomOf="@+id/mediumButton" />
 
     <Button
+        android:id="@+id/helpButton"
+        android:layout_width="250sp"
+        android:layout_height="80sp"
+        android:layout_marginTop="25dp"
+        android:text="@string/help"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hardButton" />
+
+    <Button
         android:id="@+id/difficultyBackButton"
         android:layout_width="53dp"
         android:layout_height="46dp"
