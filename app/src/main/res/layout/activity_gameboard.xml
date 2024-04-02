@@ -712,6 +712,7 @@
         android:id="@+id/A8Image"
         android:layout_width="57dp"
         android:layout_height="46dp"
+        android:tag="A8Image"
         app:layout_constraintBottom_toBottomOf="@+id/A8Button"
         app:layout_constraintEnd_toEndOf="@+id/A8Button"
         app:layout_constraintStart_toStartOf="@+id/A8Button"
@@ -794,7 +795,7 @@
         app:layout_constraintEnd_toEndOf="@+id/A1Button"
         app:layout_constraintStart_toStartOf="@+id/A1Button"
         app:layout_constraintTop_toTopOf="@+id/A1Button"
-        app:srcCompat="@drawable/bishop_grey"
+        app:srcCompat="@drawable/player_star"
         tools:visibility="visible" />
 
     <ImageView
