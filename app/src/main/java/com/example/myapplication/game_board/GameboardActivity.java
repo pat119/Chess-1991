@@ -27,4 +27,19 @@ public class GameboardActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    // This method activates when the user clicks on a tile
+    // For now, it simply moves the player piece to that tile
+    public void onTileClick(View view)
+    {
+        switch (view.getId()) {
+//            case R.id.button_send:
+                // Do something
+        }
+        int[] location = new int[2];
+        view.getLocationInWindow(location);
+        view.setVisibility(View.INVISIBLE);
+//        finish();
+    }
 }
