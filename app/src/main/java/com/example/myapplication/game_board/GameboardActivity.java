@@ -53,6 +53,7 @@ public class GameboardActivity extends AppCompatActivity {
         int id = res.getIdentifier(imageName, "id", getApplicationContext().getPackageName());
         ImageView image = findViewById(id);
         image.setImageResource(R.drawable.player_star);
+        //image.setVisibility(View.VISIBLE);
 
 //        view.setVisibility(View.INVISIBLE);
 

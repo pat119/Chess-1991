@@ -718,7 +718,13 @@
         app:layout_constraintStart_toStartOf="@+id/A8Button"
         app:layout_constraintTop_toTopOf="@+id/A8Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -730,7 +736,10 @@
         app:layout_constraintStart_toStartOf="@+id/A7Button"
         app:layout_constraintTop_toTopOf="@+id/A7Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
 
     <ImageView
         android:id="@+id/A6Image"
@@ -741,7 +750,10 @@
         app:layout_constraintStart_toStartOf="@+id/A6Button"
         app:layout_constraintTop_toTopOf="@+id/A6Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
 
     <ImageView
         android:id="@+id/A5Image"
@@ -752,7 +764,10 @@
         app:layout_constraintStart_toStartOf="@+id/A5Button"
         app:layout_constraintTop_toTopOf="@+id/A5Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
 
     <ImageView
         android:id="@+id/A4Image"
@@ -763,7 +778,10 @@
         app:layout_constraintStart_toStartOf="@+id/A4Button"
         app:layout_constraintTop_toTopOf="@+id/A4Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
 
     <ImageView
         android:id="@+id/A3Image"
@@ -774,7 +792,10 @@
         app:layout_constraintStart_toStartOf="@+id/A3Button"
         app:layout_constraintTop_toTopOf="@+id/A3Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
 
     <ImageView
         android:id="@+id/A2Image"
@@ -785,7 +806,10 @@
         app:layout_constraintStart_toStartOf="@+id/A2Button"
         app:layout_constraintTop_toTopOf="@+id/A2Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
 
     <ImageView
         android:id="@+id/A1Image"
@@ -795,8 +819,11 @@
         app:layout_constraintEnd_toEndOf="@+id/A1Button"
         app:layout_constraintStart_toStartOf="@+id/A1Button"
         app:layout_constraintTop_toTopOf="@+id/A1Button"
-        app:srcCompat="@drawable/player_star"
-        tools:visibility="visible" />
+        app:srcCompat="@drawable/bishop_grey"
+        android:visibility="invisible" />
+
+
+
 
     <ImageView
         android:id="@+id/B8Image"
@@ -807,7 +834,19 @@
         app:layout_constraintStart_toStartOf="@+id/B8Button"
         app:layout_constraintTop_toTopOf="@+id/B8Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -821,7 +860,13 @@
         app:layout_constraintStart_toStartOf="@+id/B7Button"
         app:layout_constraintTop_toTopOf="@+id/B7Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -833,7 +878,13 @@
         app:layout_constraintStart_toStartOf="@+id/B6Button"
         app:layout_constraintTop_toTopOf="@+id/B6Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -845,7 +896,13 @@
         app:layout_constraintStart_toStartOf="@+id/B5Button"
         app:layout_constraintTop_toTopOf="@+id/B5Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -857,7 +914,13 @@
         app:layout_constraintStart_toStartOf="@+id/B4Button"
         app:layout_constraintTop_toTopOf="@+id/B4Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -869,7 +932,13 @@
         app:layout_constraintStart_toStartOf="@+id/B3Button"
         app:layout_constraintTop_toTopOf="@+id/B3Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -881,7 +950,13 @@
         app:layout_constraintStart_toStartOf="@+id/B2Button"
         app:layout_constraintTop_toTopOf="@+id/B2Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -893,7 +968,10 @@
         app:layout_constraintStart_toStartOf="@+id/B1Button"
         app:layout_constraintTop_toTopOf="@+id/B1Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
 
     <ImageView
         android:id="@+id/C8Image"
@@ -904,7 +982,19 @@
         app:layout_constraintStart_toStartOf="@+id/C8Button"
         app:layout_constraintTop_toTopOf="@+id/C8Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -918,7 +1008,13 @@
         app:layout_constraintStart_toStartOf="@+id/C7Button"
         app:layout_constraintTop_toTopOf="@+id/C7Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -930,7 +1026,13 @@
         app:layout_constraintStart_toStartOf="@+id/C6Button"
         app:layout_constraintTop_toTopOf="@+id/C6Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -942,7 +1044,13 @@
         app:layout_constraintStart_toStartOf="@+id/C5Button"
         app:layout_constraintTop_toTopOf="@+id/C5Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -954,7 +1062,13 @@
         app:layout_constraintStart_toStartOf="@+id/C4Button"
         app:layout_constraintTop_toTopOf="@+id/C4Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -966,7 +1080,13 @@
         app:layout_constraintStart_toStartOf="@+id/C3Button"
         app:layout_constraintTop_toTopOf="@+id/C3Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -978,7 +1098,13 @@
         app:layout_constraintStart_toStartOf="@+id/C2Button"
         app:layout_constraintTop_toTopOf="@+id/C2Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -990,7 +1116,10 @@
         app:layout_constraintStart_toStartOf="@+id/C1Button"
         app:layout_constraintTop_toTopOf="@+id/C1Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
 
     <ImageView
         android:id="@+id/D8Image"
@@ -1001,7 +1130,19 @@
         app:layout_constraintStart_toStartOf="@+id/D8Button"
         app:layout_constraintTop_toTopOf="@+id/D8Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1015,7 +1156,13 @@
         app:layout_constraintStart_toStartOf="@+id/D7Button"
         app:layout_constraintTop_toTopOf="@+id/D7Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1027,7 +1174,13 @@
         app:layout_constraintStart_toStartOf="@+id/D6Button"
         app:layout_constraintTop_toTopOf="@+id/D6Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1038,8 +1191,14 @@
         app:layout_constraintEnd_toEndOf="@+id/D5Button"
         app:layout_constraintStart_toStartOf="@+id/D5Button"
         app:layout_constraintTop_toTopOf="@+id/D5Button"
-        app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        app:srcCompat="@drawable/player_star"
+        android:visibility="visible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1051,7 +1210,13 @@
         app:layout_constraintStart_toStartOf="@+id/D4Button"
         app:layout_constraintTop_toTopOf="@+id/D4Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1063,7 +1228,13 @@
         app:layout_constraintStart_toStartOf="@+id/D3Button"
         app:layout_constraintTop_toTopOf="@+id/D3Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1075,7 +1246,13 @@
         app:layout_constraintStart_toStartOf="@+id/D2Button"
         app:layout_constraintTop_toTopOf="@+id/D2Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1087,7 +1264,10 @@
         app:layout_constraintStart_toStartOf="@+id/D1Button"
         app:layout_constraintTop_toTopOf="@+id/D1Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
 
     <ImageView
         android:id="@+id/E8Image"
@@ -1098,7 +1278,19 @@
         app:layout_constraintStart_toStartOf="@+id/E8Button"
         app:layout_constraintTop_toTopOf="@+id/E8Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1112,7 +1304,13 @@
         app:layout_constraintStart_toStartOf="@+id/E7Button"
         app:layout_constraintTop_toTopOf="@+id/E7Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1124,7 +1322,13 @@
         app:layout_constraintStart_toStartOf="@+id/E6Button"
         app:layout_constraintTop_toTopOf="@+id/E6Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1136,7 +1340,13 @@
         app:layout_constraintStart_toStartOf="@+id/E5Button"
         app:layout_constraintTop_toTopOf="@+id/E5Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1148,7 +1358,13 @@
         app:layout_constraintStart_toStartOf="@+id/E4Button"
         app:layout_constraintTop_toTopOf="@+id/E4Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1160,7 +1376,13 @@
         app:layout_constraintStart_toStartOf="@+id/E3Button"
         app:layout_constraintTop_toTopOf="@+id/E3Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1172,7 +1394,13 @@
         app:layout_constraintStart_toStartOf="@+id/E2Button"
         app:layout_constraintTop_toTopOf="@+id/E2Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1184,7 +1412,10 @@
         app:layout_constraintStart_toStartOf="@+id/E1Button"
         app:layout_constraintTop_toTopOf="@+id/E1Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
 
     <ImageView
         android:id="@+id/F8Image"
@@ -1195,7 +1426,19 @@
         app:layout_constraintStart_toStartOf="@+id/F8Button"
         app:layout_constraintTop_toTopOf="@+id/F8Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1209,7 +1452,13 @@
         app:layout_constraintStart_toStartOf="@+id/F7Button"
         app:layout_constraintTop_toTopOf="@+id/F7Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1221,7 +1470,13 @@
         app:layout_constraintStart_toStartOf="@+id/F6Button"
         app:layout_constraintTop_toTopOf="@+id/F6Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1233,7 +1488,13 @@
         app:layout_constraintStart_toStartOf="@+id/F5Button"
         app:layout_constraintTop_toTopOf="@+id/F5Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1245,7 +1506,13 @@
         app:layout_constraintStart_toStartOf="@+id/F4Button"
         app:layout_constraintTop_toTopOf="@+id/F4Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1257,7 +1524,13 @@
         app:layout_constraintStart_toStartOf="@+id/F3Button"
         app:layout_constraintTop_toTopOf="@+id/F3Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1269,7 +1542,13 @@
         app:layout_constraintStart_toStartOf="@+id/F2Button"
         app:layout_constraintTop_toTopOf="@+id/F2Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1281,7 +1560,10 @@
         app:layout_constraintStart_toStartOf="@+id/F1Button"
         app:layout_constraintTop_toTopOf="@+id/F1Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
 
     <ImageView
         android:id="@+id/G8Image"
@@ -1292,7 +1574,19 @@
         app:layout_constraintStart_toStartOf="@+id/G8Button"
         app:layout_constraintTop_toTopOf="@+id/G8Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1306,7 +1600,13 @@
         app:layout_constraintStart_toStartOf="@+id/G7Button"
         app:layout_constraintTop_toTopOf="@+id/G7Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1318,7 +1618,13 @@
         app:layout_constraintStart_toStartOf="@+id/G6Button"
         app:layout_constraintTop_toTopOf="@+id/G6Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1330,7 +1636,13 @@
         app:layout_constraintStart_toStartOf="@+id/G5Button"
         app:layout_constraintTop_toTopOf="@+id/G5Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1342,7 +1654,13 @@
         app:layout_constraintStart_toStartOf="@+id/G4Button"
         app:layout_constraintTop_toTopOf="@+id/G4Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1354,7 +1672,13 @@
         app:layout_constraintStart_toStartOf="@+id/G3Button"
         app:layout_constraintTop_toTopOf="@+id/G3Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1366,7 +1690,13 @@
         app:layout_constraintStart_toStartOf="@+id/G2Button"
         app:layout_constraintTop_toTopOf="@+id/G2Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1378,7 +1708,10 @@
         app:layout_constraintStart_toStartOf="@+id/G1Button"
         app:layout_constraintTop_toTopOf="@+id/G1Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
 
     <ImageView
         android:id="@+id/H8Image"
@@ -1389,7 +1722,19 @@
         app:layout_constraintStart_toStartOf="@+id/H8Button"
         app:layout_constraintTop_toTopOf="@+id/H8Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1403,7 +1748,13 @@
         app:layout_constraintStart_toStartOf="@+id/H7Button"
         app:layout_constraintTop_toTopOf="@+id/H7Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1415,7 +1766,13 @@
         app:layout_constraintStart_toStartOf="@+id/H6Button"
         app:layout_constraintTop_toTopOf="@+id/H6Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1427,7 +1784,13 @@
         app:layout_constraintStart_toStartOf="@+id/H5Button"
         app:layout_constraintTop_toTopOf="@+id/H5Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1439,7 +1802,13 @@
         app:layout_constraintStart_toStartOf="@+id/H4Button"
         app:layout_constraintTop_toTopOf="@+id/H4Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1451,7 +1820,13 @@
         app:layout_constraintStart_toStartOf="@+id/H3Button"
         app:layout_constraintTop_toTopOf="@+id/H3Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1463,7 +1838,13 @@
         app:layout_constraintStart_toStartOf="@+id/H2Button"
         app:layout_constraintTop_toTopOf="@+id/H2Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
 
 
     <ImageView
@@ -1475,7 +1856,19 @@
         app:layout_constraintStart_toStartOf="@+id/H1Button"
         app:layout_constraintTop_toTopOf="@+id/H1Button"
         app:srcCompat="@drawable/bishop_grey"
-        tools:visibility="visible" />
+        android:visibility="invisible" />
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
