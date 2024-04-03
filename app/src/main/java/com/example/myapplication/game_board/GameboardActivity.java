@@ -10,10 +10,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.myapplication.R;
 import com.example.myapplication.difficulty_menu.DifficultyMenu;
 import com.example.myapplication.main_menu.MainActivity;
+import com.example.myapplication.pieces.PlayerPiece;
 import com.example.myapplication.pieces.Tile;
 
 import java.util.HashMap;
@@ -21,7 +23,13 @@ import java.util.Map;
 
 public class GameboardActivity extends AppCompatActivity {
 
+    //Player state of 0 corresponds with idle, 1 with selecting knight move, 2 w/ bishop, 3 w/ rook
+    int playerState;
     Tile playerTile;
+
+    Tile selectedTile;
+
+    int selectedButtonID;
 
     Map<Integer, Tile> tiles;
 
@@ -39,7 +47,9 @@ public class GameboardActivity extends AppCompatActivity {
             }
         });
         tiles = new HashMap<>();
-        initializeMap(tiles);
+        initializeMap(tiles);// Fills the map
+        playerTile = tiles.get(R.id.D5Button);// Player always starts on D5, so set playerTile
+        playerTile.setPiece(new PlayerPiece(0));// Put a player piece in playerTile
     }
 
 
@@ -63,9 +73,39 @@ public class GameboardActivity extends AppCompatActivity {
         int id = res.getIdentifier(imageName, "id", getApplicationContext().getPackageName());
         ImageView image = findViewById(id);
         image.setImageResource(R.drawable.player_star);
-        //image.setVisibility(View.VISIBLE);
+        // Use button id to get corresponding tile.
 
-//        view.setVisibility(View.INVISIBLE);
+        Tile clicked = tiles.get(view.getId());
+        Button selectedButton = (Button)findViewById(selectedButtonID);
+
+
+        if (playerState != 0) {// Checks to make sure we are selecting a move
+            assert clicked != null;
+            if (clicked.compatible(playerTile, ((PlayerPiece) playerTile.piece()).type())) {// Check if selected tile is compatible with move
+                if (selectedButton != null) {// Do we already have a tile selected
+                    if (selectedTile.color() == 0) {// Makes the previously selected square unselected
+                        selectedButton.setBackgroundResource(R.drawable.black_selectable);
+                    } else {
+                        selectedButton.setBackgroundResource(R.drawable.purple_selectable);
+                    }
+                }
+                if (clicked.color() == 0) {// Makes the new square selected
+                    view.setBackgroundResource(R.drawable.black_selected);
+                } else {
+                    view.setBackgroundResource(R.drawable.purple_selected);
+                }
+                selectedTile = clicked;// Update selectedTile
+                selectedButtonID = view.getId();// Update selectedButtonID
+            } else {
+                Toast toast = Toast.makeText(this /* MyActivity */, "The tile you selected is not compatible!", Toast.LENGTH_SHORT);
+                toast.show();
+
+            }
+        } else {
+            Toast toast = Toast.makeText(this /* MyActivity */, "You must select a move type!", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
 
     }
 

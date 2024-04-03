@@ -4,6 +4,9 @@ public class Tile {
     PowerUp powerUp;
     Piece piece;
 
+    // color 0 corresponds with black, color 1 corresponds with white
+    int color;
+
     int column;
     int row;
 
@@ -11,6 +14,12 @@ public class Tile {
     public Tile(String pos) {
         column = Character.getNumericValue(pos.charAt(0));
         row = Character.getNumericValue(pos.charAt(1));
+
+        color = (column + row) % 2;
+    }
+
+    public void setPiece(Piece toSet) {
+        piece = toSet;
     }
 
     public boolean hasPowerUp() {
@@ -27,5 +36,18 @@ public class Tile {
 
     public boolean hasPiece() {
         return piece != null;
+    }
+
+    // Checks if two tiles are compatible; Move type: {0 = knight, 1 = bishop, 2 = rook}
+    public boolean compatible(Tile tile, int moveType) {
+        return false;
+    }
+
+    public Piece piece() {
+        return piece;
+    }
+
+    public int color() {
+        return color;
     }
 }
