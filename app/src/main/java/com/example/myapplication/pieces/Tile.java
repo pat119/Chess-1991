@@ -4,6 +4,8 @@ public class Tile {
     PowerUp powerUp;
     Piece piece;
 
+    int ButtonID
+
     // color 0 corresponds with black, color 1 corresponds with white
     int color;
 
@@ -11,7 +13,7 @@ public class Tile {
     int row;
 
     // pos passed as "11", "22", with 1 representing "a" in the first position
-    public Tile(String pos) {
+    public Tile(String pos, int buttonID) {
         column = Character.getNumericValue(pos.charAt(0));
         row = Character.getNumericValue(pos.charAt(1));
 
