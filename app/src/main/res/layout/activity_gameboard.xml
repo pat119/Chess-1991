@@ -661,7 +661,7 @@
         app:layout_constraintBottom_toTopOf="@+id/G8Button"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageButton
         android:id="@+id/rookButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -669,11 +669,11 @@
         android:layout_marginBottom="50dp"
         android:clickable="true"
         android:contentDescription="@string/test"
-        android:foreground="@drawable/rook"
+        android:background="@drawable/rook"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageButton
         android:id="@+id/bishopButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -682,12 +682,12 @@
         android:layout_marginBottom="50dp"
         android:clickable="true"
         android:contentDescription="@string/test"
-        android:foreground="@drawable/bishop"
+        android:background="@drawable/bishop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/rookButton"
         app:layout_constraintStart_toEndOf="@+id/knightButton" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageButton
         android:id="@+id/knightButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -695,7 +695,7 @@
         android:layout_marginBottom="50dp"
         android:clickable="true"
         android:contentDescription="@string/test"
-        android:foreground="@drawable/knight"
+        android:background="@drawable/knight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

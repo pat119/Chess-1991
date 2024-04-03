@@ -4,7 +4,7 @@ public class Tile {
     PowerUp powerUp;
     Piece piece;
 
-    int ButtonID
+    int ButtonID;
 
     // color 0 corresponds with black, color 1 corresponds with white
     int color;
@@ -12,7 +12,7 @@ public class Tile {
     int column;
     int row;
 
-    // pos passed as "11", "22", with 1 representing "a" in the first position
+    // pos passed as "11", "22", with 1 representing "a" in the first position, //18 is the bottom left
     public Tile(String pos, int buttonID) {
         column = Character.getNumericValue(pos.charAt(0));
         row = Character.getNumericValue(pos.charAt(1));
@@ -42,7 +42,7 @@ public class Tile {
 
     // Checks if two tiles are compatible; Move type: {0 = knight, 1 = bishop, 2 = rook}
     public boolean compatible(Tile tile, int moveType) {
-        return false;
+        return true;
     }
 
     public Piece piece() {
