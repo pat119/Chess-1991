@@ -48,35 +48,20 @@ public class Tile {
 
         if (moveType == 1) {// Check for knight
             if (this.column - tile.column == 2 || this.column - tile.column == -2) {
-                if (this.row - tile.row == 1 || this.row - tile.row == -1) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return this.row - tile.row == 1 || this.row - tile.row == -1;
             } else if (this.column - tile.column == 1 || this.column - tile.column == -1) {
-                if (this.row - tile.row == 2 || this.row - tile.row == -2) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return this.row - tile.row == 2 || this.row - tile.row == -2;
             } else {
                 return false;
             }
         } else if (moveType == 2) {// Check for bishop
-            if ((this.column - tile.column) == (this.row - tile.row)) {
-                return true;
-            } else {
-                return false;
-            }
+            return (this.column - tile.column) == (this.row - tile.row);
         } else if (moveType == 3) {// Check for rook
-            if (this.column == tile.column || this.row == tile.row) {
-                return true;
-            } else {
-                return false;
-            }
+            return this.column == tile.column || this.row == tile.row;
         } else {
             return false;
         }
+
     }
 
     public Piece piece() {

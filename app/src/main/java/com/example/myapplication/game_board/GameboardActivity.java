@@ -119,12 +119,14 @@ public class GameboardActivity extends AppCompatActivity {
     // For now, it simply moves the player piece to that tile
     public void onTileClick(View view)
     {
+        /*
         switch (view.getId()) {
 //            case R.id.button_send:
                 // Do something
         }
 //        int[] location = new int[2];
 //        view.getLocationInWindow(location);
+
 
         // First get name of button
         Resources res = getResources();
@@ -137,14 +139,17 @@ public class GameboardActivity extends AppCompatActivity {
         image.setImageResource(R.drawable.player_star);
         // Use button id to get corresponding tile.
 
+         */
+
         ImageButton rightButton = (ImageButton) findViewById(R.id.rookButton);
         Tile clicked = tiles.get(view.getId());
-        Button selectedButton = (Button)findViewById(selectedButtonID);
+        ImageButton selectedButton = (ImageButton) findViewById(selectedButtonID);
 
 
         if (playerState != 0) {// Checks to make sure we are selecting a move
             assert clicked != null;
-            if (clicked.compatible(playerTile, ((PlayerPiece) playerTile.piece()).type())) {// Check if selected tile is compatible with move
+            if (clicked.compatible(playerTile, playerState)) {// Check if selected tile is compatible with move
+
                 if (selectedButton != null) {// Do we already have a tile selected
                     if (selectedTile.color() == 0) {// Makes the previously selected square unselected
                         selectedButton.setBackgroundResource(R.drawable.black_selectable);
@@ -152,21 +157,28 @@ public class GameboardActivity extends AppCompatActivity {
                         selectedButton.setBackgroundResource(R.drawable.purple_selectable);
                     }
                 }
+
+
                 if (clicked.color() == 0) {// Makes the new square selected
                     view.setBackgroundResource(R.drawable.black_selected);
                 } else {
                     view.setBackgroundResource(R.drawable.purple_selected);
                 }
+
+
                 rightButton.setBackgroundResource(R.drawable.confirm_good);// Makes the right button colored
                 selectedTile = clicked;// Update selectedTile
                 selectedButtonID = view.getId();// Update selectedButtonID
+
             } else {
-                Toast toast = Toast.makeText(this /* MyActivity */, "The tile you selected is not compatible!", Toast.LENGTH_SHORT);
+
+
+                Toast toast = Toast.makeText(this, "The tile you selected is not compatible!", Toast.LENGTH_SHORT);
                 toast.show();
 
             }
         } else {
-            Toast toast = Toast.makeText(this /* MyActivity */, "You must select a move type!", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this, "You must select a move type!", Toast.LENGTH_SHORT);
             toast.show();
         }
 
@@ -195,14 +207,14 @@ public class GameboardActivity extends AppCompatActivity {
         tiles.put(R.id.A8Button, new Tile("11", R.id.A8Button));
 
 
-        tiles.put(R.id.C1Button, new Tile("38", R.id.C1Button));
-        tiles.put(R.id.C2Button, new Tile("37", R.id.C2Button));
-        tiles.put(R.id.C3Button, new Tile("36", R.id.C3Button));
-        tiles.put(R.id.C4Button, new Tile("35", R.id.C4Button));
-        tiles.put(R.id.C5Button, new Tile("34", R.id.C5Button));
-        tiles.put(R.id.C6Button, new Tile("33", R.id.C6Button));
-        tiles.put(R.id.C7Button, new Tile("32", R.id.C7Button));
-        tiles.put(R.id.C8Button, new Tile("31", R.id.C8Button));
+        tiles.put(R.id.B1Button, new Tile("28", R.id.B1Button));
+        tiles.put(R.id.B2Button, new Tile("27", R.id.B2Button));
+        tiles.put(R.id.B3Button, new Tile("26", R.id.B3Button));
+        tiles.put(R.id.B4Button, new Tile("25", R.id.B4Button));
+        tiles.put(R.id.B5Button, new Tile("24", R.id.B5Button));
+        tiles.put(R.id.B6Button, new Tile("23", R.id.B6Button));
+        tiles.put(R.id.B7Button, new Tile("22", R.id.B7Button));
+        tiles.put(R.id.B8Button, new Tile("21", R.id.B8Button));
 
 
 
