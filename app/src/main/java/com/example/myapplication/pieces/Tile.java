@@ -16,8 +16,8 @@ public class Tile {
     public Tile(String pos, int buttonID) {
         column = Character.getNumericValue(pos.charAt(0));
         row = Character.getNumericValue(pos.charAt(1));
-
         color = (column + row) % 2;
+        ButtonID = buttonID;
     }
 
     public void setPiece(Piece toSet) {
@@ -70,5 +70,9 @@ public class Tile {
 
     public int color() {
         return color;
+    }
+
+    public int id() {
+        return ButtonID;
     }
 }
