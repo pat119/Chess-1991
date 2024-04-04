@@ -55,7 +55,7 @@ public class Tile {
                 return false;
             }
         } else if (moveType == 2) {// Check for bishop
-            return (this.column - tile.column) == (this.row - tile.row);
+            return (this.column - tile.column) == (this.row - tile.row) || (this.column - tile.column) == -(this.row - tile.row);
         } else if (moveType == 3) {// Check for rook
             return this.column == tile.column || this.row == tile.row;
         } else {
