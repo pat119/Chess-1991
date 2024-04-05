@@ -41,13 +41,22 @@ public class GameboardActivity extends AppCompatActivity {
     Map<Integer, Tile> tiles;
     int enemyCounter;
 
+    Drawable redKnight;
+    Drawable redBishop;
+    Drawable redRook;
+    Drawable redQueen;
+    Drawable greyKnight;
+    Drawable greyBishop;
+    Drawable greyRook;
+    Drawable greyQueen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameboard);
         playerState = 0;
 
-        // Set up back button in the upper-left corner
+        // Set up tutorial button in the upper-right corner
         Button tutorialButton = (Button) findViewById(R.id.tutorialButtonGameboard);
         tutorialButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,8 +65,6 @@ public class GameboardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
 
         // Set up back button in the upper-left corner
         Button backButton = (Button) findViewById(R.id.boardBackButton);
@@ -161,6 +168,15 @@ public class GameboardActivity extends AppCompatActivity {
             }
         });
 
+        redKnight = getResources().getDrawable(R.drawable.knight_red, getTheme());
+        redBishop = getResources().getDrawable(R.drawable.bishop_red, getTheme());
+        redRook = getResources().getDrawable(R.drawable.rook_red, getTheme());
+        redQueen = getResources().getDrawable(R.drawable.queen_red, getTheme());
+        greyKnight = getResources().getDrawable(R.drawable.knight_grey, getTheme());
+        greyBishop = getResources().getDrawable(R.drawable.bishop_grey, getTheme());
+        greyRook = getResources().getDrawable(R.drawable.rook_grey, getTheme());
+        greyQueen = getResources().getDrawable(R.drawable.queen_grey, getTheme());
+
     }
 
 
@@ -228,12 +244,13 @@ public class GameboardActivity extends AppCompatActivity {
     // Move enemy pieces, begin to spawn new enemies and power ups
     public void enemyMove() {
         // TODO: move enemy pieces
-        // First, get list of tiles that have enemy pieces
+        // First, get list of tiles that have enemy piecesTile> enemies = getTilesWithEnemies();
         ArrayList<Tile> enemies = getTilesWithEnemies();
-        for (Tile enemy : enemies) {
-            // TODO: move enemy
-
-        }
+        ////        for (Tile enemy : enemies) {
+        ////            // TODO: move enemy
+        ////
+        ////        }
+//        ArrayList<
 
 
         // Current logic: begin to spawn one enemy every few turns
@@ -248,26 +265,30 @@ public class GameboardActivity extends AppCompatActivity {
         Object[] values = tiles.values().toArray();
         Tile randomTile = (Tile) values[generator.nextInt(values.length)];
         ImageButton tileButton = findViewById(randomTile.id());
-        // TODO: check if tile is already occupied, if it is, then get another one
+        // Check if tile is already occupied, if it is, then get another one
         while (tileHasEnemy(tileButton)) {
             randomTile = (Tile) values[generator.nextInt(values.length)];
             tileButton = findViewById(randomTile.id());
         }
 
-
-
         // TODO: Then select a specific enemy piece to spawn
-
-
-
-        tileButton.setForeground(getResources().getDrawable(R.drawable.knight_red, getTheme()));
+        Drawable enemyToSpawn = getRandomEnemy();
+        tileButton.setForeground(enemyToSpawn);
     }
+
+    public Drawable getRandomEnemy() {
+        Random generator = new Random();
+        Object[] values = {redKnight, redBishop, redRook, redQueen, greyKnight, greyBishop, greyRook, greyQueen};
+        return (Drawable) values[generator.nextInt(values.length)];
+    }
+
 
     public ArrayList<Tile> getTilesWithEnemies() {
         ArrayList<Tile> toReturn = new ArrayList<>();
-        Tile[] values = (Tile[]) tiles.values().toArray();
+        Object[] values = tiles.values().toArray();
 
-        for (Tile tile : values) {
+        for (Object value : values) {
+            Tile tile = (Tile) value;
             ImageButton tileButton = findViewById((tile.id()));
             if (tileHasEnemy(tileButton))
                 toReturn.add(tile);
@@ -276,15 +297,8 @@ public class GameboardActivity extends AppCompatActivity {
     }
 
     public boolean tileHasEnemy(ImageButton tileButton) {
-        Drawable potentialPiece = tileButton.getForeground();
-        Drawable redKnight = getResources().getDrawable(R.drawable.knight_red, getTheme());
-        Drawable redBishop = getResources().getDrawable(R.drawable.bishop_red, getTheme());
-        Drawable redRook = getResources().getDrawable(R.drawable.rook_red, getTheme());
-        Drawable redQueen = getResources().getDrawable(R.drawable.queen_red, getTheme());
-        Drawable greyKnight = getResources().getDrawable(R.drawable.knight_grey, getTheme());
-        Drawable greyBishop = getResources().getDrawable(R.drawable.bishop_grey, getTheme());
-        Drawable greyRook = getResources().getDrawable(R.drawable.rook_grey, getTheme());
-        Drawable greyQueen = getResources().getDrawable(R.drawable.queen_grey, getTheme());
+        Drawable potentialPiece = tileButton.getDrawable();
+        if (potentialPiece == null) return false;
 
         if (potentialPiece.equals(redKnight)) return true;
         if (potentialPiece.equals(redBishop)) return true;
