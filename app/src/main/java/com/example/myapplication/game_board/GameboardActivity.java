@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
@@ -210,6 +211,14 @@ public class GameboardActivity extends AppCompatActivity {
 
     // Move enemy pieces, begin to spawn new enemies and power ups
     public void enemyMove() {
+        // TODO: move enemy pieces
+        // First, get list of tiles that have enemy pieces
+        ArrayList<Tile> enemies = getTilesWithEnemies();
+        for (Tile enemy : enemies) {
+            // TODO: move enemy
+
+        }
+
 
         // Current logic: begin to spawn one enemy every few turns
         // To do this, we can add a counter variable to keep track of
@@ -223,7 +232,53 @@ public class GameboardActivity extends AppCompatActivity {
         Object[] values = tiles.values().toArray();
         Tile randomTile = (Tile) values[generator.nextInt(values.length)];
         ImageButton tileButton = findViewById(randomTile.id());
+        // TODO: check if tile is already occupied, if it is, then get another one
+        while (tileHasEnemy(tileButton)) {
+            randomTile = (Tile) values[generator.nextInt(values.length)];
+            tileButton = findViewById(randomTile.id());
+        }
+
+
+
+        // TODO: Then select a specific enemy piece to spawn
+
+
+
         tileButton.setForeground(getResources().getDrawable(R.drawable.knight_red, getTheme()));
+    }
+
+    public ArrayList<Tile> getTilesWithEnemies() {
+        ArrayList<Tile> toReturn = new ArrayList<>();
+        Tile[] values = (Tile[]) tiles.values().toArray();
+
+        for (Tile tile : values) {
+            ImageButton tileButton = findViewById((tile.id()));
+            if (tileHasEnemy(tileButton))
+                toReturn.add(tile);
+        }
+        return toReturn;
+    }
+
+    public boolean tileHasEnemy(ImageButton tileButton) {
+        Drawable potentialPiece = tileButton.getForeground();
+        Drawable redKnight = getResources().getDrawable(R.drawable.knight_red, getTheme());
+        Drawable redBishop = getResources().getDrawable(R.drawable.bishop_red, getTheme());
+        Drawable redRook = getResources().getDrawable(R.drawable.rook_red, getTheme());
+        Drawable redQueen = getResources().getDrawable(R.drawable.queen_red, getTheme());
+        Drawable greyKnight = getResources().getDrawable(R.drawable.knight_grey, getTheme());
+        Drawable greyBishop = getResources().getDrawable(R.drawable.bishop_grey, getTheme());
+        Drawable greyRook = getResources().getDrawable(R.drawable.rook_grey, getTheme());
+        Drawable greyQueen = getResources().getDrawable(R.drawable.queen_grey, getTheme());
+
+        if (potentialPiece.equals(redKnight)) return true;
+        if (potentialPiece.equals(redBishop)) return true;
+        if (potentialPiece.equals(redRook)) return true;
+        if (potentialPiece.equals(redQueen)) return true;
+        if (potentialPiece.equals(greyKnight)) return true;
+        if (potentialPiece.equals(greyBishop)) return true;
+        if (potentialPiece.equals(greyRook)) return true;
+        if (potentialPiece.equals(greyQueen)) return true;
+        return false;
     }
 
 //    public static List<String> pickNRandom(List<String> lst, int n) {
