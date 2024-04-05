@@ -18,6 +18,7 @@ import com.example.myapplication.difficulty_menu.DifficultyMenu;
 import com.example.myapplication.main_menu.MainActivity;
 import com.example.myapplication.pieces.PlayerPiece;
 import com.example.myapplication.pieces.Tile;
+import com.example.myapplication.tutorial.Tutorial;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,6 +45,18 @@ public class GameboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameboard);
         playerState = 0;
+
+        // Set up back button in the upper-left corner
+        Button tutorialButton = (Button) findViewById(R.id.tutorialButtonGameboard);
+        tutorialButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GameboardActivity.this, Tutorial.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         // Set up back button in the upper-left corner
         Button backButton = (Button) findViewById(R.id.boardBackButton);
