@@ -125,8 +125,8 @@ public class GameboardActivity extends AppCompatActivity {
                         ImageButton playerButton = findViewById(playerTile.id());
 
                         if (playerTile.color() == 0)
-                            playerButton.setForeground(getResources().getDrawable(R.drawable.purplesquare, getTheme()));
-                        else playerButton.setForeground(getResources().getDrawable(R.drawable.blacksquare, getTheme()));
+                            playerButton.setForeground(getResources().getDrawable(R.drawable.transparent, getTheme()));
+                        else playerButton.setForeground(getResources().getDrawable(R.drawable.transparent, getTheme()));
 
                         playerTile = selectedTile;
 //                        playerTile.setPiece();
@@ -165,11 +165,11 @@ public class GameboardActivity extends AppCompatActivity {
                 if (selectedButton != null) {   // Do we already have a tile selected
                     if (selectedTile.color() == 0) {    // Makes the previously selected square unselected
 //                        selectedButton.setBackgroundResource(R.drawable.black_selectable);
-                        selectedButton.setForeground(getResources().getDrawable(R.drawable.purple_selectable, getTheme()));
+                        selectedButton.setImageResource(R.drawable.purple_selectable);
 
                     } else {
 //                        selectedButton.setBackgroundResource(R.drawable.purple_selectable);
-                        selectedButton.setForeground(getResources().getDrawable(R.drawable.black_selectable, getTheme()));
+                        selectedButton.setImageResource(R.drawable.black_selectable);
                     }
                 }
 
@@ -182,11 +182,14 @@ public class GameboardActivity extends AppCompatActivity {
                     // Since the setForeground function is working, I'm just going to use it
 //                    view.setBackgroundResource(R.drawable.black_selected);
 
-                    view.setForeground(getResources().getDrawable(R.drawable.purple_selected, getTheme()));
+                    ImageButton btn = (ImageButton) view;
+
+                    btn.setImageResource(R.drawable.purple_selected);
                 }
                 else {
 //                    view.setBackgroundResource(R.drawable.purple_selected);
-                    view.setForeground(getResources().getDrawable(R.drawable.black_selected, getTheme()));
+                    ImageButton btn = (ImageButton) view;
+                    btn.setImageResource(R.drawable.black_selected);
                 }
 
 
@@ -240,9 +243,9 @@ public class GameboardActivity extends AppCompatActivity {
             ImageButton tileButton = (ImageButton) findViewById(tile.id());
             if (tile.compatible(playerTile, type)) {
                 if (tile.color() == 0)
-                    tileButton.setForeground(getResources().getDrawable(R.drawable.purple_selectable, getTheme()));
+                    tileButton.setImageResource(R.drawable.purple_selectable);
                 if (tile.color() == 1)
-                    tileButton.setForeground(getResources().getDrawable(R.drawable.black_selectable, getTheme()));
+                    tileButton.setImageResource(R.drawable.black_selectable);
             }
         }
     }
@@ -253,14 +256,11 @@ public class GameboardActivity extends AppCompatActivity {
             ImageButton tileButton = (ImageButton) findViewById(tile.id());
 
             // TODO: Add a check to make sure tileButton isn't displaying an enemy piece, or powerup
-
-
-//            if (tile.compatible(playerTile, type)) {
                 if (tile.color() == 0)
-                    tileButton.setForeground(getResources().getDrawable(R.drawable.purplesquare, getTheme()));
+                    tileButton.setImageResource(R.drawable.purplesquare);
                 if (tile.color() == 1)
-                    tileButton.setForeground(getResources().getDrawable(R.drawable.blacksquare, getTheme()));
-//            }
+                    tileButton.setImageResource(R.drawable.blacksquare);
+//
         }
     }
 
