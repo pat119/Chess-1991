@@ -19,8 +19,12 @@ import com.example.myapplication.main_menu.MainActivity;
 import com.example.myapplication.pieces.PlayerPiece;
 import com.example.myapplication.pieces.Tile;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class GameboardActivity extends AppCompatActivity {
     // Player state list
@@ -33,6 +37,7 @@ public class GameboardActivity extends AppCompatActivity {
     Tile selectedTile;
     int selectedButtonID;
     Map<Integer, Tile> tiles;
+    int enemyCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,9 @@ public class GameboardActivity extends AppCompatActivity {
         initializeMap(tiles);// Fills the map
         playerTile = tiles.get(R.id.D5Button);  // Player always starts on D5, so set playerTile
         playerTile.setPiece(new PlayerPiece(0));    // Put a player piece in playerTile
+        ImageButton playerButton = findViewById(playerTile.id());
+        playerButton.setForeground(getResources().getDrawable(R.drawable.player_star, getTheme()));
+
         Toast confirm = Toast.makeText(this /* MyActivity */,
                 "You must select a tile before commiting!", Toast.LENGTH_SHORT);
 
@@ -110,9 +118,31 @@ public class GameboardActivity extends AppCompatActivity {
                 } else {    // If a move type is currently selected, right button is confirm.
                     if (selectedTile != null) {     // Currently have a tile selected
                         // TODO swap positions.
-                    } else {
-                        confirm.show();
-                    }
+                        hideCompatible(playerState);
+
+                        ImageButton selectedButton = (ImageButton) findViewById(selectedButtonID);
+                        selectedButton.setForeground(getResources().getDrawable(R.drawable.player_star, getTheme()));
+                        ImageButton playerButton = findViewById(playerTile.id());
+
+                        if (playerTile.color() == 0)
+                            playerButton.setForeground(getResources().getDrawable(R.drawable.purplesquare, getTheme()));
+                        else playerButton.setForeground(getResources().getDrawable(R.drawable.blacksquare, getTheme()));
+
+                        playerTile = selectedTile;
+//                        playerTile.setPiece();
+
+                        // Reset the three buttons
+                        playerState = 0;
+                        selectedTile = null;
+                        selectedButtonID = 0;
+                        leftButton.setBackgroundResource(R.drawable.knight);
+                        middleButton.setBackgroundResource(R.drawable.bishop);
+                        rightButton.setBackgroundResource(R.drawable.rook);
+
+                        // Proceed to enemy and spawning actions
+                        enemyMove();
+
+                    } else confirm.show();  // A tile has not been selected, warn the user
                 }
             }
         });
@@ -164,11 +194,7 @@ public class GameboardActivity extends AppCompatActivity {
                 selectedTile = clicked;// Update selectedTile
                 selectedButtonID = view.getId();// Update selectedButtonID
 
-                // Proceed to enemy and spawning actions
-                enemyMove();
-
             } else {
-
 
                 Toast toast = Toast.makeText(this, "The tile you selected is not compatible!", Toast.LENGTH_SHORT);
                 toast.show();
@@ -191,10 +217,20 @@ public class GameboardActivity extends AppCompatActivity {
 
         // Turn enemy spawn icons into enemies
 
-
         // Place enemy spawn icons
-
+        // Randomly select a tile
+        Random generator = new Random();
+        Object[] values = tiles.values().toArray();
+        Tile randomTile = (Tile) values[generator.nextInt(values.length)];
+        ImageButton tileButton = findViewById(randomTile.id());
+        tileButton.setForeground(getResources().getDrawable(R.drawable.knight_red, getTheme()));
     }
+
+//    public static List<String> pickNRandom(List<String> lst, int n) {
+//        List<String> copy = new ArrayList<>(lst);
+//        Collections.shuffle(copy);
+//        return n > copy.size() ? copy.subList(0, copy.size()) : copy.subList(0, n);
+//    }
 
     // Used to highlight compatible tiles
     public void showCompatible(int type) {
@@ -215,6 +251,9 @@ public class GameboardActivity extends AppCompatActivity {
     public void hideCompatible(int type) {
         for (Tile tile : tiles.values()) {
             ImageButton tileButton = (ImageButton) findViewById(tile.id());
+
+            // TODO: Add a check to make sure tileButton isn't displaying an enemy piece, or powerup
+
 
 //            if (tile.compatible(playerTile, type)) {
                 if (tile.color() == 0)

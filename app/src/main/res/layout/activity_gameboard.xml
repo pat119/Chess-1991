@@ -1192,7 +1192,7 @@
         app:layout_constraintStart_toStartOf="@+id/D5Button"
         app:layout_constraintTop_toTopOf="@+id/D5Button"
         app:srcCompat="@drawable/player_star"
-        android:visibility="visible" />
+        android:visibility="invisible" />
 
 
 
