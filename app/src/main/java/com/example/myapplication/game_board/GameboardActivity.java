@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
@@ -41,6 +42,11 @@ public class GameboardActivity extends AppCompatActivity {
     Map<Integer, Tile> tiles;
     int enemyCounter;
 
+    // Used to display info top of screen
+    int waves;
+    int lives;
+    int score;
+
     Drawable redKnight;
     Drawable redBishop;
     Drawable redRook;
@@ -55,6 +61,17 @@ public class GameboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameboard);
         playerState = 0;
+        waves = 0;
+        lives = 3;
+        score = 0;
+
+
+        TextView waveText = findViewById(R.id.waveText);
+        TextView lifeText = findViewById(R.id.livesText);
+        TextView scoreText = findViewById(R.id.scoreText);
+        waveText.setText("" + waves);
+        lifeText.setText("" + lives);
+        scoreText.setText("" + score);
 
         // Set up tutorial button in the upper-right corner
         Button tutorialButton = (Button) findViewById(R.id.tutorialButtonGameboard);
