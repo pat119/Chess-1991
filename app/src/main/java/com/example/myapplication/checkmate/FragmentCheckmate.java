@@ -15,34 +15,16 @@ import com.example.myapplication.databinding.FragmentCheckmateBinding;
 
 public class FragmentCheckmate extends Fragment {
 
-    private FragmentCheckmateBinding binding;
 
-    @Override
-    public View onCreateView(
-            LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState
-    ) {
-
-        binding = FragmentCheckmateBinding.inflate(inflater, container, false);
-        return binding.getRoot();
-
-    }
-
-    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        binding.PostLeader.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //something
-            }
-        });
+    public FragmentCheckmate() {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_checkmate, container, false);
     }
+
 
 }

@@ -52,10 +52,11 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view"
-        android:layout_width="285dp"
-        android:layout_height="373dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="96dp"
+        android:layout_width="304dp"
+        android:layout_height="398dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="120dp"
+        android:translationZ="90dp"
         app:layout_constraintBottom_toTopOf="@+id/home"
         app:layout_constraintStart_toStartOf="parent" />
 

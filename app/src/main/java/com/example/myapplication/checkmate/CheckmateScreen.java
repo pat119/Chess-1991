@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import com.example.myapplication.R;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.view.View;
@@ -18,6 +20,13 @@ public class CheckmateScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
+
+
+        Fragment fragment = new FragmentCheckmate();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container_view, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
 
         Button homeButton = (Button)findViewById(R.id.home);
         homeButton.setOnClickListener(new View.OnClickListener() {
