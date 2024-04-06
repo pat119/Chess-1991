@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
@@ -18,6 +20,7 @@ import com.example.myapplication.difficulty_menu.DifficultyMenu;
 import com.example.myapplication.main_menu.MainActivity;
 import com.example.myapplication.pieces.PlayerPiece;
 import com.example.myapplication.pieces.Tile;
+import com.example.myapplication.tutorial.Tutorial;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,11 +42,46 @@ public class GameboardActivity extends AppCompatActivity {
     Map<Integer, Tile> tiles;
     int enemyCounter;
 
+    // Used to display info top of screen
+    int waves;
+    int lives;
+    int score;
+
+    Drawable redKnight;
+    Drawable redBishop;
+    Drawable redRook;
+    Drawable redQueen;
+    Drawable greyKnight;
+    Drawable greyBishop;
+    Drawable greyRook;
+    Drawable greyQueen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gameboard);
         playerState = 0;
+        waves = 0;
+        lives = 3;
+        score = 0;
+
+
+        TextView waveText = findViewById(R.id.waveText);
+        TextView lifeText = findViewById(R.id.livesText);
+        TextView scoreText = findViewById(R.id.scoreText);
+        waveText.setText("" + waves);
+        lifeText.setText("" + lives);
+        scoreText.setText("" + score);
+
+        // Set up tutorial button in the upper-right corner
+        Button tutorialButton = (Button) findViewById(R.id.tutorialButtonGameboard);
+        tutorialButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GameboardActivity.this, Tutorial.class);
+                startActivity(intent);
+            }
+        });
 
         // Set up back button in the upper-left corner
         Button backButton = (Button) findViewById(R.id.boardBackButton);
@@ -125,8 +163,8 @@ public class GameboardActivity extends AppCompatActivity {
                         ImageButton playerButton = findViewById(playerTile.id());
 
                         if (playerTile.color() == 0)
-                            playerButton.setForeground(getResources().getDrawable(R.drawable.purplesquare, getTheme()));
-                        else playerButton.setForeground(getResources().getDrawable(R.drawable.blacksquare, getTheme()));
+                            playerButton.setForeground(getResources().getDrawable(R.drawable.transparent, getTheme()));
+                        else playerButton.setForeground(getResources().getDrawable(R.drawable.transparent, getTheme()));
 
                         playerTile = selectedTile;
 //                        playerTile.setPiece();
@@ -147,6 +185,15 @@ public class GameboardActivity extends AppCompatActivity {
             }
         });
 
+        redKnight = getResources().getDrawable(R.drawable.knight_red, getTheme());
+        redBishop = getResources().getDrawable(R.drawable.bishop_red, getTheme());
+        redRook = getResources().getDrawable(R.drawable.rook_red, getTheme());
+        redQueen = getResources().getDrawable(R.drawable.queen_red, getTheme());
+        greyKnight = getResources().getDrawable(R.drawable.knight_grey, getTheme());
+        greyBishop = getResources().getDrawable(R.drawable.bishop_grey, getTheme());
+        greyRook = getResources().getDrawable(R.drawable.rook_grey, getTheme());
+        greyQueen = getResources().getDrawable(R.drawable.queen_grey, getTheme());
+
     }
 
 
@@ -165,11 +212,11 @@ public class GameboardActivity extends AppCompatActivity {
                 if (selectedButton != null) {   // Do we already have a tile selected
                     if (selectedTile.color() == 0) {    // Makes the previously selected square unselected
 //                        selectedButton.setBackgroundResource(R.drawable.black_selectable);
-                        selectedButton.setForeground(getResources().getDrawable(R.drawable.purple_selectable, getTheme()));
+                        selectedButton.setImageResource(R.drawable.purple_selectable);
 
                     } else {
 //                        selectedButton.setBackgroundResource(R.drawable.purple_selectable);
-                        selectedButton.setForeground(getResources().getDrawable(R.drawable.black_selectable, getTheme()));
+                        selectedButton.setImageResource(R.drawable.black_selectable);
                     }
                 }
 
@@ -182,11 +229,14 @@ public class GameboardActivity extends AppCompatActivity {
                     // Since the setForeground function is working, I'm just going to use it
 //                    view.setBackgroundResource(R.drawable.black_selected);
 
-                    view.setForeground(getResources().getDrawable(R.drawable.purple_selected, getTheme()));
+                    ImageButton btn = (ImageButton) view;
+
+                    btn.setImageResource(R.drawable.purple_selected);
                 }
                 else {
 //                    view.setBackgroundResource(R.drawable.purple_selected);
-                    view.setForeground(getResources().getDrawable(R.drawable.black_selected, getTheme()));
+                    ImageButton btn = (ImageButton) view;
+                    btn.setImageResource(R.drawable.black_selected);
                 }
 
 
@@ -210,6 +260,15 @@ public class GameboardActivity extends AppCompatActivity {
 
     // Move enemy pieces, begin to spawn new enemies and power ups
     public void enemyMove() {
+        // TODO: move enemy pieces
+        // First, get list of tiles that have enemy piecesTile> enemies = getTilesWithEnemies();
+        ArrayList<Tile> enemies = getTilesWithEnemies();
+        ////        for (Tile enemy : enemies) {
+        ////            // TODO: move enemy
+        ////
+        ////        }
+//        ArrayList<
+
 
         // Current logic: begin to spawn one enemy every few turns
         // To do this, we can add a counter variable to keep track of
@@ -223,7 +282,50 @@ public class GameboardActivity extends AppCompatActivity {
         Object[] values = tiles.values().toArray();
         Tile randomTile = (Tile) values[generator.nextInt(values.length)];
         ImageButton tileButton = findViewById(randomTile.id());
-        tileButton.setForeground(getResources().getDrawable(R.drawable.knight_red, getTheme()));
+        // Check if tile is already occupied, if it is, then get another one
+        while (tileHasEnemy(tileButton)) {
+            randomTile = (Tile) values[generator.nextInt(values.length)];
+            tileButton = findViewById(randomTile.id());
+        }
+
+        // TODO: Then select a specific enemy piece to spawn
+        Drawable enemyToSpawn = getRandomEnemy();
+        tileButton.setForeground(enemyToSpawn);
+    }
+
+    public Drawable getRandomEnemy() {
+        Random generator = new Random();
+        Object[] values = {redKnight, redBishop, redRook, redQueen, greyKnight, greyBishop, greyRook, greyQueen};
+        return (Drawable) values[generator.nextInt(values.length)];
+    }
+
+
+    public ArrayList<Tile> getTilesWithEnemies() {
+        ArrayList<Tile> toReturn = new ArrayList<>();
+        Object[] values = tiles.values().toArray();
+
+        for (Object value : values) {
+            Tile tile = (Tile) value;
+            ImageButton tileButton = findViewById((tile.id()));
+            if (tileHasEnemy(tileButton))
+                toReturn.add(tile);
+        }
+        return toReturn;
+    }
+
+    public boolean tileHasEnemy(ImageButton tileButton) {
+        Drawable potentialPiece = tileButton.getDrawable();
+        if (potentialPiece == null) return false;
+
+        if (potentialPiece.equals(redKnight)) return true;
+        if (potentialPiece.equals(redBishop)) return true;
+        if (potentialPiece.equals(redRook)) return true;
+        if (potentialPiece.equals(redQueen)) return true;
+        if (potentialPiece.equals(greyKnight)) return true;
+        if (potentialPiece.equals(greyBishop)) return true;
+        if (potentialPiece.equals(greyRook)) return true;
+        if (potentialPiece.equals(greyQueen)) return true;
+        return false;
     }
 
 //    public static List<String> pickNRandom(List<String> lst, int n) {
@@ -240,9 +342,9 @@ public class GameboardActivity extends AppCompatActivity {
             ImageButton tileButton = (ImageButton) findViewById(tile.id());
             if (tile.compatible(playerTile, type)) {
                 if (tile.color() == 0)
-                    tileButton.setForeground(getResources().getDrawable(R.drawable.purple_selectable, getTheme()));
+                    tileButton.setImageResource(R.drawable.purple_selectable);
                 if (tile.color() == 1)
-                    tileButton.setForeground(getResources().getDrawable(R.drawable.black_selectable, getTheme()));
+                    tileButton.setImageResource(R.drawable.black_selectable);
             }
         }
     }
@@ -253,14 +355,11 @@ public class GameboardActivity extends AppCompatActivity {
             ImageButton tileButton = (ImageButton) findViewById(tile.id());
 
             // TODO: Add a check to make sure tileButton isn't displaying an enemy piece, or powerup
-
-
-//            if (tile.compatible(playerTile, type)) {
                 if (tile.color() == 0)
-                    tileButton.setForeground(getResources().getDrawable(R.drawable.purplesquare, getTheme()));
+                    tileButton.setImageResource(R.drawable.purplesquare);
                 if (tile.color() == 1)
-                    tileButton.setForeground(getResources().getDrawable(R.drawable.blacksquare, getTheme()));
-//            }
+                    tileButton.setImageResource(R.drawable.blacksquare);
+//
         }
     }
 
