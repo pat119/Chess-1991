@@ -66,6 +66,8 @@ public class GameboardActivity extends AppCompatActivity {
     Drawable greyBishop;
     Drawable greyRook;
     Drawable greyQueen;
+    Drawable greyAlert;
+    Drawable redAlert;
     Drawable playerStar;
     Drawable transparent;
     private View decorView;
@@ -105,6 +107,8 @@ public class GameboardActivity extends AppCompatActivity {
         greyBishop = getResources().getDrawable(R.drawable.bishop_grey, getTheme());
         greyRook = getResources().getDrawable(R.drawable.rook_grey, getTheme());
         greyQueen = getResources().getDrawable(R.drawable.queen_grey, getTheme());
+        greyAlert = getResources().getDrawable(R.drawable.grey_alert, getTheme());
+        redAlert = getResources().getDrawable(R.drawable.red_alert, getTheme());
         playerStar = getResources().getDrawable(R.drawable.player_star, getTheme());
         transparent = getResources().getDrawable(R.drawable.transparent, getTheme());
 
@@ -297,48 +301,61 @@ public class GameboardActivity extends AppCompatActivity {
     // Move enemy pieces, begin to spawn new enemies and power ups
     public void enemyMove() {
         // TODO: move enemy pieces
-        // First, get list of tiles that have enemy piecesTile> enemies = getTilesWithEnemies();
+        // First, get list of tiles that have enemy pieces
         ArrayList<Tile> enemies = getTilesWithEnemies();
-            for (Tile enemy : enemies) {
-                if (enemy.compatible(playerTile, getMove(findViewById(enemy.id())))) {// Checks if piece can capture player
-                    if (inPath(enemy, playerTile, getMove(findViewById(enemy.id())))) {// Ensure tile is not blocked
-                        lives--;
-                        TextView lifeText = findViewById(R.id.livesText);
-                        lifeText.setText("" + lives);
-                        Toast toast = Toast.makeText(this, "Ouch!", Toast.LENGTH_SHORT);
-                        toast.show();
-                        if (lives == 0) {
-                            Intent intent = new Intent(GameboardActivity.this, CheckmateScreen.class);
-                            startActivity(intent);
-                        }
-                        break;
-                        // We should maybe throw a toast or snackbar to alert the player has been captured
-                    }
-                }
-                if (!isGrey(enemy)) {
-                    Object[] values = tiles.values().toArray();
-                    Tile closest = enemy;
-                    for (Object possible : values) {
-                        Tile tile = (Tile) possible;
-                        if (enemy.compatible(tile, getMove(findViewById(enemy.id()))) && tileHasEnemy(findViewById(tile.id())) == null) {
-                            if (playerTile.distance(closest) > playerTile.distance(tile) && inPath(enemy, tile, getMove(findViewById(enemy.id())))) {
-                                closest = tile;
-                            }
-                        }
-                    }
-                    findViewById(closest.id()).setForeground(tileHasEnemy(findViewById(enemy.id())));
-                    findViewById(enemy.id()).setForeground(transparent);
-                }
 
+        for (Tile enemy : enemies) {
+            if (enemy.compatible(playerTile, getMove(findViewById(enemy.id())))) { // Checks if piece can capture player
+                if (inPath(enemy, playerTile, getMove(findViewById(enemy.id())))) { // Ensure tile is not blocked
+                    lives--;
+                    TextView lifeText = findViewById(R.id.livesText);
+                    lifeText.setText("" + lives);
+                    Toast toast = Toast.makeText(this, "Ouch!", Toast.LENGTH_SHORT);
+                    toast.show();
+                    if (lives == 0) {
+                        Intent intent = new Intent(GameboardActivity.this, CheckmateScreen.class);
+                        startActivity(intent);
+                    }
+                    break;
+                    // We should maybe throw a toast or snackbar to alert the player has been captured
+                }
             }
-//        ArrayList<
+            if (!isGrey(enemy)) {
+                Object[] values = tiles.values().toArray();
+                Tile closest = enemy;
+                for (Object possible : values) {
+                    Tile tile = (Tile) possible;
+                    if (enemy.compatible(tile, getMove(findViewById(enemy.id()))) && tileHasEnemy(findViewById(tile.id())) == null) {
+                        if (playerTile.distance(closest) > playerTile.distance(tile) && inPath(enemy, tile, getMove(findViewById(enemy.id())))) {
+                            closest = tile;
+                        }
+                    }
+                }
+                findViewById(closest.id()).setForeground(tileHasEnemy(findViewById(enemy.id())));
+                findViewById(enemy.id()).setForeground(transparent);
+            }
 
+        }
 
         // Current logic: begin to spawn one enemy every few turns
         // To do this, we can add a counter variable to keep track of
         // when an enemy was last spawned
 
         // TODO: Turn enemy spawn icons into enemies
+        // Select tiles with enemy spawn icons
+        ArrayList<Tile> enemySpawns = getTilesWithEnemySpawns();
+
+        for (Tile enemySpawn : enemySpawns) {
+            ImageButton tileButton = findViewById(enemySpawn.id());
+
+            Drawable spawnColor = tileButton.getForeground();
+            Drawable enemyToSpawn = null;
+            if (spawnColor.equals(greyAlert))
+                enemyToSpawn = getRandomGreyEnemy();
+            if (spawnColor.equals(redAlert))
+                enemyToSpawn = getRandomRedEnemy();
+            tileButton.setForeground(enemyToSpawn);
+        }
 
         // TODO: Place enemy spawn icons
         // Randomly select a tile
@@ -350,12 +367,14 @@ public class GameboardActivity extends AppCompatActivity {
             ImageButton tileButton = findViewById(randomTile.id());
             for (int i = 0; i <= waves; i++) {
                 // Check if tile is already occupied, if it is, then get another one
-                while (tileHasEnemy(tileButton) != null) {
+                while (!tileIsEmpty(tileButton)) {
                     randomTile = (Tile) values[generator.nextInt(values.length)];
                     tileButton = findViewById(randomTile.id());
                 }
-                Drawable enemyToSpawn = getRandomEnemy();
-                tileButton.setForeground(enemyToSpawn);
+
+                int flip = generator.nextInt(2);
+                Drawable enemySpawnIcon = (flip == 0) ? redAlert : greyAlert;
+                tileButton.setForeground(enemySpawnIcon);
             }
             waves++;
         }
@@ -392,12 +411,17 @@ public class GameboardActivity extends AppCompatActivity {
         return true;
     }
 
-    public Drawable getRandomEnemy() {
+    public Drawable getRandomGreyEnemy() {
         Random generator = new Random();
-        Object[] values = {redKnight, redBishop, redRook, redQueen, greyKnight, greyBishop, greyRook, greyQueen};
+        Object[] values = {greyKnight, greyBishop, greyRook, greyQueen};
         return (Drawable) values[generator.nextInt(values.length)];
     }
 
+    public Drawable getRandomRedEnemy() {
+        Random generator = new Random();
+        Object[] values = {redKnight, redBishop, redRook, redQueen};
+        return (Drawable) values[generator.nextInt(values.length)];
+    }
 
     public ArrayList<Tile> getTilesWithEnemies() {
         ArrayList<Tile> toReturn = new ArrayList<>();
@@ -407,6 +431,19 @@ public class GameboardActivity extends AppCompatActivity {
             Tile tile = (Tile) value;
             ImageButton tileButton = findViewById((tile.id()));
             if (tileHasEnemy(tileButton) != null)
+                toReturn.add(tile);
+        }
+        return toReturn;
+    }
+
+    public ArrayList<Tile> getTilesWithEnemySpawns() {
+        ArrayList<Tile> toReturn = new ArrayList<>();
+        Object[] values = tiles.values().toArray();
+
+        for (Object value : values) {
+            Tile tile = (Tile) value;
+            ImageButton tileButton = findViewById((tile.id()));
+            if (tileHasEnemySpawn(tileButton) != null)
                 toReturn.add(tile);
         }
         return toReturn;
@@ -427,10 +464,18 @@ public class GameboardActivity extends AppCompatActivity {
         return null;
     }
 
+    public Drawable tileHasEnemySpawn(ImageButton tileButton) {
+        Drawable potentialPiece = tileButton.getForeground();
+        if (potentialPiece == null) return null;
+
+        if (potentialPiece.equals(greyAlert)) return potentialPiece;
+        if (potentialPiece.equals(redAlert)) return potentialPiece;
+        return null;
+    }
+
     public boolean tileIsEmpty(ImageButton tileButton) {
         Drawable potentialPiece = tileButton.getForeground();
-
-        if (potentialPiece.equals())
+        return potentialPiece == null || potentialPiece.equals(transparent);
     }
 
     public int getMove(ImageButton tileButton) {
