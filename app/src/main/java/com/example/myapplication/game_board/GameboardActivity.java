@@ -308,22 +308,24 @@ public class GameboardActivity extends AppCompatActivity {
         ArrayList<Tile> enemies = getTilesWithEnemies();
                 for (Tile enemy : enemies) {
                     if (enemy.compatible(playerTile, getMove(findViewById(enemy.id())))) {// Checks if piece can capture player
-                        lives--;
-                        TextView lifeText = findViewById(R.id.livesText);
-                        lifeText.setText("" + lives);
-                        if (lives == 0) {
-                            Intent intent = new Intent(GameboardActivity.this, CheckmateScreen.class);
-                            startActivity(intent);
+                        if (inPath(enemy, playerTile)) {// Ensure tile is not blocked
+                            lives--;
+                            TextView lifeText = findViewById(R.id.livesText);
+                            lifeText.setText("" + lives);
+                            if (lives == 0) {
+                                Intent intent = new Intent(GameboardActivity.this, CheckmateScreen.class);
+                                startActivity(intent);
+                            }
+                            break;
+                            // We should maybe throw a toast or snackbar to alert the player has been captured
                         }
-                        break;
-                        // We should maybe throw a toast or snackbar to alert the player has been captured
                     }
                     Object[] values = tiles.values().toArray();
                     Tile closest = enemy;
                     for (Object possible : values) {
                         Tile tile = (Tile) possible;
                         if (enemy.compatible(tile, getMove(findViewById(enemy.id()))) && tileHasEnemy(findViewById(tile.id())) == null) {
-                            if (playerTile.distance(closest) > playerTile.distance(tile)) {
+                            if (playerTile.distance(closest) > playerTile.distance(tile) && inPath(enemy, tile)) {
                                 closest = tile;
                             }
                         }
@@ -356,6 +358,28 @@ public class GameboardActivity extends AppCompatActivity {
         // TODO: Then select a specific enemy piece to spawn
         Drawable enemyToSpawn = getRandomEnemy();
         tileButton.setForeground(enemyToSpawn);
+    }
+
+    // Checks if the path is blocked from first tile to second
+    public boolean inPath(Tile from, Tile to) {
+        int move = getMove(findViewById(from.id()));
+        Object[] values = tiles.values().toArray();
+
+        if (move == 1) { // knights can jump
+            return true;
+        }
+
+        for (Object value : values) {
+            Tile tile = (Tile) value;
+            if (from.compatible(tile, move)) { // Only compatible tiles can block
+                if (from.line(to) == from.line(tile) && from.distance(tile) < from.distance(to)) { // Tile is in path
+                    if (tileHasEnemy(findViewById(tile.id())) != null) { // Tile has piece
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     public Drawable getRandomEnemy() {

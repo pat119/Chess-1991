@@ -66,6 +66,29 @@ public class Tile {
 
     }
 
+    // Used to check what line connects two tiles for bishops and rooks.
+    public int line(Tile to) {
+        if (this.column - to.column > 0 && this.row - to.row == 0) { // to is to the left
+            return 1;
+        } else if (this.column - to.column == 0 && this.row - to.row < 0) { // to is above
+            return 2;
+        } else if (this.column - to.column < 0 && this.row - to.row == 0) { // to is to the right
+            return 3;
+        } else if (this.column - to.column == 0 && this.row - to.row > 0) { // to is below
+            return 4;
+        } else if (this.column - to.column > 0 && this.row - to.row > 0) { // to is to the top right
+            return 5;
+        } else if (this.column - to.column > 0 && this.row - to.row < 0) { // to is to the bottom right
+            return 6;
+        } else if (this.column - to.column < 0 && this.row - to.row < 0) { // to is to the bottom left
+            return 7;
+        } else if (this.column - to.column < 0 && this.row - to.row > 0) {// to is to the top left
+            return 8;
+        } else {
+            return 0;
+        }
+    }
+
     public int distance(Tile to) {
         return ((this.column - to.column) * (this.column - to.column)) + ((this.row - to.row) * (this.row - to.row));
     }
