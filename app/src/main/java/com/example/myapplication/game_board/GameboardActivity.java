@@ -249,6 +249,7 @@ public class GameboardActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
     }
 
+
     // This method activates when the user clicks on a tile
     // It will change the appearance of the selected tile appropriately
     public void onTileClick(View view) {
@@ -262,44 +263,33 @@ public class GameboardActivity extends AppCompatActivity {
             if (clicked.compatible(playerTile, playerState) && inPath(playerTile, clicked, playerState)) {  // Check if selected tile is compatible with move
 
                 if (selectedButton != null) {   // Do we already have a tile selected
-                    if (selectedTile.color() == 0) {    // Makes the previously selected square unselected
-//                        selectedButton.setBackgroundResource(R.drawable.black_selectable);
+                    if (selectedTile.color() == 0)   // Makes the previously selected square unselected
                         selectedButton.setImageResource(R.drawable.purple_selectable);
-
-                    } else {
-//                        selectedButton.setBackgroundResource(R.drawable.purple_selectable);
-                        selectedButton.setImageResource(R.drawable.black_selectable);
-                    }
+                    else selectedButton.setImageResource(R.drawable.black_selectable);
                 }
 
                 // Makes the new square selected
                 if (clicked.color() == 0) {
                     ImageButton btn = (ImageButton) view;
-
                     btn.setImageResource(R.drawable.purple_selected);
                 }
                 else {
-//                    view.setBackgroundResource(R.drawable.purple_selected);
                     ImageButton btn = (ImageButton) view;
                     btn.setImageResource(R.drawable.black_selected);
                 }
 
-
-                rightButton.setBackgroundResource(R.drawable.confirm_good);// Makes the right button colored
-                selectedTile = clicked;// Update selectedTile
-                selectedButtonID = view.getId();// Update selectedButtonID
+                rightButton.setBackgroundResource(R.drawable.confirm_good); // Makes the right button colored
+                selectedTile = clicked;     // Update selectedTile
+                selectedButtonID = view.getId();        // Update selectedButtonID
 
             } else {
                 Toast toast = Toast.makeText(this, "The tile you selected is not compatible!", Toast.LENGTH_SHORT);
                 toast.show();
-
             }
         } else {
             Toast toast = Toast.makeText(this, "You must select a move type!", Toast.LENGTH_SHORT);
             toast.show();
         }
-
-
     }
 
     // Move enemy pieces, begin to spawn new enemies and power ups
@@ -307,44 +297,38 @@ public class GameboardActivity extends AppCompatActivity {
         // TODO: move enemy pieces
         // First, get list of tiles that have enemy piecesTile> enemies = getTilesWithEnemies();
         ArrayList<Tile> enemies = getTilesWithEnemies();
-                for (Tile enemy : enemies) {
-                    if (enemy.compatible(playerTile, getMove(findViewById(enemy.id())))) {// Checks if piece can capture player
-                        if (inPath(enemy, playerTile, getMove(findViewById(enemy.id())))) {// Ensure tile is not blocked
-                            lives--;
-                            TextView lifeText = findViewById(R.id.livesText);
-                            lifeText.setText("" + lives);
-                            Toast toast = Toast.makeText(this, "Ouch!", Toast.LENGTH_SHORT);
-                            toast.show();
-                            ImageButton btn = findViewById(enemy.id());
-                            if (enemy.color() == 0) {
-                                btn.setImageResource(R.drawable.purple_captured);
-                            } else {
-                                btn.setImageResource(R.drawable.black_captured);
-                            }
-                            if (lives == 0) {
-                                Intent intent = new Intent(GameboardActivity.this, CheckmateScreen.class);
-                                startActivity(intent);
-                            }
-                            break;
-                            // We should maybe throw a toast or snackbar to alert the player has been captured
+            for (Tile enemy : enemies) {
+                if (enemy.compatible(playerTile, getMove(findViewById(enemy.id())))) {// Checks if piece can capture player
+                    if (inPath(enemy, playerTile, getMove(findViewById(enemy.id())))) {// Ensure tile is not blocked
+                        lives--;
+                        TextView lifeText = findViewById(R.id.livesText);
+                        lifeText.setText("" + lives);
+                        Toast toast = Toast.makeText(this, "Ouch!", Toast.LENGTH_SHORT);
+                        toast.show();
+                        if (lives == 0) {
+                            Intent intent = new Intent(GameboardActivity.this, CheckmateScreen.class);
+                            startActivity(intent);
                         }
+                        break;
+                        // We should maybe throw a toast or snackbar to alert the player has been captured
                     }
-                    if (!isGrey(enemy)) {
-                        Object[] values = tiles.values().toArray();
-                        Tile closest = enemy;
-                        for (Object possible : values) {
-                            Tile tile = (Tile) possible;
-                            if (enemy.compatible(tile, getMove(findViewById(enemy.id()))) && tileHasEnemy(findViewById(tile.id())) == null) {
-                                if (playerTile.distance(closest) > playerTile.distance(tile) && inPath(enemy, tile, getMove(findViewById(enemy.id())))) {
-                                    closest = tile;
-                                }
-                            }
-                        }
-                        findViewById(closest.id()).setForeground(tileHasEnemy(findViewById(enemy.id())));
-                        findViewById(enemy.id()).setForeground(getResources().getDrawable(R.drawable.transparent, getTheme()));
-                    }
-
                 }
+                if (!isGrey(enemy)) {
+                    Object[] values = tiles.values().toArray();
+                    Tile closest = enemy;
+                    for (Object possible : values) {
+                        Tile tile = (Tile) possible;
+                        if (enemy.compatible(tile, getMove(findViewById(enemy.id()))) && tileHasEnemy(findViewById(tile.id())) == null) {
+                            if (playerTile.distance(closest) > playerTile.distance(tile) && inPath(enemy, tile, getMove(findViewById(enemy.id())))) {
+                                closest = tile;
+                            }
+                        }
+                    }
+                    findViewById(closest.id()).setForeground(tileHasEnemy(findViewById(enemy.id())));
+                    findViewById(enemy.id()).setForeground(getResources().getDrawable(R.drawable.transparent, getTheme()));
+                }
+
+            }
 //        ArrayList<
 
 
@@ -352,9 +336,9 @@ public class GameboardActivity extends AppCompatActivity {
         // To do this, we can add a counter variable to keep track of
         // when an enemy was last spawned
 
-        // Turn enemy spawn icons into enemies
+        // TODO: Turn enemy spawn icons into enemies
 
-        // Place enemy spawn icons
+        // TODO: Place enemy spawn icons
         // Randomly select a tile
         if (turns % difficultyScale == 0) {
             Random generator = new Random();
@@ -383,21 +367,15 @@ public class GameboardActivity extends AppCompatActivity {
 
     public boolean isGrey(Tile tile) {
         Drawable piece = tileHasEnemy(findViewById(tile.id()));
-
-        if (piece == greyBishop || piece == greyKnight || piece == greyQueen || piece == greyRook) {
-            return true;
-        } else {
-            return false;
-        }
+        return piece == greyBishop || piece == greyKnight || piece == greyQueen || piece == greyRook;
     }
 
     // Checks if the path is blocked from first tile to second
     public boolean inPath(Tile from, Tile to, int move) {
         Object[] values = tiles.values().toArray();
 
-        if (move == 1) { // knights can jump
+        if (move == 1) // knights can jump
             return true;
-        }
 
         for (Object value : values) {
             Tile tile = (Tile) value;
@@ -461,16 +439,8 @@ public class GameboardActivity extends AppCompatActivity {
         return 0;
     }
 
-//    public static List<String> pickNRandom(List<String> lst, int n) {
-//        List<String> copy = new ArrayList<>(lst);
-//        Collections.shuffle(copy);
-//        return n > copy.size() ? copy.subList(0, copy.size()) : copy.subList(0, n);
-//    }
-
     // Used to highlight compatible tiles
     public void showCompatible(int type) {
-        //TODO
-        // Iterate through the tiles and highlight the ones that are compatible
         for (Tile tile : tiles.values()) {
             ImageButton tileButton = (ImageButton) findViewById(tile.id());
             if (tile.compatible(playerTile, type) && inPath(playerTile, tile, playerState)) {
@@ -487,12 +457,10 @@ public class GameboardActivity extends AppCompatActivity {
         for (Tile tile : tiles.values()) {
             ImageButton tileButton = (ImageButton) findViewById(tile.id());
 
-            // TODO: Add a check to make sure tileButton isn't displaying an enemy piece, or powerup
-                if (tile.color() == 0)
-                    tileButton.setImageResource(R.drawable.purplesquare);
-                if (tile.color() == 1)
-                    tileButton.setImageResource(R.drawable.blacksquare);
-//
+            if (tile.color() == 0)
+                tileButton.setImageResource(R.drawable.purplesquare);
+            if (tile.color() == 1)
+                tileButton.setImageResource(R.drawable.blacksquare);
         }
     }
 
