@@ -232,6 +232,7 @@ public class GameboardActivity extends AppCompatActivity {
                 }
             }
         });
+        enemyMove();
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -312,6 +313,12 @@ public class GameboardActivity extends AppCompatActivity {
                     lifeText.setText("" + lives);
                     Toast toast = Toast.makeText(this, "Ouch!", Toast.LENGTH_SHORT);
                     toast.show();
+                    ImageButton btn = findViewById(enemy.id());
+                    if (enemy.color() == 0) {
+                        btn.setImageResource(R.drawable.purple_captured);
+                    } else {
+                        btn.setImageResource(R.drawable.black_captured);
+                    }
                     if (lives == 0) {
                         Intent intent = new Intent(GameboardActivity.this, CheckmateScreen.class);
                         intent.putExtra("difficulty", difficultyScale);
