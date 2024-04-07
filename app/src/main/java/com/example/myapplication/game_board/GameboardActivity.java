@@ -320,18 +320,20 @@ public class GameboardActivity extends AppCompatActivity {
                             // We should maybe throw a toast or snackbar to alert the player has been captured
                         }
                     }
-                    Object[] values = tiles.values().toArray();
-                    Tile closest = enemy;
-                    for (Object possible : values) {
-                        Tile tile = (Tile) possible;
-                        if (enemy.compatible(tile, getMove(findViewById(enemy.id()))) && tileHasEnemy(findViewById(tile.id())) == null) {
-                            if (playerTile.distance(closest) > playerTile.distance(tile) && inPath(enemy, tile)) {
-                                closest = tile;
+                    if (!isGrey(enemy)) {
+                        Object[] values = tiles.values().toArray();
+                        Tile closest = enemy;
+                        for (Object possible : values) {
+                            Tile tile = (Tile) possible;
+                            if (enemy.compatible(tile, getMove(findViewById(enemy.id()))) && tileHasEnemy(findViewById(tile.id())) == null) {
+                                if (playerTile.distance(closest) > playerTile.distance(tile) && inPath(enemy, tile)) {
+                                    closest = tile;
+                                }
                             }
                         }
+                        findViewById(closest.id()).setForeground(tileHasEnemy(findViewById(enemy.id())));
+                        findViewById(enemy.id()).setForeground(getResources().getDrawable(R.drawable.transparent, getTheme()));
                     }
-                    findViewById(closest.id()).setForeground(tileHasEnemy(findViewById(enemy.id())));
-                    findViewById(enemy.id()).setForeground(getResources().getDrawable(R.drawable.transparent, getTheme()));
 
                 }
 //        ArrayList<
@@ -358,6 +360,16 @@ public class GameboardActivity extends AppCompatActivity {
         // TODO: Then select a specific enemy piece to spawn
         Drawable enemyToSpawn = getRandomEnemy();
         tileButton.setForeground(enemyToSpawn);
+    }
+
+    public boolean isGrey(Tile tile) {
+        Drawable piece = tileHasEnemy(findViewById(tile.id()));
+
+        if (piece == greyBishop || piece == greyKnight || piece == greyQueen || piece == greyRook) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // Checks if the path is blocked from first tile to second
