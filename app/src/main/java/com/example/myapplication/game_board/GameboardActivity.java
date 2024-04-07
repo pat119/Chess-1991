@@ -554,13 +554,13 @@ public class GameboardActivity extends AppCompatActivity {
     }
 
     public void initializePointList(Map<Drawable, Integer> pointList) {
-        pointList.put(redKnight, 3);
-        pointList.put(redBishop, 3);
-        pointList.put(redRook, 5);
-        pointList.put(redQueen, 9);
-        pointList.put(greyKnight, 5);
-        pointList.put(greyBishop, 5);
-        pointList.put(greyRook, 7);
-        pointList.put(greyQueen, 11);
+        pointList.put(redKnight, 5);
+        pointList.put(redBishop, 5);
+        pointList.put(redRook, 7);
+        pointList.put(redQueen, 11);
+        pointList.put(greyKnight, 3);
+        pointList.put(greyBishop, 3);
+        pointList.put(greyRook, 5);
+        pointList.put(greyQueen, 9);
     }
 }
