@@ -259,7 +259,7 @@ public class GameboardActivity extends AppCompatActivity {
 
         if (playerState != 0) {     // Checks to make sure we are selecting a move
             assert clicked != null;
-            if (clicked.compatible(playerTile, playerState)) {  // Check if selected tile is compatible with move
+            if (clicked.compatible(playerTile, playerState) && inPath(playerTile, clicked, playerState)) {  // Check if selected tile is compatible with move
 
                 if (selectedButton != null) {   // Do we already have a tile selected
                     if (selectedTile.color() == 0) {    // Makes the previously selected square unselected
@@ -309,7 +309,7 @@ public class GameboardActivity extends AppCompatActivity {
         ArrayList<Tile> enemies = getTilesWithEnemies();
                 for (Tile enemy : enemies) {
                     if (enemy.compatible(playerTile, getMove(findViewById(enemy.id())))) {// Checks if piece can capture player
-                        if (inPath(enemy, playerTile)) {// Ensure tile is not blocked
+                        if (inPath(enemy, playerTile, getMove(findViewById(enemy.id())))) {// Ensure tile is not blocked
                             lives--;
                             TextView lifeText = findViewById(R.id.livesText);
                             lifeText.setText("" + lives);
@@ -329,7 +329,7 @@ public class GameboardActivity extends AppCompatActivity {
                         for (Object possible : values) {
                             Tile tile = (Tile) possible;
                             if (enemy.compatible(tile, getMove(findViewById(enemy.id()))) && tileHasEnemy(findViewById(tile.id())) == null) {
-                                if (playerTile.distance(closest) > playerTile.distance(tile) && inPath(enemy, tile)) {
+                                if (playerTile.distance(closest) > playerTile.distance(tile) && inPath(enemy, tile, getMove(findViewById(enemy.id())))) {
                                     closest = tile;
                                 }
                             }
@@ -386,8 +386,7 @@ public class GameboardActivity extends AppCompatActivity {
     }
 
     // Checks if the path is blocked from first tile to second
-    public boolean inPath(Tile from, Tile to) {
-        int move = getMove(findViewById(from.id()));
+    public boolean inPath(Tile from, Tile to, int move) {
         Object[] values = tiles.values().toArray();
 
         if (move == 1) { // knights can jump
@@ -468,7 +467,7 @@ public class GameboardActivity extends AppCompatActivity {
         // Iterate through the tiles and highlight the ones that are compatible
         for (Tile tile : tiles.values()) {
             ImageButton tileButton = (ImageButton) findViewById(tile.id());
-            if (tile.compatible(playerTile, type)) {
+            if (tile.compatible(playerTile, type) && inPath(playerTile, tile, playerState)) {
                 if (tile.color() == 0)
                     tileButton.setImageResource(R.drawable.purple_selectable);
                 if (tile.color() == 1)
