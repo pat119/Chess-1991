@@ -10,18 +10,22 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.myapplication.game_board.GameboardActivity;
 import com.example.myapplication.main_menu.MainActivity;
 
+import org.w3c.dom.Text;
+
 public class CheckmateScreen extends AppCompatActivity {
 
     private View decorView;
+    private String difficultyText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game_over);
+        setContentView(R.layout.fragment_checkmate);
 
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
@@ -31,16 +35,38 @@ public class CheckmateScreen extends AppCompatActivity {
             }
         });
 
-        /*
-        Fragment fragment = new FragmentCheckmate();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container_view, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        // retrieve data from previous intent
+        Bundle extras = getIntent().getExtras();
+        int difficultyValue = 0;
+        int score = 0;
+        int wave = 0;
+        if (extras != null) {
+            difficultyValue = extras.getInt("difficulty");
+            score = extras.getInt("score");
+            wave = extras.getInt("wave");
+        }
 
-         */
+        TextView difficulty = (TextView) findViewById(R.id.difficultyValue);
+        switch (difficultyValue) {
+            case 3:
+                difficultyText = "Hard";
+                break;
+            case 4:
+                difficultyText = "Medium";
+                break;
+            case 5:
+                difficultyText = "Easy";
+                break;
+        }
+        difficulty.setText(difficultyText);
 
-        Button homeButton = (Button)findViewById(R.id.home);
+        TextView scoreText = (TextView) findViewById(R.id.pointsValue);
+        scoreText.setText("" + score);
+
+        TextView waveText = (TextView) findViewById(R.id.waveValue);
+        waveText.setText("" + wave);
+
+        Button homeButton = (Button) findViewById(R.id.home);
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,7 +75,7 @@ public class CheckmateScreen extends AppCompatActivity {
             }
         });
 
-        Button playAgain = (Button)findViewById(R.id.again);
+        Button playAgain = (Button) findViewById(R.id.again);
         playAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

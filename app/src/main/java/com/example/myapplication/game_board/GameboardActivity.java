@@ -314,6 +314,9 @@ public class GameboardActivity extends AppCompatActivity {
                     toast.show();
                     if (lives == 0) {
                         Intent intent = new Intent(GameboardActivity.this, CheckmateScreen.class);
+                        intent.putExtra("difficulty", difficultyScale);
+                        intent.putExtra("score",score);
+                        intent.putExtra("wave", waves);
                         startActivity(intent);
                     }
                     break;
