@@ -97,7 +97,8 @@ public class GameboardActivity extends AppCompatActivity {
         waves = 0;
         lives = 3;
         score = 0;
-        difficultyScale = 3;
+        Bundle extras = getIntent().getExtras();
+        difficultyScale = extras.getInt("difficulty");
         powerTurns = -2;
 
         TextView waveText = findViewById(R.id.waveText);

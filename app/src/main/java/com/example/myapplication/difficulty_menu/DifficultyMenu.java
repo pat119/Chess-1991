@@ -42,6 +42,7 @@ public class DifficultyMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DifficultyMenu.this, GameboardActivity.class);
+                intent.putExtra("difficulty", 5);
                 startActivity(intent);
             }
         });
@@ -51,6 +52,7 @@ public class DifficultyMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DifficultyMenu.this, GameboardActivity.class);
+                intent.putExtra("difficulty", 4);
                 startActivity(intent);
             }
         });
@@ -60,6 +62,7 @@ public class DifficultyMenu extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DifficultyMenu.this, GameboardActivity.class);
+                intent.putExtra("difficulty", 3);
                 startActivity(intent);
             }
         });
