@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/border"
     tools:context=".difficulty_menu.DifficultyMenu">
 
     <Button
@@ -54,6 +55,8 @@
         android:id="@+id/difficultyBackButton"
         android:layout_width="53dp"
         android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:textSize="34sp"
         app:icon="@android:drawable/ic_media_rew"
         app:iconGravity="textStart"
@@ -69,6 +72,7 @@
         android:layout_marginTop="50dp"
         android:text="@string/play"
         android:textSize="68sp"
+        android:textColor="@color/purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
