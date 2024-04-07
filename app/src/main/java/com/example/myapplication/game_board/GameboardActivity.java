@@ -66,6 +66,8 @@ public class GameboardActivity extends AppCompatActivity {
     Drawable greyBishop;
     Drawable greyRook;
     Drawable greyQueen;
+    Drawable playerStar;
+    Drawable transparent;
     private View decorView;
 
 
@@ -103,6 +105,8 @@ public class GameboardActivity extends AppCompatActivity {
         greyBishop = getResources().getDrawable(R.drawable.bishop_grey, getTheme());
         greyRook = getResources().getDrawable(R.drawable.rook_grey, getTheme());
         greyQueen = getResources().getDrawable(R.drawable.queen_grey, getTheme());
+        playerStar = getResources().getDrawable(R.drawable.player_star, getTheme());
+        transparent = getResources().getDrawable(R.drawable.transparent, getTheme());
 
         // Set up tutorial button in the upper-right corner
         Button tutorialButton = (Button) findViewById(R.id.tutorialButtonGameboard);
@@ -129,7 +133,7 @@ public class GameboardActivity extends AppCompatActivity {
         playerTile = tiles.get(R.id.D5Button);  // Player always starts on D5, so set playerTile
         playerTile.setPiece(new PlayerPiece(0));    // Put a player piece in playerTile
         ImageButton playerButton = findViewById(playerTile.id());
-        playerButton.setForeground(getResources().getDrawable(R.drawable.player_star, getTheme()));
+        playerButton.setForeground(playerStar);
 
         pointList = new HashMap<>();
         initializePointList(pointList);
@@ -200,13 +204,11 @@ public class GameboardActivity extends AppCompatActivity {
                         }
 
                         // Move player piece to selected tile
-                        selectedButton.setForeground(getResources().getDrawable(R.drawable.player_star, getTheme()));
+                        selectedButton.setForeground(playerStar);
                         ImageButton playerButton = findViewById(playerTile.id());
 
                         // Change appearance of the tile the player piece was previously on
-                        if (playerTile.color() == 0)
-                            playerButton.setForeground(getResources().getDrawable(R.drawable.transparent, getTheme()));
-                        else playerButton.setForeground(getResources().getDrawable(R.drawable.transparent, getTheme()));
+                        playerButton.setForeground(transparent);
 
                         playerTile = selectedTile;
 //                        playerTile.setPiece();
@@ -325,7 +327,7 @@ public class GameboardActivity extends AppCompatActivity {
                         }
                     }
                     findViewById(closest.id()).setForeground(tileHasEnemy(findViewById(enemy.id())));
-                    findViewById(enemy.id()).setForeground(getResources().getDrawable(R.drawable.transparent, getTheme()));
+                    findViewById(enemy.id()).setForeground(transparent);
                 }
 
             }
@@ -423,6 +425,12 @@ public class GameboardActivity extends AppCompatActivity {
         if (potentialPiece.equals(greyRook)) return potentialPiece;
         if (potentialPiece.equals(greyQueen)) return potentialPiece;
         return null;
+    }
+
+    public boolean tileIsEmpty(ImageButton tileButton) {
+        Drawable potentialPiece = tileButton.getForeground();
+
+        if (potentialPiece.equals())
     }
 
     public int getMove(ImageButton tileButton) {
