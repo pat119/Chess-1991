@@ -42,8 +42,8 @@
 
     <Button
         android:id="@id/nextButton"
-        android:layout_width="173dp"
-        android:layout_height="76dp"
+        android:layout_width="158dp"
+        android:layout_height="80dp"
         android:layout_marginTop="64dp"
         android:backgroundTint="@color/purple"
         android:text="@string/nextButton"
@@ -58,13 +58,13 @@
         android:id="@id/backButton"
         android:layout_width="158dp"
         android:layout_height="80dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="60dp"
         android:backgroundTint="@color/purple"
         android:text="@string/backButton"
         android:textColor="@color/black"
         android:textSize="34sp"
         app:layout_constraintEnd_toStartOf="@+id/nextButton"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.35"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tutorial" />
 
@@ -76,7 +76,7 @@
         android:layout_marginTop="16dp"
         android:contentDescription="test"
         android:textSize="34sp"
-        app:icon="@android:drawable/ic_media_rew"
+        app:icon="@android:drawable/ic_delete"
         app:iconGravity="textStart"
         app:iconPadding="0dp"
         app:iconSize="30dp"
@@ -85,25 +85,24 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="47dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="228dp"
+        android:layout_width="59dp"
+        android:layout_height="47dp"
+        android:layout_marginEnd="32dp"
         app:layout_constraintBottom_toTopOf="@+id/nextButton"
-        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintEnd_toEndOf="@+id/tutorial"
         app:layout_constraintTop_toTopOf="@+id/tutorial"
-        app:layout_constraintVertical_bias="0.48"
-        app:srcCompat="@drawable/bishop" />
+        app:layout_constraintVertical_bias="0.495"
+        app:srcCompat="@drawable/bishop_grey" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="59dp"
         android:layout_height="47dp"
-        android:layout_marginEnd="140dp"
+        android:layout_marginStart="24dp"
         app:layout_constraintBottom_toTopOf="@+id/backButton"
-        app:layout_constraintEnd_toStartOf="@+id/imageView3"
-
+        app:layout_constraintStart_toStartOf="@+id/tutorial"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.516"
-        app:srcCompat="@drawable/bishop" />
+        app:layout_constraintVertical_bias="0.526"
+        app:srcCompat="@drawable/bishop_red" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
