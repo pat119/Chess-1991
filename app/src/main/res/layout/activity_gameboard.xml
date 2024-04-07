@@ -419,6 +419,7 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
+        android:foregroundGravity="center"
         app:layout_constraintStart_toEndOf="@+id/E1Button"
         app:layout_constraintTop_toBottomOf="@+id/F2Button" />
 
