@@ -58,6 +58,10 @@ public class GameboardActivity extends AppCompatActivity {
     // How many turns until next wave
     int difficultyScale;
 
+    // Used for powerups
+    int power;
+    int powerTurns;
+
     Drawable redKnight;
     Drawable redBishop;
     Drawable redRook;
@@ -70,6 +74,9 @@ public class GameboardActivity extends AppCompatActivity {
     Drawable redAlert;
     Drawable playerStar;
     Drawable transparent;
+    Drawable heart;
+    Drawable armor;
+    Drawable blueAlert;
     private View decorView;
 
 
@@ -91,6 +98,7 @@ public class GameboardActivity extends AppCompatActivity {
         lives = 3;
         score = 0;
         difficultyScale = 3;
+        powerTurns = -2;
 
         TextView waveText = findViewById(R.id.waveText);
         TextView lifeText = findViewById(R.id.livesText);
@@ -111,6 +119,9 @@ public class GameboardActivity extends AppCompatActivity {
         redAlert = getResources().getDrawable(R.drawable.red_alert, getTheme());
         playerStar = getResources().getDrawable(R.drawable.player_star, getTheme());
         transparent = getResources().getDrawable(R.drawable.transparent, getTheme());
+        heart = getResources().getDrawable(R.drawable.heart, getTheme());
+        armor = getResources().getDrawable(R.drawable.helmet, getTheme());
+        blueAlert = getResources().getDrawable(R.drawable.power_alert, getTheme());
 
         // Set up tutorial button in the upper-right corner
         Button tutorialButton = (Button) findViewById(R.id.tutorialButtonGameboard);
@@ -206,6 +217,12 @@ public class GameboardActivity extends AppCompatActivity {
                             score += pointList.get(enemyPiece);
                             scoreText.setText(String.valueOf(score));
                         }
+
+                        if (tileHasPower(selectedButton)) {
+                            power = getPower(selectedButton);
+                            powerTurns = getPowerTurns(power);
+                        }
+
 
                         // Move player piece to selected tile
                         selectedButton.setForeground(playerStar);
@@ -308,11 +325,16 @@ public class GameboardActivity extends AppCompatActivity {
         for (Tile enemy : enemies) {
             if (enemy.compatible(playerTile, getMove(findViewById(enemy.id())))) { // Checks if piece can capture player
                 if (inPath(enemy, playerTile, getMove(findViewById(enemy.id())))) { // Ensure tile is not blocked
-                    lives--;
-                    TextView lifeText = findViewById(R.id.livesText);
-                    lifeText.setText("" + lives);
-                    Toast toast = Toast.makeText(this, "Ouch!", Toast.LENGTH_SHORT);
-                    toast.show();
+                    if (power != 2 || powerTurns < 0) {
+                        lives--;
+                        TextView lifeText = findViewById(R.id.livesText);
+                        lifeText.setText("" + lives);
+                        Toast toast = Toast.makeText(this, "Ouch!", Toast.LENGTH_SHORT);
+                        toast.show();
+                    } else {
+                        Toast toast = Toast.makeText(this, "Blocked!", Toast.LENGTH_SHORT);
+                        toast.show();
+                    }
                     ImageButton btn = findViewById(enemy.id());
                     if (enemy.color() == 0) {
                         btn.setImageResource(R.drawable.purple_captured);
@@ -353,10 +375,10 @@ public class GameboardActivity extends AppCompatActivity {
 
         // TODO: Turn enemy spawn icons into enemies
         // Select tiles with enemy spawn icons
-        ArrayList<Tile> enemySpawns = getTilesWithEnemySpawns();
+        ArrayList<Tile> spawns = getTilesWithSpawns();
 
-        for (Tile enemySpawn : enemySpawns) {
-            ImageButton tileButton = findViewById(enemySpawn.id());
+        for (Tile spawn : spawns) {
+            ImageButton tileButton = findViewById(spawn.id());
 
             Drawable spawnColor = tileButton.getForeground();
             Drawable enemyToSpawn = null;
@@ -364,6 +386,8 @@ public class GameboardActivity extends AppCompatActivity {
                 enemyToSpawn = getRandomGreyEnemy();
             if (spawnColor.equals(redAlert))
                 enemyToSpawn = getRandomRedEnemy();
+            if (spawnColor.equals(blueAlert))
+                enemyToSpawn = getRandomPower();
             tileButton.setForeground(enemyToSpawn);
         }
 
@@ -386,6 +410,9 @@ public class GameboardActivity extends AppCompatActivity {
                 Drawable enemySpawnIcon = (flip == 0) ? redAlert : greyAlert;
                 tileButton.setForeground(enemySpawnIcon);
             }
+            randomTile = (Tile) values[generator.nextInt(values.length)];
+            tileButton = findViewById(randomTile.id());
+            tileButton.setForeground(blueAlert);
             waves++;
         }
         turns++;
@@ -394,6 +421,11 @@ public class GameboardActivity extends AppCompatActivity {
         TextView lifeText = findViewById(R.id.livesText);
         waveText.setText("" + waves);
         lifeText.setText("" + lives);
+        powerTurns--;
+        if (powerTurns == -1) {
+            Toast toast = Toast.makeText(this, "Power Up Gone!", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
     public boolean isGrey(Tile tile) {
@@ -433,6 +465,12 @@ public class GameboardActivity extends AppCompatActivity {
         return (Drawable) values[generator.nextInt(values.length)];
     }
 
+    public Drawable getRandomPower() {
+        Random generator = new Random();
+        Object[] values = {heart, armor};
+        return (Drawable) values[generator.nextInt(values.length)];
+    }
+
     public ArrayList<Tile> getTilesWithEnemies() {
         ArrayList<Tile> toReturn = new ArrayList<>();
         Object[] values = tiles.values().toArray();
@@ -446,14 +484,14 @@ public class GameboardActivity extends AppCompatActivity {
         return toReturn;
     }
 
-    public ArrayList<Tile> getTilesWithEnemySpawns() {
+    public ArrayList<Tile> getTilesWithSpawns() {
         ArrayList<Tile> toReturn = new ArrayList<>();
         Object[] values = tiles.values().toArray();
 
         for (Object value : values) {
             Tile tile = (Tile) value;
             ImageButton tileButton = findViewById((tile.id()));
-            if (tileHasEnemySpawn(tileButton) != null)
+            if (tileHasSpawn(tileButton) != null)
                 toReturn.add(tile);
         }
         return toReturn;
@@ -474,12 +512,49 @@ public class GameboardActivity extends AppCompatActivity {
         return null;
     }
 
-    public Drawable tileHasEnemySpawn(ImageButton tileButton) {
+    public boolean tileHasPower(ImageButton tileButton) {
+        Drawable potentialPiece = tileButton.getForeground();
+        if (potentialPiece == null) return false;
+
+        if (potentialPiece.equals(heart)) return true;
+        if (potentialPiece.equals(armor)) return true;
+        return false;
+    }
+
+    public int getPower(ImageButton tileButton) {
+        Drawable potentialPiece = tileButton.getForeground();
+        if (potentialPiece == null) return power;
+
+        if (potentialPiece.equals(heart)) {
+            lives++;
+            TextView lifeText = findViewById(R.id.livesText);
+            lifeText.setText("" + lives);
+            Toast toast = Toast.makeText(this, "Extra Life!", Toast.LENGTH_SHORT);
+            toast.show();
+            return power;
+        }
+        if (potentialPiece.equals(armor)) {
+            Toast toast = Toast.makeText(this, "Armor Up!", Toast.LENGTH_SHORT);
+            toast.show();
+            return 2;
+        }
+        return power;
+    }
+
+    public int getPowerTurns(int power) {
+        if (power == 2) {
+            return 3;
+        }
+        return powerTurns;
+    }
+
+    public Drawable tileHasSpawn(ImageButton tileButton) {
         Drawable potentialPiece = tileButton.getForeground();
         if (potentialPiece == null) return null;
 
         if (potentialPiece.equals(greyAlert)) return potentialPiece;
         if (potentialPiece.equals(redAlert)) return potentialPiece;
+        if (potentialPiece.equals(blueAlert)) return blueAlert;
         return null;
     }
 
