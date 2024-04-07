@@ -58,10 +58,16 @@ public class Tile {
             return (this.column - tile.column) == (this.row - tile.row) || (this.column - tile.column) == -(this.row - tile.row);
         } else if (moveType == 3) {// Check for rook
             return this.column == tile.column || this.row == tile.row;
+        } else if (moveType == 4) {// Check for queen
+            return compatible(tile, 2) || compatible(tile, 3);
         } else {
             return false;
         }
 
+    }
+
+    public int distance(Tile to) {
+        return ((this.column - to.column) * (this.column - to.column)) + ((this.row - to.row) * (this.row - to.row));
     }
 
     public Piece piece() {

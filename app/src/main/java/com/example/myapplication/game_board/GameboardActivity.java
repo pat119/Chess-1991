@@ -50,6 +50,12 @@ public class GameboardActivity extends AppCompatActivity {
     int lives;
     int score;
 
+    // How many turns have passed
+    int turns;
+
+    // How many turns until next wave
+    int difficultyScale;
+
     Drawable redKnight;
     Drawable redBishop;
     Drawable redRook;
@@ -59,6 +65,7 @@ public class GameboardActivity extends AppCompatActivity {
     Drawable greyRook;
     Drawable greyQueen;
     private View decorView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -297,10 +304,28 @@ public class GameboardActivity extends AppCompatActivity {
         // TODO: move enemy pieces
         // First, get list of tiles that have enemy piecesTile> enemies = getTilesWithEnemies();
         ArrayList<Tile> enemies = getTilesWithEnemies();
-        ////        for (Tile enemy : enemies) {
-        ////            // TODO: move enemy
-        ////
-        ////        }
+                for (Tile enemy : enemies) {
+                    if (enemy.compatible(playerTile, getMove(findViewById(enemy.id())))) {// Checks if piece can capture player
+                        lives--;
+                        TextView lifeText = findViewById(R.id.livesText);
+                        lifeText.setText("" + lives);
+                        break;
+                        // We should maybe throw a toast or snackbar to alert the player has been captured
+                    }
+                    Object[] values = tiles.values().toArray();
+                    Tile closest = enemy;
+                    for (Object possible : values) {
+                        Tile tile = (Tile) possible;
+                        if (enemy.compatible(tile, getMove(findViewById(enemy.id()))) && tileHasEnemy(findViewById(tile.id())) == null) {
+                            if (playerTile.distance(closest) > playerTile.distance(tile)) {
+                                closest = tile;
+                            }
+                        }
+                    }
+                    findViewById(closest.id()).setForeground(tileHasEnemy(findViewById(enemy.id())));
+                    findViewById(enemy.id()).setForeground(getResources().getDrawable(R.drawable.transparent, getTheme()));
+
+                }
 //        ArrayList<
 
 
@@ -360,6 +385,20 @@ public class GameboardActivity extends AppCompatActivity {
         if (potentialPiece.equals(greyRook)) return potentialPiece;
         if (potentialPiece.equals(greyQueen)) return potentialPiece;
         return null;
+    }
+
+    public int getMove(ImageButton tileButton) {
+        Drawable potentialPiece = tileButton.getForeground();
+
+        if (potentialPiece.equals(redKnight)) return 1;
+        if (potentialPiece.equals(redBishop)) return 2;
+        if (potentialPiece.equals(redRook)) return 3;
+        if (potentialPiece.equals(redQueen)) return 4;
+        if (potentialPiece.equals(greyKnight)) return 1;
+        if (potentialPiece.equals(greyBishop)) return 2;
+        if (potentialPiece.equals(greyRook)) return 3;
+        if (potentialPiece.equals(greyQueen)) return 4;
+        return 0;
     }
 
 //    public static List<String> pickNRandom(List<String> lst, int n) {
