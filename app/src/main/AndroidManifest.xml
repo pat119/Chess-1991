@@ -34,6 +34,9 @@
             android:name=".tutorial.Tutorial4"
             android:exported="false" />
         <activity
+            android:name=".checkmate.CheckmateScreen"
+            android:exported="false" />
+        <activity
             android:name=".main_menu.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
