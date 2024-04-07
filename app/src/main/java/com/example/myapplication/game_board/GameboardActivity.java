@@ -86,6 +86,7 @@ public class GameboardActivity extends AppCompatActivity {
         waves = 0;
         lives = 3;
         score = 0;
+        difficultyScale = 3;
 
         TextView waveText = findViewById(R.id.waveText);
         TextView lifeText = findViewById(R.id.livesText);
@@ -349,19 +350,29 @@ public class GameboardActivity extends AppCompatActivity {
 
         // Place enemy spawn icons
         // Randomly select a tile
-        Random generator = new Random();
-        Object[] values = tiles.values().toArray();
-        Tile randomTile = (Tile) values[generator.nextInt(values.length)];
-        ImageButton tileButton = findViewById(randomTile.id());
-        // Check if tile is already occupied, if it is, then get another one
-        while (tileHasEnemy(tileButton) != null) {
-            randomTile = (Tile) values[generator.nextInt(values.length)];
-            tileButton = findViewById(randomTile.id());
-        }
+        if (turns % difficultyScale == 0) {
+            Random generator = new Random();
+            Object[] values = tiles.values().toArray();
 
-        // TODO: Then select a specific enemy piece to spawn
-        Drawable enemyToSpawn = getRandomEnemy();
-        tileButton.setForeground(enemyToSpawn);
+            Tile randomTile = (Tile) values[generator.nextInt(values.length)];
+            ImageButton tileButton = findViewById(randomTile.id());
+            for (int i = 0; i <= waves; i++) {
+                // Check if tile is already occupied, if it is, then get another one
+                while (tileHasEnemy(tileButton) != null) {
+                    randomTile = (Tile) values[generator.nextInt(values.length)];
+                    tileButton = findViewById(randomTile.id());
+                }
+                Drawable enemyToSpawn = getRandomEnemy();
+                tileButton.setForeground(enemyToSpawn);
+            }
+            waves++;
+        }
+        turns++;
+
+        TextView waveText = findViewById(R.id.waveText);
+        TextView lifeText = findViewById(R.id.livesText);
+        waveText.setText("" + waves);
+        lifeText.setText("" + lives);
     }
 
     public boolean isGrey(Tile tile) {
