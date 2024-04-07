@@ -27,4 +27,7 @@
     <string name="backButton">Back</string>
     <string name="test">test</string>
     <string name="changed">changed</string>
+    <string name="wave">Wave:</string>
+    <string name="lives">Lives:</string>
+    <string name="score">Score:</string>
 </resources>
