@@ -14,9 +14,10 @@
         android:contentDescription="@string/test"
         android:src="@drawable/blacksquare"
         android:onClick="onTileClick"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/D5Button"
         app:layout_constraintTop_toBottomOf="@+id/E6Button" />
+
 
     <ImageButton
         android:id="@+id/B5Button"
@@ -25,9 +26,10 @@
         android:contentDescription="@string/test"
         android:src="@drawable/purplesquare"
         android:onClick="onTileClick"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/A5Button"
         app:layout_constraintTop_toBottomOf="@+id/B6Button" />
+
 
     <ImageButton
         android:id="@+id/F5Button"
@@ -36,9 +38,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/E5Button"
         app:layout_constraintTop_toBottomOf="@+id/F6Button" />
+
 
     <ImageButton
         android:id="@+id/H6Button"
@@ -47,9 +50,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/G6Button"
         app:layout_constraintTop_toBottomOf="@+id/H7Button" />
+
 
     <ImageButton
         android:id="@+id/G1Button"
@@ -58,9 +62,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/F1Button"
         app:layout_constraintTop_toBottomOf="@+id/G2Button" />
+
 
     <ImageButton
         android:id="@+id/C7Button"
@@ -69,9 +74,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/B7Button"
         app:layout_constraintTop_toBottomOf="@+id/C8Button" />
+
 
     <ImageButton
         android:id="@+id/G3Button"
@@ -80,9 +86,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/F3Button"
         app:layout_constraintTop_toBottomOf="@+id/G4Button" />
+
 
     <ImageButton
         android:id="@+id/H2Button"
@@ -91,9 +98,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/G2Button"
         app:layout_constraintTop_toBottomOf="@+id/H3Button" />
+
 
     <ImageButton
         android:id="@+id/G4Button"
@@ -102,9 +110,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/F4Button"
         app:layout_constraintTop_toBottomOf="@+id/G5Button" />
+
 
     <ImageButton
         android:id="@+id/A1Button"
@@ -113,9 +122,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toStartOf="@+id/A2Button"
         app:layout_constraintTop_toBottomOf="@+id/A2Button" />
+
 
     <ImageButton
         android:id="@+id/A8Button"
@@ -126,11 +136,12 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/B8Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageButton
         android:id="@+id/E6Button"
@@ -139,9 +150,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/D6Button"
         app:layout_constraintTop_toBottomOf="@+id/E7Button" />
+
 
     <ImageButton
         android:id="@+id/F6Button"
@@ -150,9 +162,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/E6Button"
         app:layout_constraintTop_toBottomOf="@+id/F7Button" />
+
 
     <ImageButton
         android:id="@+id/B3Button"
@@ -161,9 +174,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/A3Button"
         app:layout_constraintTop_toBottomOf="@+id/B4Button" />
+
 
     <ImageButton
         android:id="@+id/E4Button"
@@ -172,9 +186,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/D4Button"
         app:layout_constraintTop_toBottomOf="@+id/E5Button" />
+
 
     <ImageButton
         android:id="@+id/D1Button"
@@ -183,9 +198,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/C1Button"
         app:layout_constraintTop_toBottomOf="@+id/D2Button" />
+
 
     <ImageButton
         android:id="@+id/C8Button"
@@ -194,9 +210,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/B8Button"
         app:layout_constraintTop_toTopOf="@+id/B8Button" />
+
 
     <ImageButton
         android:id="@+id/G2Button"
@@ -205,9 +222,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/F2Button"
         app:layout_constraintTop_toBottomOf="@+id/G3Button" />
+
 
     <ImageButton
         android:id="@+id/B8Button"
@@ -216,9 +234,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/A8Button"
         app:layout_constraintTop_toTopOf="@+id/A8Button" />
+
 
     <ImageButton
         android:id="@+id/A7Button"
@@ -227,9 +246,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toStartOf="@+id/A8Button"
         app:layout_constraintTop_toBottomOf="@+id/A8Button" />
+
 
     <ImageButton
         android:id="@+id/A6Button"
@@ -238,9 +258,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toStartOf="@+id/A7Button"
         app:layout_constraintTop_toBottomOf="@+id/A7Button" />
+
 
     <ImageButton
         android:id="@+id/H8Button"
@@ -249,9 +270,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/G8Button"
         app:layout_constraintTop_toTopOf="@+id/G8Button" />
+
 
     <ImageButton
         android:id="@+id/B7Button"
@@ -260,9 +282,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/A7Button"
         app:layout_constraintTop_toBottomOf="@+id/B8Button" />
+
 
     <ImageButton
         android:id="@+id/B4Button"
@@ -271,9 +294,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/A4Button"
         app:layout_constraintTop_toBottomOf="@+id/B5Button" />
+
 
     <ImageButton
         android:id="@+id/G6Button"
@@ -282,9 +306,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/F6Button"
         app:layout_constraintTop_toBottomOf="@+id/G7Button" />
+
 
     <ImageButton
         android:id="@+id/E2Button"
@@ -293,9 +318,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/D2Button"
         app:layout_constraintTop_toBottomOf="@+id/E3Button" />
+
 
     <ImageButton
         android:id="@+id/H1Button"
@@ -304,9 +330,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/G1Button"
         app:layout_constraintTop_toBottomOf="@+id/H2Button" />
+
 
     <ImageButton
         android:id="@+id/H5Button"
@@ -315,9 +342,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/G5Button"
         app:layout_constraintTop_toBottomOf="@+id/H6Button" />
+
 
     <ImageButton
         android:id="@+id/C2Button"
@@ -326,9 +354,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/B2Button"
         app:layout_constraintTop_toBottomOf="@+id/C3Button" />
+
 
     <ImageButton
         android:id="@+id/C5Button"
@@ -337,9 +366,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/B5Button"
         app:layout_constraintTop_toBottomOf="@+id/C6Button" />
+
 
     <ImageButton
         android:id="@+id/D6Button"
@@ -348,9 +378,10 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/C6Button"
         app:layout_constraintTop_toBottomOf="@+id/D7Button" />
+
 
     <ImageButton
         android:id="@+id/E1Button"
@@ -359,19 +390,21 @@
         android:contentDescription="@string/test"
         android:onClick="onTileClick"
         android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/D1Button"
         app:layout_constraintTop_toBottomOf="@+id/E2Button" />
+
 
     <ImageButton
         android:id="@+id/F7Button"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:contentDescription="@string/test"
-        android:foregroundGravity="center"
+
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
         app:layout_constraintStart_toEndOf="@+id/E7Button"
         app:layout_constraintTop_toBottomOf="@+id/F8Button" />
+
 
     <ImageButton
         android:id="@+id/E3Button"
@@ -379,9 +412,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/D3Button"
         app:layout_constraintTop_toBottomOf="@+id/E4Button" />
+
 
     <ImageButton
         android:id="@+id/G8Button"
@@ -389,9 +423,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/F8Button"
         app:layout_constraintTop_toTopOf="@+id/F8Button" />
+
 
     <ImageButton
         android:id="@+id/H7Button"
@@ -399,9 +434,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/G7Button"
         app:layout_constraintTop_toBottomOf="@+id/H8Button" />
+
 
     <ImageButton
         android:id="@+id/D4Button"
@@ -409,9 +445,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/C4Button"
         app:layout_constraintTop_toBottomOf="@+id/D5Button" />
+
 
     <ImageButton
         android:id="@+id/F1Button"
@@ -419,9 +456,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/E1Button"
         app:layout_constraintTop_toBottomOf="@+id/F2Button" />
+
 
     <ImageButton
         android:id="@+id/D7Button"
@@ -429,9 +467,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/C7Button"
         app:layout_constraintTop_toBottomOf="@+id/D8Button" />
+
 
     <ImageButton
         android:id="@+id/D8Button"
@@ -439,9 +478,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/C8Button"
         app:layout_constraintTop_toTopOf="@+id/C8Button" />
+
 
     <ImageButton
         android:id="@+id/H4Button"
@@ -449,9 +489,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/G4Button"
         app:layout_constraintTop_toBottomOf="@+id/H5Button" />
+
 
     <ImageButton
         android:id="@+id/A5Button"
@@ -459,9 +500,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toStartOf="@+id/A6Button"
         app:layout_constraintTop_toBottomOf="@+id/A6Button" />
+
 
     <ImageButton
         android:id="@+id/B2Button"
@@ -469,9 +511,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/A2Button"
         app:layout_constraintTop_toBottomOf="@+id/B3Button" />
+
 
     <ImageButton
         android:id="@+id/F4Button"
@@ -479,9 +522,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/E4Button"
         app:layout_constraintTop_toBottomOf="@+id/F5Button" />
+
 
     <ImageButton
         android:id="@+id/B6Button"
@@ -489,9 +533,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/A6Button"
         app:layout_constraintTop_toBottomOf="@+id/B7Button" />
+
 
     <ImageButton
         android:id="@+id/D2Button"
@@ -499,9 +544,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/C2Button"
         app:layout_constraintTop_toBottomOf="@+id/D3Button" />
+
 
     <ImageButton
         android:id="@+id/C6Button"
@@ -509,9 +555,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/B6Button"
         app:layout_constraintTop_toBottomOf="@+id/C7Button" />
+
 
     <ImageButton
         android:id="@+id/C3Button"
@@ -519,9 +566,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/B3Button"
         app:layout_constraintTop_toBottomOf="@+id/C4Button" />
+
 
     <ImageButton
         android:id="@+id/F2Button"
@@ -529,9 +577,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/E2Button"
         app:layout_constraintTop_toBottomOf="@+id/F3Button" />
+
 
     <ImageButton
         android:id="@+id/E8Button"
@@ -539,9 +588,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/D8Button"
         app:layout_constraintTop_toTopOf="@+id/D8Button" />
+
 
     <ImageButton
         android:id="@+id/E7Button"
@@ -549,9 +599,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/D7Button"
         app:layout_constraintTop_toBottomOf="@+id/E8Button" />
+
 
     <ImageButton
         android:id="@+id/F3Button"
@@ -559,9 +610,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/E3Button"
         app:layout_constraintTop_toBottomOf="@+id/F4Button" />
+
 
     <ImageButton
         android:id="@+id/D5Button"
@@ -569,9 +621,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/C5Button"
         app:layout_constraintTop_toBottomOf="@+id/D6Button" />
+
 
     <ImageButton
         android:id="@+id/C1Button"
@@ -579,9 +632,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/B1Button"
         app:layout_constraintTop_toBottomOf="@+id/C2Button" />
+
 
     <ImageButton
         android:id="@+id/A3Button"
@@ -589,9 +643,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toStartOf="@+id/A4Button"
         app:layout_constraintTop_toBottomOf="@+id/A4Button" />
+
 
     <ImageButton
         android:id="@+id/D3Button"
@@ -599,9 +654,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/C3Button"
         app:layout_constraintTop_toBottomOf="@+id/D4Button" />
+
 
     <ImageButton
         android:id="@+id/A2Button"
@@ -609,9 +665,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toStartOf="@+id/A3Button"
         app:layout_constraintTop_toBottomOf="@+id/A3Button" />
+
 
     <ImageButton
         android:id="@+id/F8Button"
@@ -619,9 +676,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/E8Button"
         app:layout_constraintTop_toTopOf="@+id/E8Button" />
+
 
     <ImageButton
         android:id="@+id/H3Button"
@@ -629,9 +687,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/G3Button"
         app:layout_constraintTop_toBottomOf="@+id/H4Button" />
+
 
     <ImageButton
         android:id="@+id/G7Button"
@@ -639,9 +698,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/F7Button"
         app:layout_constraintTop_toBottomOf="@+id/G8Button" />
+
 
     <ImageButton
         android:id="@+id/B1Button"
@@ -649,9 +709,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/A1Button"
         app:layout_constraintTop_toBottomOf="@+id/B2Button" />
+
 
     <ImageButton
         android:id="@+id/C4Button"
@@ -659,9 +720,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/B4Button"
         app:layout_constraintTop_toBottomOf="@+id/C5Button" />
+
 
     <ImageButton
         android:id="@+id/A4Button"
@@ -669,9 +731,10 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/purplesquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toStartOf="@+id/A5Button"
         app:layout_constraintTop_toBottomOf="@+id/A5Button" />
+
 
     <ImageButton
         android:id="@+id/G5Button"
@@ -679,9 +742,13 @@
         android:layout_height="48dp"
         android:contentDescription="@string/test"
         android:onClick="onTileClick" android:src="@drawable/blacksquare"
-        android:foregroundGravity="center"
+
         app:layout_constraintStart_toEndOf="@+id/F5Button"
         app:layout_constraintTop_toBottomOf="@+id/G6Button" />
+
+
+
+
 
     <Button
         android:id="@+id/boardBackButton"

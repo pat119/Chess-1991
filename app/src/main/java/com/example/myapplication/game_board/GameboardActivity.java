@@ -8,6 +8,7 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -227,6 +228,7 @@ public class GameboardActivity extends AppCompatActivity {
 
                         // Move player piece to selected tile
                         selectedButton.setForeground(playerStar);
+                        selectedButton.setForegroundGravity(Gravity.FILL);
                         ImageButton playerButton = findViewById(playerTile.id());
 
                         // Change appearance of the tile the player piece was previously on
@@ -390,6 +392,7 @@ public class GameboardActivity extends AppCompatActivity {
             if (spawnColor.equals(blueAlert))
                 enemyToSpawn = getRandomPower();
             tileButton.setForeground(enemyToSpawn);
+            tileButton.setForegroundGravity(Gravity.FILL);
         }
 
         // TODO: Place enemy spawn icons
@@ -410,10 +413,12 @@ public class GameboardActivity extends AppCompatActivity {
                 int flip = generator.nextInt(2);
                 Drawable enemySpawnIcon = (flip == 0) ? redAlert : greyAlert;
                 tileButton.setForeground(enemySpawnIcon);
+                tileButton.setForegroundGravity(Gravity.CENTER);
             }
             randomTile = (Tile) values[generator.nextInt(values.length)];
             tileButton = findViewById(randomTile.id());
             tileButton.setForeground(blueAlert);
+            tileButton.setForegroundGravity(Gravity.CENTER);
             waves++;
         }
         turns++;
