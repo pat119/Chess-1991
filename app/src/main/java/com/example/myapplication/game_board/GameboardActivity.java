@@ -312,6 +312,8 @@ public class GameboardActivity extends AppCompatActivity {
                             lives--;
                             TextView lifeText = findViewById(R.id.livesText);
                             lifeText.setText("" + lives);
+                            Toast toast = Toast.makeText(this, "Ouch!", Toast.LENGTH_SHORT);
+                            toast.show();
                             if (lives == 0) {
                                 Intent intent = new Intent(GameboardActivity.this, CheckmateScreen.class);
                                 startActivity(intent);
