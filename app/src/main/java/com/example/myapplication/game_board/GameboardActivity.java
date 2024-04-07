@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.checkmate.CheckmateScreen;
+import com.example.myapplication.checkmate.FragmentCheckmate;
 import com.example.myapplication.difficulty_menu.DifficultyMenu;
 import com.example.myapplication.main_menu.MainActivity;
 import com.example.myapplication.pieces.PlayerPiece;
@@ -309,6 +311,10 @@ public class GameboardActivity extends AppCompatActivity {
                         lives--;
                         TextView lifeText = findViewById(R.id.livesText);
                         lifeText.setText("" + lives);
+                        if (lives == 0) {
+                            Intent intent = new Intent(GameboardActivity.this, CheckmateScreen.class);
+                            startActivity(intent);
+                        }
                         break;
                         // We should maybe throw a toast or snackbar to alert the player has been captured
                     }
