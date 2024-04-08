@@ -31,12 +31,12 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/rounded_background"
         android:gravity="center_horizontal"
-        android:text="\n\n Every time an enemy captures you, you will lose a life! \n\n\n Gray pieces can only move if the move will capture you. \n\n\n Red pieces will actively move during their turn. "
+        android:text="\n\n Every time an enemy captures you, you will lose a life! \n\n Gray pieces can only move if the move will capture you. \n\n\n Red pieces will actively move during their turn. Pieces will spawn at exclamation points."
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/backButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -91,7 +91,7 @@
         app:layout_constraintBottom_toTopOf="@+id/nextButton"
         app:layout_constraintEnd_toEndOf="@+id/tutorial"
         app:layout_constraintTop_toTopOf="@+id/tutorial"
-        app:layout_constraintVertical_bias="0.495"
+        app:layout_constraintVertical_bias="0.425"
         app:srcCompat="@drawable/bishop_grey" />
 
     <ImageView
@@ -102,7 +102,29 @@
         app:layout_constraintBottom_toTopOf="@+id/backButton"
         app:layout_constraintStart_toStartOf="@+id/tutorial"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.526"
+        app:layout_constraintVertical_bias="0.458"
         app:srcCompat="@drawable/bishop_red" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/nextButton"
+        app:layout_constraintEnd_toEndOf="@+id/tutorial"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.758"
+        app:srcCompat="@drawable/grey_alert" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/backButton"
+        app:layout_constraintStart_toStartOf="@+id/tutorial"
+        app:layout_constraintTop_toTopOf="@+id/tutorial"
+        app:layout_constraintVertical_bias="0.752"
+        app:srcCompat="@drawable/red_alert" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
