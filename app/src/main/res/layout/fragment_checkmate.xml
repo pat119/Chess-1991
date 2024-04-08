@@ -26,6 +26,7 @@
         android:id="@+id/difficulty"
         android:layout_width="168dp"
         android:layout_height="82dp"
+        android:layout_marginTop="26dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="17dp"
         android:gravity="center"
@@ -43,7 +44,7 @@
         android:layout_width="168dp"
         android:layout_height="82dp"
         android:layout_marginTop="26dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="17dp"
         android:gravity="center"
         android:text="Difficulty"
         android:textColor="@color/purple"
@@ -57,12 +58,14 @@
         android:id="@+id/wave"
         android:layout_width="168dp"
         android:layout_height="82dp"
+        android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
         android:gravity="center"
         android:text="Wave:"
         android:textColor="@color/purple"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/points"
+        app:layout_constraintTop_toBottomOf="@id/difficulty"
         app:layout_constraintEnd_toStartOf="@+id/waveValue"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -70,19 +73,23 @@
         android:id="@id/waveValue"
         android:layout_width="168dp"
         android:layout_height="82dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
         android:gravity="center"
         android:text="Wave"
         android:textColor="@color/purple"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/wave"
-        app:layout_constraintTop_toBottomOf="@id/difficultyValue" />
+        app:layout_constraintTop_toBottomOf="@id/difficultyValue"
+        app:layout_constraintBottom_toTopOf="@+id/pointsValue"
+        />
 
     <TextView
         android:id="@id/pointsValue"
         android:layout_width="168dp"
         android:layout_height="82dp"
+        android:layout_marginBottom="17dp"
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="Points"
@@ -90,17 +97,21 @@
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/points"
+        app:layout_constraintBottom_toTopOf="@+id/PostLeader"
         app:layout_constraintTop_toBottomOf="@id/waveValue" />
+
 
     <TextView
         android:id="@+id/points"
         android:layout_width="168dp"
         android:layout_height="82dp"
         android:layout_marginBottom="17dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="Points:"
         android:textColor="@color/purple"
         android:textSize="34sp"
+        app:layout_constraintTop_toBottomOf="@id/wave"
         app:layout_constraintBottom_toTopOf="@+id/PostLeader"
         app:layout_constraintEnd_toStartOf="@+id/pointsValue"
         app:layout_constraintStart_toStartOf="parent" />
