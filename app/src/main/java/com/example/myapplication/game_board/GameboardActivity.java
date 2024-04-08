@@ -367,6 +367,7 @@ public class GameboardActivity extends AppCompatActivity {
                     }
                 }
                 findViewById(closest.id()).setForeground(tileHasEnemy(findViewById(enemy.id())));
+                findViewById(closest.id()).setForegroundGravity(Gravity.FILL);
                 findViewById(enemy.id()).setForeground(transparent);
             }
 
@@ -412,13 +413,17 @@ public class GameboardActivity extends AppCompatActivity {
 
                 int flip = generator.nextInt(2);
                 Drawable enemySpawnIcon = (flip == 0) ? redAlert : greyAlert;
-                tileButton.setForeground(enemySpawnIcon);
-                tileButton.setForegroundGravity(Gravity.CENTER);
+                if (tileButton != findViewById(playerTile.id())) {
+                    tileButton.setForeground(enemySpawnIcon);
+                    tileButton.setForegroundGravity(Gravity.CENTER);
+                }
             }
             randomTile = (Tile) values[generator.nextInt(values.length)];
             tileButton = findViewById(randomTile.id());
-            tileButton.setForeground(blueAlert);
-            tileButton.setForegroundGravity(Gravity.CENTER);
+            if (tileButton != findViewById(playerTile.id())) {
+                tileButton.setForeground(blueAlert);
+                tileButton.setForegroundGravity(Gravity.CENTER);
+            }
             waves++;
         }
         turns++;
