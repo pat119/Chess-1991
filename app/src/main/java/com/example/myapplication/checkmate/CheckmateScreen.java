@@ -80,6 +80,7 @@ public class CheckmateScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CheckmateScreen.this, GameboardActivity.class);
+                intent.putExtra("difficulty", extras.getInt("difficulty"));
                 startActivity(intent);
             }
         });
