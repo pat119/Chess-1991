@@ -20,8 +20,6 @@ public class Tutorial extends AppCompatActivity {
 
         Button backNavButton = (Button)findViewById(R.id.backNavButton);
 
-        Button backButton = (Button)findViewById(R.id.backButton);
-
         Button nextButton = (Button)findViewById(R.id.nextButton);
 
         backNavButton.setOnClickListener(new View.OnClickListener() {
