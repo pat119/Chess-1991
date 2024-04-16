@@ -366,9 +366,11 @@ public class GameboardActivity extends AppCompatActivity {
                         }
                     }
                 }
-                findViewById(closest.id()).setForeground(tileHasEnemy(findViewById(enemy.id())));
-                findViewById(closest.id()).setForegroundGravity(Gravity.FILL);
-                findViewById(enemy.id()).setForeground(transparent);
+                if (closest.id() != enemy.id()) {
+                    findViewById(closest.id()).setForeground(tileHasEnemy(findViewById(enemy.id())));
+                    findViewById(closest.id()).setForegroundGravity(Gravity.FILL);
+                    findViewById(enemy.id()).setForeground(transparent);
+                }
             }
 
         }
