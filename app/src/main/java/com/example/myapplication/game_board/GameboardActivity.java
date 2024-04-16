@@ -222,7 +222,6 @@ public class GameboardActivity extends AppCompatActivity {
 
                         if (tileHasPower(selectedButton)) {
                             power = getPower(selectedButton);
-                            powerTurns = getPowerTurns(power);
                         }
 
 
@@ -549,6 +548,7 @@ public class GameboardActivity extends AppCompatActivity {
         if (potentialPiece.equals(armor)) {
             Toast toast = Toast.makeText(this, "Armor Up!", Toast.LENGTH_SHORT);
             toast.show();
+            powerTurns = getPowerTurns(2);
             return 2;
         }
         return power;
