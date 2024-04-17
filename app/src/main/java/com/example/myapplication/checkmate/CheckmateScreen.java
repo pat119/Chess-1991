@@ -11,9 +11,13 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapplication.game_board.GameboardActivity;
+import com.example.myapplication.leaderboard.LeaderboardEntry;
 import com.example.myapplication.main_menu.MainActivity;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
@@ -26,6 +30,7 @@ public class CheckmateScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_checkmate);
+        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference();
 
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
@@ -85,6 +90,33 @@ public class CheckmateScreen extends AppCompatActivity {
             }
         });
 
+        Button submit = (Button) findViewById(R.id.PostLeader);
+
+        int finalDifficultyValue = difficultyValue;
+
+        LeaderboardEntry waveEntry = new LeaderboardEntry("test", wave, 0);
+        LeaderboardEntry pointsEntry = new LeaderboardEntry("test", score, 0);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (finalDifficultyValue) {
+                    case 3:
+                        dbref.child("hard").child("points").child(pointsEntry.getName()).setValue(pointsEntry);
+                        dbref.child("hard").child("waves").child(waveEntry.getName()).setValue(waveEntry);
+                        break;
+                    case 4:
+                        dbref.child("medium").child("points").child(pointsEntry.getName()).setValue(pointsEntry);
+                        dbref.child("medium").child("waves").child(waveEntry.getName()).setValue(waveEntry);
+                        break;
+                    case 5:
+                        dbref.child("easy").child("points").child(pointsEntry.getName()).setValue(pointsEntry);
+                        dbref.child("easy").child("waves").child(waveEntry.getName()).setValue(waveEntry);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        });
     }
 
     private int hideSystemBars() {
