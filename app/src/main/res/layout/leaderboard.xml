@@ -17,6 +17,7 @@
         android:text="@string/points"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/mediumButton"
         app:layout_constraintStart_toEndOf="@+id/easyButton" />
@@ -30,6 +31,7 @@
         android:text="@string/waves"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/hardButton"
         app:layout_constraintStart_toEndOf="@+id/mediumButton" />
@@ -43,6 +45,7 @@
         android:text="@string/mediumSoft"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/pointsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -57,6 +60,7 @@
         android:text="@string/hardSoft"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/wavesButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -72,6 +76,7 @@
         android:text="@string/easySoft"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/pointsButton"
         app:layout_constraintEnd_toStartOf="@+id/mediumButton"
         app:layout_constraintHorizontal_bias="0.0"
@@ -132,6 +137,7 @@
         android:layout_height="80dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/left_fade"
+        android:clickable="false"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toStartOf="@+id/pageText"
         app:layout_constraintStart_toStartOf="parent" />
@@ -142,6 +148,7 @@
         android:layout_height="80dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/right_purple"
+        android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pageText" />
