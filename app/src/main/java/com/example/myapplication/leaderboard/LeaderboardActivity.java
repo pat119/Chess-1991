@@ -1,6 +1,8 @@
 package com.example.myapplication.leaderboard;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,17 +10,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
 import com.example.myapplication.difficulty_menu.DifficultyMenu;
 import com.example.myapplication.main_menu.MainActivity;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LeaderboardActivity extends AppCompatActivity {
 
     private View decorView;
 
     private int wave;
+    private ListView listView;
+    private LeaderboardAdapter adapter;
+    private List<LeaderboardEntry> leaderboardEntries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +116,10 @@ public class LeaderboardActivity extends AppCompatActivity {
                 }
                 wave++;
                 waveText.setText("" + wave);
+                leaderboardEntries.clear(); // Clear the existing data
+                leaderboardEntries.addAll(generateLeaderboardEntries());
+                adapter.notifyDataSetChanged();
+
             }
         });
 
@@ -117,10 +132,32 @@ public class LeaderboardActivity extends AppCompatActivity {
                     leftButton.setBackgroundResource(R.drawable.left_fade);
                     leftButton.setClickable(false);
                 }
+                leaderboardEntries.clear(); // Clear the existing data
+                leaderboardEntries.addAll(generateLeaderboardEntries());
+                adapter.notifyDataSetChanged();
             }
         });
 
         leftButton.setClickable(false);
+
+        listView = findViewById(R.id.listViewLeaderboard);
+//        listView.setLayoutManager(new LinearLayoutManager(this));
+        leaderboardEntries = generateLeaderboardEntries(); // Replace this with your actual data
+        adapter = new LeaderboardAdapter(this, leaderboardEntries);
+        listView.setAdapter(adapter );
+    }
+
+    private List<LeaderboardEntry> generateLeaderboardEntries() {
+        // Generate dummy data for the leaderboard
+        List<LeaderboardEntry> entries = new ArrayList<>();
+        // Add your leaderboard entries here
+        entries.add(new LeaderboardEntry("Player 1", 100, (wave - 1) * 5 + 1));
+        entries.add(new LeaderboardEntry("Player 2", 90, (wave -1) * 5 + 2));
+        entries.add(new LeaderboardEntry("Player 3", 80, (wave -1) * 5 + 3));
+        entries.add(new LeaderboardEntry("Player 4", 70, (wave -1) * 5 + 4));
+        entries.add(new LeaderboardEntry("Player 5", 100, (wave -1) * 5 + 5));
+        // Add more entries as needed
+        return entries;
     }
 
     private int hideSystemBars() {
