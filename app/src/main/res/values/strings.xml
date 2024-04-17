@@ -19,6 +19,12 @@
     <string name="Medium">MEDIUM</string>
     <string name="Hard">HARD</string>
 
+    <string name="points">Points</string>
+    <string name="waves">Waves</string>
+    <string name="easySoft">Easy</string>
+    <string name="mediumSoft">Medium</string>
+    <string name="hardSoft">Hard</string>
+
 
     <string name="title_activity_main_menu">MainMenuActivity</string>
     <string name="help">HELP</string>

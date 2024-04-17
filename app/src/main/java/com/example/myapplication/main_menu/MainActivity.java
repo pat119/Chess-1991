@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.example.myapplication.R;
 import com.example.myapplication.difficulty_menu.DifficultyMenu;
+import com.example.myapplication.leaderboard.LeaderboardActivity;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DifficultyMenu.class);
+                startActivity(intent);
+            }
+        });
+
+        Button leaderboardButton = (Button)findViewById(R.id.leaderboard);
+        leaderboardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LeaderboardActivity.class);
                 startActivity(intent);
             }
         });
