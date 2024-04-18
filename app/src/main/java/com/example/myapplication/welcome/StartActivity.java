@@ -8,17 +8,18 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.myapplication.R;
-import com.example.myapplication.databinding.ActivityWelcomeBinding;
+import com.example.myapplication.databinding.ActivityLoginBinding;
+import com.example.myapplication.databinding.ActivityStartBinding;
 import com.example.myapplication.main_menu.MainActivity;
 
-public class WelcomeActivity extends AppCompatActivity {
-    private ActivityWelcomeBinding binding;
+public class StartActivity extends AppCompatActivity {
+    private ActivityStartBinding binding;
 
     private View decorView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityWelcomeBinding.inflate(getLayoutInflater());
+        binding = ActivityStartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         decorView = getWindow().getDecorView();
@@ -29,33 +30,14 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
 
-        Button loginButton = (Button) findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        Button startButton = (Button)findViewById(R.id.startButton);
+        startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
+                Intent intent = new Intent(StartActivity.this, WelcomeActivity.class);
                 startActivity(intent);
             }
         });
-
-        Button signupButton = (Button)findViewById(R.id.signupButton);
-        signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, SignupActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        Button guestButton = (Button)findViewById(R.id.guestButton);
-        guestButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
