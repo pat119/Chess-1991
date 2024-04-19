@@ -39,6 +39,8 @@ public class LeaderboardActivity extends AppCompatActivity {
     private boolean pressed;
 
     private int wave;
+
+    int maxWave;
     private int difficulty;
     private int dataType;
     private ListView listView;
@@ -128,6 +130,16 @@ public class LeaderboardActivity extends AppCompatActivity {
                 mediumButton.setBackgroundColor(getResources().getColor(R.color.white));
                 hardButton.setBackgroundColor(getResources().getColor(R.color.white));
                 difficulty = 1;
+                wave = 1;
+                waveText.setText("" + wave);
+                maxWave = 1 + listView.getAdapter().getCount() / 5;
+                listView.smoothScrollToPosition(0);
+                leftButton.setBackgroundResource(R.drawable.left_fade);
+                leftButton.setClickable(false);
+                if (wave < maxWave) {
+                    rightButton.setBackgroundResource(R.drawable.right_purple);
+                    rightButton.setClickable(true);
+                }
                 show();
             }
         });
@@ -140,6 +152,16 @@ public class LeaderboardActivity extends AppCompatActivity {
                 mediumButton.setBackgroundColor(getResources().getColor(R.color.purple));
                 hardButton.setBackgroundColor(getResources().getColor(R.color.white));
                 difficulty = 2;
+                wave = 1;
+                waveText.setText("" + wave);
+                maxWave = 1 + listView.getAdapter().getCount() / 5;
+                listView.smoothScrollToPosition(0);
+                leftButton.setBackgroundResource(R.drawable.left_fade);
+                leftButton.setClickable(false);
+                if (wave < maxWave) {
+                    rightButton.setBackgroundResource(R.drawable.right_purple);
+                    rightButton.setClickable(true);
+                }
                 show();
             }
         });
@@ -151,6 +173,16 @@ public class LeaderboardActivity extends AppCompatActivity {
                 mediumButton.setBackgroundColor(getResources().getColor(R.color.white));
                 hardButton.setBackgroundColor(getResources().getColor(R.color.purple));
                 difficulty = 3;
+                wave = 1;
+                waveText.setText("" + wave);
+                maxWave = 1 + listView.getAdapter().getCount() / 5;
+                listView.smoothScrollToPosition(0);
+                leftButton.setBackgroundResource(R.drawable.left_fade);
+                leftButton.setClickable(false);
+                if (wave < maxWave) {
+                    rightButton.setBackgroundResource(R.drawable.right_purple);
+                    rightButton.setClickable(true);
+                }
                 show();
             }
         });
@@ -161,6 +193,16 @@ public class LeaderboardActivity extends AppCompatActivity {
                 pointsButton.setBackgroundColor(getResources().getColor(R.color.purple));
                 wavesButton.setBackgroundColor(getResources().getColor(R.color.white));
                 dataType = 1;
+                wave = 1;
+                waveText.setText("" + wave);
+                maxWave = 1 + listView.getAdapter().getCount() / 5;
+                listView.smoothScrollToPosition(0);
+                leftButton.setBackgroundResource(R.drawable.left_fade);
+                leftButton.setClickable(false);
+                if (wave < maxWave) {
+                    rightButton.setBackgroundResource(R.drawable.right_purple);
+                    rightButton.setClickable(true);
+                }
                 show();
             }
         });
@@ -171,11 +213,21 @@ public class LeaderboardActivity extends AppCompatActivity {
                 pointsButton.setBackgroundColor(getResources().getColor(R.color.white));
                 wavesButton.setBackgroundColor(getResources().getColor(R.color.purple));
                 dataType = 2;
+                wave = 1;
+                waveText.setText("" + wave);
+                maxWave = 1 + listView.getAdapter().getCount() / 5;
+                listView.smoothScrollToPosition(0);
+                leftButton.setBackgroundResource(R.drawable.left_fade);
+                leftButton.setClickable(false);
+                if (wave < maxWave) {
+                    rightButton.setBackgroundResource(R.drawable.right_purple);
+                    rightButton.setClickable(true);
+                }
                 show();
             }
         });
 
-        /*
+
         rightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -183,33 +235,39 @@ public class LeaderboardActivity extends AppCompatActivity {
                     leftButton.setBackgroundResource(R.drawable.left_purple);
                     leftButton.setClickable(true);
                 }
-                wave++;
-                waveText.setText("" + wave);
-                leaderboardEntries.clear(); // Clear the existing data
-                leaderboardEntries.addAll(generateLeaderboardEntries());
-                adapter.notifyDataSetChanged();
+                if (wave == maxWave) {
+                    rightButton.setBackgroundResource(R.drawable.right_fade);
+                    rightButton.setClickable(false);
+                }
 
+                wave++;
+                listView.smoothScrollToPosition(5 * (wave - 1));
+                waveText.setText("" + wave);
             }
         });
+
 
 
         leftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 wave--;
+                listView.smoothScrollToPosition(5 * (wave - 1));
                 waveText.setText("" + wave);
                 if (wave == 1) {
                     leftButton.setBackgroundResource(R.drawable.left_fade);
                     leftButton.setClickable(false);
                 }
-                leaderboardEntries.clear(); // Clear the existing data
-                leaderboardEntries.addAll(generateLeaderboardEntries());
-                adapter.notifyDataSetChanged();
+                if (wave < maxWave) {
+                    rightButton.setBackgroundResource(R.drawable.right_purple);
+                    rightButton.setClickable(true);
+                }
+
             }
         });
 
 
-         */
+
 
         show();
         adapter.notifyDataSetChanged();
