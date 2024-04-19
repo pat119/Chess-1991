@@ -157,13 +157,11 @@
     <ListView
         android:id="@+id/listViewLeaderboard"
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="280dp"
         android:background="@color/purple"
         app:layout_constraintBottom_toTopOf="@+id/pageText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.387"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/difficultyText"
-        app:layout_constraintVertical_bias="0.517" />
+        app:layout_constraintTop_toBottomOf="@+id/difficultyText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
