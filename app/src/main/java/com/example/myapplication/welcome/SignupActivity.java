@@ -1,5 +1,7 @@
 package com.example.myapplication.welcome;
 
+import static android.widget.Toast.LENGTH_SHORT;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.User;
 import com.example.myapplication.databinding.ActivitySignupBinding;
 import com.example.myapplication.databinding.ActivityStartBinding;
 import com.example.myapplication.main_menu.MainActivity;
@@ -20,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class SignupActivity extends AppCompatActivity {
     private ActivitySignupBinding binding;
 
@@ -28,6 +33,8 @@ public class SignupActivity extends AppCompatActivity {
     EditText passwordInput;
     EditText confirmPasswordInput;
     DatabaseReference dbref;
+    protected ArrayList<User> myUsers;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +49,36 @@ public class SignupActivity extends AppCompatActivity {
                 decorView.setSystemUiVisibility(hideSystemBars());
             }
         });
+        myUsers = new ArrayList<>();
+
+        dbref = FirebaseDatabase.getInstance().getReference();
+        dbref.child("logins").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Iterable<DataSnapshot> clients = snapshot.getChildren();
+                for (DataSnapshot pair : clients) {
+                    User test = pair.getValue(User.class);
+                    myUsers.add(test);
+                }
+
+//
+//                for (DataSnapshot data: snapshot.getChildren()) {
+//                    if (username.equals(data.getKey())) {
+//                        Toast toast = Toast.makeText(getApplicationContext(),
+//                                "Duplicate username", Toast.LENGTH_SHORT);
+//                        toast.show();
+//                        finish();
+//                        return;
+//                    }
+//                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {}
+        });
 
         usernameInput = findViewById(R.id.usernameInput);
         passwordInput = findViewById(R.id.passwordInput);
         confirmPasswordInput = findViewById(R.id.confirmPasswordInput);
-
-        dbref = FirebaseDatabase.getInstance().getReference();
 
         Button signupConfirmButton = (Button)findViewById(R.id.SignupConfirmButton);
         signupConfirmButton.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +101,9 @@ public class SignupActivity extends AppCompatActivity {
 //                String testa = dbref.child("logins").child(username).toString();
 //                Boolean test = dbref.child(username).exists();
 //                String test2 = dbref.child("logins").child(username);
-//                String test22 = dbref.child("logins").child("NONEXISTENT");
+//                String test22 = dbref.
+//                child("logins").child("NONEXISTENT");
+
 
                 // Check that password is confirmed correctly
                 if (!password.equals(confirmPassword)) {
@@ -81,7 +114,23 @@ public class SignupActivity extends AppCompatActivity {
                 }
 
                 // Add username/password to the database
-                dbref.child("logins").child(username).setValue(password);
+//                dbref.child("logins").child(username).setValue(password);
+
+                String key = dbref.child("logins").push().getKey();
+                User myUser = new User(username, password, key);
+
+                for (User user : myUsers) {
+                    if (user.getUsername().equals(username)) {
+                        Toast toast = Toast.makeText(getApplicationContext(),
+                                "Duplicate username", Toast.LENGTH_SHORT);
+                        toast.show();
+                        return;
+                    }
+                }
+
+                myUsers.add(myUser);
+                dbref.child("logins").child(key).setValue(myUser);
+                Toast.makeText(getApplicationContext(), "Added account!", LENGTH_SHORT).show();
 
                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                 startActivity(intent);

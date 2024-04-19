@@ -6,6 +6,12 @@ public class LeaderboardEntry {
 
     private int place;
 
+    public  LeaderboardEntry() {
+        this.name = "error";
+        this.score = 0;
+        this.place = 0;
+    }
+
     public LeaderboardEntry(String name, int score, int place) {
         this.name = name;
         this.score = score;
