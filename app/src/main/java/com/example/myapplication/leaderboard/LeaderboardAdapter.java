@@ -37,7 +37,7 @@ public class LeaderboardAdapter extends ArrayAdapter<LeaderboardEntry> {
         if (entry != null) {
             textViewName.setText(entry.getName());
             textViewScore.setText(String.valueOf(entry.getScore()));
-            textViewPlace.setText(String.valueOf(entry.getPlace()) + ".");
+            textViewPlace.setText(String.valueOf(position + 1));
         }
 
         return itemView;
