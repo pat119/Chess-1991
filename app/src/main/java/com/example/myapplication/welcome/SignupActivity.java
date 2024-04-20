@@ -4,7 +4,9 @@ import static android.widget.Toast.LENGTH_SHORT;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +36,7 @@ public class SignupActivity extends AppCompatActivity {
     EditText confirmPasswordInput;
     DatabaseReference dbref;
     protected ArrayList<User> myUsers;
+    SharedPreferences pref;
 
 
     @Override
@@ -64,6 +67,9 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError error) {}
         });
+
+        // Use settings to update various elements
+        pref = getSharedPreferences("User", Context.MODE_PRIVATE);
 
         usernameInput = findViewById(R.id.usernameInput);
         passwordInput = findViewById(R.id.passwordInput);
@@ -112,6 +118,11 @@ public class SignupActivity extends AppCompatActivity {
                 myUsers.add(myUser);
                 dbref.child("logins").child(key).setValue(myUser);
                 Toast.makeText(getApplicationContext(), "Added account!", LENGTH_SHORT).show();
+
+                // Update pref to reflect that a user is logged in
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putBoolean("logged_in", true);
+                editor.apply();
 
                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                 startActivity(intent);

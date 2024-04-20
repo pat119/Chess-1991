@@ -2,7 +2,9 @@ package com.example.myapplication.welcome;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,8 @@ public class WelcomeActivity extends AppCompatActivity {
     private ActivityWelcomeBinding binding;
 
     private View decorView;
+    SharedPreferences pref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +32,9 @@ public class WelcomeActivity extends AppCompatActivity {
                 decorView.setSystemUiVisibility(hideSystemBars());
             }
         });
+
+        // Use settings to update various elements
+        pref = getSharedPreferences("User", Context.MODE_PRIVATE);
 
         Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +58,11 @@ public class WelcomeActivity extends AppCompatActivity {
         guestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Update pref to reflect that a user is logged in
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putBoolean("logged_in", false);
+                editor.apply();
+
                 Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
                 startActivity(intent);
             }

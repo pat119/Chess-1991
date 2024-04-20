@@ -1,6 +1,8 @@
 package com.example.myapplication.welcome;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.myapplication.R;
@@ -32,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText passwordInput;
     DatabaseReference dbref;
     protected ArrayList<User> myUsers;
-
+    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +64,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError error) {}
         });
+
+        // Use settings to update various elements
+        pref = getSharedPreferences("User", Context.MODE_PRIVATE);
 
         usernameInput = findViewById(R.id.userLoginInput);
         passwordInput = findViewById(R.id.passLoginInput);
@@ -102,6 +107,11 @@ public class LoginActivity extends AppCompatActivity {
                     toast.show();
                     return;
                 }
+
+                // Update pref to reflect that a user is logged in
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putBoolean("logged_in", true);
+                editor.apply();
 
                 Toast toast = Toast.makeText(getApplicationContext(),
                         "Logged in!", Toast.LENGTH_SHORT);

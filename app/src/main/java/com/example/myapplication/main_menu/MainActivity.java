@@ -1,11 +1,14 @@
 package com.example.myapplication.main_menu;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.myapplication.R;
 import com.example.myapplication.difficulty_menu.DifficultyMenu;
 import com.example.myapplication.leaderboard.LeaderboardActivity;
+import com.example.myapplication.welcome.LoginActivity;
 import com.example.myapplication.welcome.WelcomeActivity;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private View decorView;
+    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
                 decorView.setSystemUiVisibility(hideSystemBars());
             }
         });
+
+        // Use settings to update various elements
+        pref = getSharedPreferences("User", Context.MODE_PRIVATE);
 
         Button playButton = (Button)findViewById(R.id.play);
         playButton.setOnClickListener(new View.OnClickListener() {
@@ -66,11 +73,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Button logoutButton = (Button)findViewById(R.id.logout);
+        boolean logged_in = pref.getBoolean("logged_in", false);
+        if (!logged_in) {
+            logoutButton.setText("Log In");
+        }
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
-                startActivity(intent);
+                if (logged_in) {
+                    Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
