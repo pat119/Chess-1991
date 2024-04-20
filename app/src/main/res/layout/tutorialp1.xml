@@ -16,29 +16,14 @@
         android:layout_marginTop="40dp"
         android:text="@string/TutorialPlay"
         android:textColor="@color/purple"
-        android:textSize="68sp"
+        android:textSize="90sp"
         android:gravity="center"
+        android:fontFamily="@font/jersey25"
         app:layout_constraintBottom_toTopOf="@+id/tutorial"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <TextView
-        android:id="@id/tutorial"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/rounded_background"
-        android:gravity="center_horizontal"
-        android:text="\n\n Your goal is to capture all enemy pieces! \n \nEvery few turns, new power ups and enemies will spawn in waves! Red exclamation marks indicate incoming enemies! \n\n Capture enemy pieces to gather points according to standard chess point values."
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/backButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <!--    <Button-->
 <!--        android:id="@id/backButton"-->
@@ -54,19 +39,39 @@
 <!--        app:layout_constraintStart_toStartOf="parent"-->
 <!--        app:layout_constraintTop_toBottomOf="@+id/tutorial" />-->
 
+    <TextView
+        android:id="@id/tutorial"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_background"
+        android:fontFamily="@font/jersey25"
+        android:gravity="center_horizontal"
+        android:text="\n\n Your goal is to capture all enemy pieces! \n \nEvery few turns, new power ups and enemies will spawn in waves! Red exclamation marks indicate incoming enemies! \n\n Capture enemy pieces to gather points according to standard chess point values."
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@id/nextButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <Button
         android:id="@id/nextButton"
         android:layout_width="158dp"
         android:layout_height="80dp"
         android:layout_marginTop="60dp"
+        android:layout_marginBottom="50dp"
         android:backgroundTint="@color/purple"
         android:text="@string/nextButton"
         android:textColor="@color/black"
         android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tutorial" />
+        app:layout_constraintTop_toBottomOf="@+id/tutorial"
+        app:layout_constraintVertical_bias="0.125" />
 
     <Button
         android:id="@+id/backNavButton"
