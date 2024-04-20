@@ -60,17 +60,6 @@ public class SignupActivity extends AppCompatActivity {
                     User test = pair.getValue(User.class);
                     myUsers.add(test);
                 }
-
-//
-//                for (DataSnapshot data: snapshot.getChildren()) {
-//                    if (username.equals(data.getKey())) {
-//                        Toast toast = Toast.makeText(getApplicationContext(),
-//                                "Duplicate username", Toast.LENGTH_SHORT);
-//                        toast.show();
-//                        finish();
-//                        return;
-//                    }
-//                }
             }
             @Override
             public void onCancelled(DatabaseError error) {}
@@ -96,14 +85,6 @@ public class SignupActivity extends AppCompatActivity {
                     toast.show();
                     return;
                 }
-
-                // Check there is no duplicate username
-//                String testa = dbref.child("logins").child(username).toString();
-//                Boolean test = dbref.child(username).exists();
-//                String test2 = dbref.child("logins").child(username);
-//                String test22 = dbref.
-//                child("logins").child("NONEXISTENT");
-
 
                 // Check that password is confirmed correctly
                 if (!password.equals(confirmPassword)) {

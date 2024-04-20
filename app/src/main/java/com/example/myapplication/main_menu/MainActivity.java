@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.example.myapplication.R;
 import com.example.myapplication.difficulty_menu.DifficultyMenu;
 import com.example.myapplication.leaderboard.LeaderboardActivity;
+import com.example.myapplication.welcome.WelcomeActivity;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,6 +64,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button logoutButton = (Button)findViewById(R.id.logout);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 //        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
 //        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
