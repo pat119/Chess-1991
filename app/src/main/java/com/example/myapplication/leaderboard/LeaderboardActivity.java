@@ -235,13 +235,14 @@ public class LeaderboardActivity extends AppCompatActivity {
                     leftButton.setBackgroundResource(R.drawable.left_purple);
                     leftButton.setClickable(true);
                 }
+                wave++;
                 if (wave == maxWave) {
                     rightButton.setBackgroundResource(R.drawable.right_fade);
                     rightButton.setClickable(false);
                 }
 
-                wave++;
-                listView.smoothScrollToPosition(5 * (wave - 1));
+
+                listView.smoothScrollToPosition(5 * (wave));
                 waveText.setText("" + wave);
             }
         });
