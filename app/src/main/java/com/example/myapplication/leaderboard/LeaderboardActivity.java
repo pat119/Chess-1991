@@ -87,6 +87,7 @@ public class LeaderboardActivity extends AppCompatActivity {
 //        listView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new LeaderboardAdapter(this, leaderboardEntries);
         listView.setAdapter(adapter);
+        listView.setEnabled(false);
         show();
 
 
@@ -130,16 +131,19 @@ public class LeaderboardActivity extends AppCompatActivity {
                 mediumButton.setBackgroundColor(getResources().getColor(R.color.white));
                 hardButton.setBackgroundColor(getResources().getColor(R.color.white));
                 difficulty = 1;
-                wave = 1;
-                waveText.setText("" + wave);
+                //wave = 1;
+                //waveText.setText("" + wave);
                 maxWave = 1 + listView.getAdapter().getCount() / 5;
                 listView.smoothScrollToPosition(0);
+                /*
                 leftButton.setBackgroundResource(R.drawable.left_fade);
                 leftButton.setClickable(false);
                 if (wave < maxWave) {
                     rightButton.setBackgroundResource(R.drawable.right_purple);
                     rightButton.setClickable(true);
                 }
+
+                 */
                 show();
             }
         });
@@ -152,16 +156,19 @@ public class LeaderboardActivity extends AppCompatActivity {
                 mediumButton.setBackgroundColor(getResources().getColor(R.color.purple));
                 hardButton.setBackgroundColor(getResources().getColor(R.color.white));
                 difficulty = 2;
-                wave = 1;
-                waveText.setText("" + wave);
+                //wave = 1;
+                //waveText.setText("" + wave);
                 maxWave = 1 + listView.getAdapter().getCount() / 5;
                 listView.smoothScrollToPosition(0);
+                /*
                 leftButton.setBackgroundResource(R.drawable.left_fade);
                 leftButton.setClickable(false);
                 if (wave < maxWave) {
                     rightButton.setBackgroundResource(R.drawable.right_purple);
                     rightButton.setClickable(true);
                 }
+
+                 */
                 show();
             }
         });
@@ -173,16 +180,19 @@ public class LeaderboardActivity extends AppCompatActivity {
                 mediumButton.setBackgroundColor(getResources().getColor(R.color.white));
                 hardButton.setBackgroundColor(getResources().getColor(R.color.purple));
                 difficulty = 3;
-                wave = 1;
-                waveText.setText("" + wave);
+                //wave = 1;
+                //waveText.setText("" + wave);
                 maxWave = 1 + listView.getAdapter().getCount() / 5;
                 listView.smoothScrollToPosition(0);
+                /*
                 leftButton.setBackgroundResource(R.drawable.left_fade);
                 leftButton.setClickable(false);
                 if (wave < maxWave) {
                     rightButton.setBackgroundResource(R.drawable.right_purple);
                     rightButton.setClickable(true);
                 }
+
+                 */
                 show();
             }
         });
@@ -193,16 +203,21 @@ public class LeaderboardActivity extends AppCompatActivity {
                 pointsButton.setBackgroundColor(getResources().getColor(R.color.purple));
                 wavesButton.setBackgroundColor(getResources().getColor(R.color.white));
                 dataType = 1;
-                wave = 1;
-                waveText.setText("" + wave);
+                //wave = 1;
+                //waveText.setText("" + wave);
                 maxWave = 1 + listView.getAdapter().getCount() / 5;
                 listView.smoothScrollToPosition(0);
+                /*
                 leftButton.setBackgroundResource(R.drawable.left_fade);
                 leftButton.setClickable(false);
+
+
                 if (wave < maxWave) {
                     rightButton.setBackgroundResource(R.drawable.right_purple);
                     rightButton.setClickable(true);
                 }
+
+                 */
                 show();
             }
         });
@@ -213,16 +228,21 @@ public class LeaderboardActivity extends AppCompatActivity {
                 pointsButton.setBackgroundColor(getResources().getColor(R.color.white));
                 wavesButton.setBackgroundColor(getResources().getColor(R.color.purple));
                 dataType = 2;
-                wave = 1;
-                waveText.setText("" + wave);
+                //wave = 1;
+                //waveText.setText("" + wave);
                 maxWave = 1 + listView.getAdapter().getCount() / 5;
                 listView.smoothScrollToPosition(0);
+                /*
                 leftButton.setBackgroundResource(R.drawable.left_fade);
                 leftButton.setClickable(false);
+
+
                 if (wave < maxWave) {
                     rightButton.setBackgroundResource(R.drawable.right_purple);
                     rightButton.setClickable(true);
                 }
+
+                 */
                 show();
             }
         });
@@ -231,19 +251,23 @@ public class LeaderboardActivity extends AppCompatActivity {
         rightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                listView.smoothScrollByOffset(5);
+                /*
                 if (wave == 1) {
                     leftButton.setBackgroundResource(R.drawable.left_purple);
                     leftButton.setClickable(true);
                 }
-                wave++;
+
+
+
                 if (wave == maxWave) {
                     rightButton.setBackgroundResource(R.drawable.right_fade);
                     rightButton.setClickable(false);
                 }
-
-
-                listView.smoothScrollToPosition(5 * (wave));
+                wave++;
                 waveText.setText("" + wave);
+
+                 */
             }
         });
 
@@ -252,9 +276,12 @@ public class LeaderboardActivity extends AppCompatActivity {
         leftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                listView.smoothScrollByOffset(-5);
+                /*
                 wave--;
-                listView.smoothScrollToPosition(5 * (wave - 1));
                 waveText.setText("" + wave);
+
                 if (wave == 1) {
                     leftButton.setBackgroundResource(R.drawable.left_fade);
                     leftButton.setClickable(false);
@@ -264,6 +291,8 @@ public class LeaderboardActivity extends AppCompatActivity {
                     rightButton.setClickable(true);
                 }
 
+                 */
+
             }
         });
 
@@ -272,6 +301,9 @@ public class LeaderboardActivity extends AppCompatActivity {
 
         show();
         adapter.notifyDataSetChanged();
+
+        leftButton.setBackgroundResource(R.drawable.left_purple);
+        leftButton.setClickable(true);
 
     }
 
