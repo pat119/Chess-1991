@@ -1,6 +1,7 @@
 package com.example.myapplication.leaderboard;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ public class LeaderboardAdapter extends ArrayAdapter<LeaderboardEntry> {
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        final Typeface font = Typeface.createFromAsset(getContext().getAssets(), "jersey25.ttf");
         View itemView = convertView;
         if (itemView == null) {
             itemView = LayoutInflater.from(getContext()).inflate(R.layout.leaderboard_entry_item, parent, false);
@@ -36,8 +38,11 @@ public class LeaderboardAdapter extends ArrayAdapter<LeaderboardEntry> {
         // Set the name and score in the layout
         if (entry != null) {
             textViewName.setText(entry.getName());
+            textViewName.setTypeface(font);
             textViewScore.setText(String.valueOf(entry.getScore()));
+            textViewScore.setTypeface(font);
             textViewPlace.setText(String.valueOf(position + 1));
+            textViewPlace.setTypeface(font);
         }
 
         return itemView;

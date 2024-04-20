@@ -773,6 +773,7 @@
         android:layout_marginStart="48dp"
         android:text="@string/wave"
         android:textColor="@color/purple"
+        android:fontFamily="@font/jersey25"
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/B8Button"
         app:layout_constraintStart_toStartOf="parent" />
@@ -784,6 +785,7 @@
         android:layout_marginEnd="48dp"
         android:text="@string/lives"
         android:textColor="@color/purple"
+        android:fontFamily="@font/jersey25"
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/D8Button"
         app:layout_constraintEnd_toStartOf="@+id/scoreView"
@@ -797,6 +799,7 @@
         android:layout_marginEnd="48dp"
         android:text="@string/score"
         android:textColor="@color/purple"
+        android:fontFamily="@font/jersey25"
         android:textSize="26sp"
         app:layout_constraintBottom_toTopOf="@+id/G8Button"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -811,7 +814,8 @@
         android:clickable="true"
         android:contentDescription="@string/test"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:focusable="true" />
 
     <ImageButton
         android:id="@+id/bishopButton"
@@ -825,7 +829,8 @@
         android:background="@drawable/bishop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/rookButton"
-        app:layout_constraintStart_toEndOf="@+id/knightButton" />
+        app:layout_constraintStart_toEndOf="@+id/knightButton"
+        android:focusable="true" />
 
     <ImageButton
         android:id="@+id/knightButton"
@@ -837,7 +842,8 @@
         android:clickable="true"
         android:contentDescription="@string/test"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="true" />
 
     <Button
         android:id="@+id/tutorialButtonGameboard"
@@ -848,6 +854,7 @@
         android:height="60dp"
         android:width="80dp"
         android:text='\?'
+        android:fontFamily="@font/jersey25"
         android:backgroundTint="@color/purple"
         android:textColor="@color/black"
         android:textSize="34sp"
@@ -858,34 +865,43 @@
         android:id="@+id/waveText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/jersey25"
         android:text="0"
-        android:textSize="26dp"
         android:textColor="@color/purple"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="@+id/waveView"
         app:layout_constraintStart_toEndOf="@+id/waveView"
-        app:layout_constraintTop_toTopOf="@+id/waveView" />
+        app:layout_constraintTop_toTopOf="@+id/waveView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/livesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/jersey25"
         android:text="0"
         android:textColor="@color/purple"
-        android:textSize="26dp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="@+id/livesView"
         app:layout_constraintStart_toEndOf="@+id/livesView"
-        app:layout_constraintTop_toTopOf="@+id/livesView" />
+        app:layout_constraintTop_toTopOf="@+id/livesView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/scoreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/jersey25"
         android:text="0"
-        android:textSize="26sp"
         android:textColor="@color/purple"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="@+id/scoreView"
         app:layout_constraintStart_toEndOf="@+id/scoreView"
-        app:layout_constraintTop_toTopOf="@+id/scoreView" />
+        app:layout_constraintTop_toTopOf="@+id/scoreView"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <!--    labels for axes-->

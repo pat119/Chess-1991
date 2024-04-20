@@ -9,29 +9,35 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="350dp"
-        android:layout_height="85dp"
+        android:layout_width="349dp"
+        android:layout_height="161dp"
         android:layout_marginTop="50dp"
+        android:fontFamily="@font/jersey25"
         android:text="CHESS 1991"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="60sp"
+        android:textColor="@color/purple"
+        android:textSize="90sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
     <Button
         android:id="@+id/startButton"
-        android:layout_width="350dp"
-        android:layout_height="85dp"
+        android:layout_width="248dp"
+        android:layout_height="69dp"
         android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
         android:backgroundTint="@color/purple"
+        android:fontFamily="@font/jersey25"
         android:text="Start"
         android:textColor="@color/black"
-        android:textSize="34sp"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/imageButton"

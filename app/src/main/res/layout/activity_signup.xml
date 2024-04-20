@@ -16,7 +16,8 @@
         android:hint="Username"
         android:textColor="@color/purple"
         android:textColorHint="@color/purple"
-        android:textSize="34sp"
+        android:textSize="50sp"
+        android:fontFamily="@font/jersey25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -30,7 +31,8 @@
         android:hint="Password"
         android:textColor="@color/purple"
         android:textColorHint="@color/purple"
-        android:textSize="34sp"
+        android:textSize="50sp"
+        android:fontFamily="@font/jersey25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameInput" />
@@ -44,20 +46,22 @@
         android:hint="Confirm Password"
         android:textColor="@color/purple"
         android:textColorHint="@color/purple"
-        android:textSize="34sp"
+        android:textSize="48sp"
+        android:fontFamily="@font/jersey25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordInput" />
 
     <Button
         android:id="@+id/SignupConfirmButton"
-        android:layout_width="350dp"
-        android:layout_height="85dp"
+        android:layout_width="248dp"
+        android:layout_height="69dp"
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/purple"
         android:text="Signup"
         android:textColor="@color/black"
-        android:textSize="34sp"
+        android:textSize="50sp"
+        android:fontFamily="@font/jersey25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/confirmPasswordInput" />
@@ -69,7 +73,8 @@
         android:layout_marginTop="50dp"
         android:text="Signup"
         android:textColor="@color/purple"
-        android:textSize="68sp"
+        android:textSize="90sp"
+        android:fontFamily="@font/jersey25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

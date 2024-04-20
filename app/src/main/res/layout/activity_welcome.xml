@@ -14,7 +14,8 @@
         android:layout_marginTop="50dp"
         android:text="Welcome"
         android:textColor="@color/purple"
-        android:textSize="68sp"
+        android:textSize="90sp"
+        android:fontFamily="@font/jersey25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,7 +28,8 @@
         android:backgroundTint="@color/purple"
         android:text="Login"
         android:textColor="@color/black"
-        android:textSize="34sp"
+        android:textSize="50sp"
+        android:fontFamily="@font/jersey25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Welcome" />
@@ -40,7 +42,8 @@
         android:backgroundTint="@color/purple"
         android:text="Sign Up"
         android:textColor="@color/black"
-        android:textSize="34sp"
+        android:textSize="50sp"
+        android:fontFamily="@font/jersey25"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />
@@ -51,10 +54,14 @@
         android:layout_height="85dp"
         android:layout_marginTop="75dp"
         android:backgroundTint="@color/purple"
+        android:fontFamily="@font/jersey25"
         android:text="Play as Guest"
         android:textColor="@color/black"
-        android:textSize="34sp"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signupButton" />
+        app:layout_constraintTop_toBottomOf="@+id/signupButton"
+        app:layout_constraintVertical_bias="0.037" />
 </androidx.constraintlayout.widget.ConstraintLayout>
