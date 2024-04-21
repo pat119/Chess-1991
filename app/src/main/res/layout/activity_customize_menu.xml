@@ -18,6 +18,7 @@
         app:iconGravity="textStart"
         app:iconPadding="0dp"
         app:iconSize="30dp"
+        android:contentDescription="@string/backButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,51 +40,89 @@
     <Button
         android:id="@id/boardThemeOne"
         android:layout_width="350dp"
-        android:layout_height="85dp"
+        android:layout_height="64dp"
         android:layout_marginBottom="22dp"
         android:backgroundTint="@color/purple"
+        android:drawablePadding="5dp"
         android:fontFamily="@font/jersey25"
+        android:gravity="start"
+        android:maxLines="1"
         android:text="@string/boardThemeOne"
         android:textColor="@color/black"
-        android:textSize="50sp"
+        android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/boardThemeTwo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/customizeTextView"/>
+        app:layout_constraintTop_toBottomOf="@id/customizeTextView" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/marble_square"
+        app:layout_constraintBottom_toBottomOf="@id/boardThemeOne"
+        app:layout_constraintEnd_toEndOf="@id/boardThemeOne"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="@id/boardThemeOne"
+        app:layout_constraintTop_toTopOf="@id/boardThemeOne" />
 
     <Button
         android:id="@id/boardThemeTwo"
         android:layout_width="350dp"
-        android:layout_height="85dp"
+        android:layout_height="64dp"
         android:layout_marginTop="22dp"
         android:layout_marginBottom="22dp"
         android:backgroundTint="@color/purple"
         android:fontFamily="@font/jersey25"
+        android:gravity="start"
         android:text="@string/boardThemeTwo"
         android:textColor="@color/black"
-        android:textSize="50sp"
+        android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/boardThemeThree"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/boardThemeOne" />
 
+    <ImageView
+        android:id="@+id/imageTwo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/dark_wood"
+        app:layout_constraintBottom_toBottomOf="@id/boardThemeTwo"
+        app:layout_constraintEnd_toEndOf="@id/boardThemeTwo"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="@id/boardThemeTwo"
+        app:layout_constraintTop_toTopOf="@id/boardThemeTwo" />
+
     <Button
         android:id="@id/boardThemeThree"
         android:layout_width="350dp"
-        android:layout_height="85dp"
+        android:layout_height="64dp"
         android:layout_marginTop="22dp"
         android:backgroundTint="@color/purple"
         android:fontFamily="@font/jersey25"
+        android:gravity="start"
         android:text="@string/boardThemeThree"
         android:textColor="@color/black"
-        android:textSize="50sp"
+        android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/userPieceAppearance"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/boardThemeTwo" />
+
+    <ImageView
+        android:id="@+id/imageThree"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/white"
+        app:layout_constraintBottom_toBottomOf="@id/boardThemeThree"
+        app:layout_constraintEnd_toEndOf="@id/boardThemeThree"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="@id/boardThemeThree"
+        app:layout_constraintTop_toTopOf="@id/boardThemeThree" />
 
     <TextView
         android:id="@id/userPieceAppearance"
@@ -100,47 +139,91 @@
         app:layout_constraintTop_toBottomOf="@+id/boardThemeThree" />
 
     <ImageButton
-        android:id="@+id/knightButton"
+        android:id="@+id/pieceOne"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/player_star"
         android:clickable="true"
         android:contentDescription="@string/test"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/bishopButton"
-        android:focusable="true" />
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@+id/pieceFour"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@id/bishopButton"
+        android:id="@+id/pieceTwo"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="50dp"
-        android:backgroundTint="@color/purple"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/jester"
+        android:backgroundTint="@color/purple"
+        android:clickable="true"
+        android:contentDescription="@string/test"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@+id/pieceFive"
+        app:layout_constraintEnd_toStartOf="@+id/pieceThree"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toEndOf="@+id/pieceOne" />
+
+    <ImageButton
+        android:id="@id/pieceThree"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/pacman"
+        android:backgroundTint="@color/purple"
+        android:clickable="true"
+        android:contentDescription="@string/test"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@+id/pieceSix"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/pieceFour"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/player_star"
         android:clickable="true"
         android:contentDescription="@string/test"
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/rookButton"
-        app:layout_constraintStart_toEndOf="@+id/knightButton" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@id/rookButton"
+        android:id="@id/pieceFive"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/jester"
         android:backgroundTint="@color/purple"
-        android:background="@drawable/pacman"
         android:clickable="true"
         android:contentDescription="@string/test"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:focusable="true" />
+        app:layout_constraintEnd_toStartOf="@+id/pieceSix"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toEndOf="@+id/pieceFour" />
+
+    <ImageButton
+        android:id="@id/pieceSix"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/pacman"
+        android:backgroundTint="@color/purple"
+        android:clickable="true"
+        android:contentDescription="@string/test"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
