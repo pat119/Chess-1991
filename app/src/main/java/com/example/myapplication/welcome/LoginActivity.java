@@ -85,11 +85,14 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+                User prof = null;
+
                 // Check that username exists
                 String rightPassword = "";
                 for (User user : myUsers) {
                     if (user.getUsername().equals(username)) {
                         rightPassword = user.getPassword();
+                        prof = user;
                         break;
                     }
                 }
@@ -97,6 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(getApplicationContext(),
                             "No existing user with that name", Toast.LENGTH_SHORT);
                     toast.show();
+                    prof = null;
                     return;
                 }
 
@@ -105,18 +109,24 @@ public class LoginActivity extends AppCompatActivity {
                     Toast toast = Toast.makeText(getApplicationContext(),
                             "Incorrect password", Toast.LENGTH_SHORT);
                     toast.show();
+                    prof = null;
                     return;
                 }
 
+                /* Don't think this is needed anymore, but leaving it just in case
                 // Update pref to reflect that a user is logged in
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putBoolean("logged_in", true);
+                editor.putString("profile", username);
                 editor.apply();
+
+                 */
 
                 Toast toast = Toast.makeText(getApplicationContext(),
                         "Logged in!", Toast.LENGTH_SHORT);
                 toast.show();
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra("profile", prof);
                 startActivity(intent);
             }
         });

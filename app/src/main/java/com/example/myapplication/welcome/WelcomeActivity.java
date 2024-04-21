@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.myapplication.R;
+import com.example.myapplication.User;
 import com.example.myapplication.databinding.ActivityWelcomeBinding;
 import com.example.myapplication.main_menu.MainActivity;
 
@@ -63,7 +64,9 @@ public class WelcomeActivity extends AppCompatActivity {
                 editor.putBoolean("logged_in", false);
                 editor.apply();
 
+
                 Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
+                intent.putExtra("profile", new User("guest", "guest", "guest"));
                 startActivity(intent);
             }
         });

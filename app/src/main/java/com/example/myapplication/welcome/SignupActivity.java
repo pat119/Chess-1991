@@ -119,12 +119,17 @@ public class SignupActivity extends AppCompatActivity {
                 dbref.child("logins").child(key).setValue(myUser);
                 Toast.makeText(getApplicationContext(), "Added account!", LENGTH_SHORT).show();
 
+                /*  Maybe not necessary anymore
                 // Update pref to reflect that a user is logged in
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putBoolean("logged_in", true);
+                editor.putString("profile", username);
                 editor.apply();
 
+                 */
+
                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                intent.putExtra("profile", myUser);
                 startActivity(intent);
             }
         });
