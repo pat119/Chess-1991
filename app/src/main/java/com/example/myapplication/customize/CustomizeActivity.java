@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -81,6 +82,55 @@ public class CustomizeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user.setTheme(2);
+            }
+        });
+
+        ImageButton playerPieceOne = findViewById(R.id.pieceOne);
+        ImageButton playerPieceTwo = findViewById(R.id.pieceTwo);
+        ImageButton playerPieceThree = findViewById(R.id.pieceThree);
+        ImageButton playerPieceFour = findViewById(R.id.pieceFour);
+        ImageButton playerPieceFive = findViewById(R.id.pieceFive);
+        ImageButton playerPieceSix = findViewById(R.id.pieceSix);
+
+        playerPieceOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user.setPiece(1);
+            }
+        });
+
+        playerPieceTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user.setPiece(2);
+            }
+        });
+
+        playerPieceThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user.setPiece(3);
+            }
+        });
+
+        playerPieceFour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user.setPiece(4);
+            }
+        });
+
+        playerPieceFive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user.setPiece(5);
+            }
+        });
+
+        playerPieceSix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user.setPiece(6);
             }
         });
 
