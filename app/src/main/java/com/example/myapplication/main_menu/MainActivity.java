@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private View decorView;
+
+    private User user;
     SharedPreferences pref;
 
     @Override
@@ -56,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
         // Use settings to update various elements
         pref = getSharedPreferences("User", Context.MODE_PRIVATE);
 
-        User user = (User) getIntent().getSerializableExtra("profile");
+        user = (User) getIntent().getSerializableExtra("profile");
+
+        assert (user.getKey() != null);
 
         Button playButton = (Button)findViewById(R.id.play);
         playButton.setOnClickListener(new View.OnClickListener() {
@@ -89,20 +93,28 @@ public class MainActivity extends AppCompatActivity {
 
         Button logoutButton = (Button)findViewById(R.id.logout);
         //boolean logged_in = pref.getBoolean("logged_in", false);
-        if (User.getKey().equals("guest")) {
+
+        if (user.getKey().equals("guest")) {
             logoutButton.setText("Log In");
         }
+
+
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!User.getKey().equals("guest")) {
+                if (user.getKey().equals("guest")) {
                     Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
                     intent.putExtra("profile", user);
                     startActivity(intent);
                 } else {
+                    /*
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     intent.putExtra("profile", user);
                     startActivity(intent);
+
+                     */
+                    user = new User("guest", "guest", "guest");
+                    logoutButton.setText("Log In");
                 }
             }
         });

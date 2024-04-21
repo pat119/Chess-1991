@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class User implements Serializable {
     private String username;
     private String password;
-    private static String key;
+    private String key;
 
     // Used to hold customization data
     private int piece;
@@ -61,7 +61,7 @@ public class User implements Serializable {
         return password;
     }
 
-    public static String getKey() {
+    public  String getKey() {
         return key;
     }
 
