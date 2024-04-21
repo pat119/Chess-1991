@@ -13,9 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
 import com.example.myapplication.User;
-import com.example.myapplication.databinding.ActivityLoginBinding;
+import com.example.myapplication.databinding.ActivityCustomizeMenuBinding;
 import com.example.myapplication.main_menu.MainActivity;
-import com.example.myapplication.welcome.LoginActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,7 +35,7 @@ public class CustomizeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        com.example.myapplication.databinding.ActivityLoginBinding binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        com.example.myapplication.databinding.ActivityCustomizeMenuBinding binding = ActivityCustomizeMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         decorView = getWindow().getDecorView();
