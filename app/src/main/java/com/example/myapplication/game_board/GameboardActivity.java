@@ -67,7 +67,7 @@ public class GameboardActivity extends AppCompatActivity {
     Drawable redKnight, redBishop, redRook, redQueen;
     Drawable greyKnight, greyBishop, greyRook, greyQueen;
     Drawable greyAlert, redAlert, blueAlert;
-    Drawable playerStar;
+    Drawable playerStar, ;
     Drawable transparent;
     Drawable heart, armor;
     Drawable primaryColor, secondaryColor;
