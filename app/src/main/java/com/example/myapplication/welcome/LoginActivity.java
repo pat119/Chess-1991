@@ -42,6 +42,8 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        User passed = (User) getIntent().getSerializableExtra("profile");
+
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
             @Override
@@ -122,6 +124,9 @@ public class LoginActivity extends AppCompatActivity {
 
                  */
 
+                if (passed != null) {
+                    prof.merge(passed);
+                }
                 Toast toast = Toast.makeText(getApplicationContext(),
                         "Logged in!", Toast.LENGTH_SHORT);
                 toast.show();

@@ -45,6 +45,8 @@ public class SignupActivity extends AppCompatActivity {
         binding = ActivitySignupBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        User user = (User) getIntent().getSerializableExtra("profile");
+
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
             @Override
@@ -106,6 +108,7 @@ public class SignupActivity extends AppCompatActivity {
                 String key = dbref.child("logins").push().getKey();
                 User myUser = new User(username, password, key);
 
+
                 for (User user : myUsers) {
                     if (user.getUsername().equals(username)) {
                         Toast toast = Toast.makeText(getApplicationContext(),
@@ -115,6 +118,9 @@ public class SignupActivity extends AppCompatActivity {
                     }
                 }
 
+                if (user != null) {
+                    myUser.merge(user);
+                }
                 myUsers.add(myUser);
                 dbref.child("logins").child(key).setValue(myUser);
                 Toast.makeText(getApplicationContext(), "Added account!", LENGTH_SHORT).show();

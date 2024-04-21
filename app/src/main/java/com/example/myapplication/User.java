@@ -115,4 +115,14 @@ public class User implements Serializable {
                 break;
         }
     }
+
+    public void merge(User rhs) {
+        piece = rhs.getPiece();
+        theme = rhs.getTheme();
+        unlock1 = isUnlock1() || rhs.isUnlock1();
+        unlock2 = isUnlock2() || rhs.isUnlock2();
+        unlock3 = isUnlock3() || rhs.isUnlock3();
+        unlock4 = isUnlock4() || rhs.isUnlock4();
+        unlock5 = isUnlock5() || rhs.isUnlock5();
+    }
 }
