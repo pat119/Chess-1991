@@ -426,7 +426,7 @@ public class GameboardActivity extends AppCompatActivity {
             }
             randomTile = (Tile) values[generator.nextInt(values.length)];
             tileButton = findViewById(randomTile.id());
-            if (tileButton != findViewById(playerTile.id())) {
+            if (tileIsEmpty(tileButton)) {
                 tileButton.setForeground(blueAlert);
                 tileButton.setForegroundGravity(Gravity.CENTER);
             }
