@@ -60,7 +60,7 @@
         android:id="@+id/image"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/marble_square"
+        android:src="@drawable/purple_theme"
         app:layout_constraintBottom_toBottomOf="@id/boardThemeOne"
         app:layout_constraintEnd_toEndOf="@id/boardThemeOne"
         app:layout_constraintHorizontal_bias="0.88"
@@ -89,12 +89,13 @@
         android:id="@+id/imageTwo"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/dark_wood"
+        android:src="@drawable/marble_bordered"
         app:layout_constraintBottom_toBottomOf="@id/boardThemeTwo"
         app:layout_constraintEnd_toEndOf="@id/boardThemeTwo"
         app:layout_constraintHorizontal_bias="0.88"
         app:layout_constraintStart_toStartOf="@id/boardThemeTwo"
-        app:layout_constraintTop_toTopOf="@id/boardThemeTwo" />
+        app:layout_constraintTop_toTopOf="@id/boardThemeTwo"
+        app:layout_constraintVertical_bias="0.541" />
 
     <Button
         android:id="@id/boardThemeThree"
@@ -117,7 +118,7 @@
         android:id="@+id/imageThree"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/white"
+        android:src="@drawable/wood_theme"
         app:layout_constraintBottom_toBottomOf="@id/boardThemeThree"
         app:layout_constraintEnd_toEndOf="@id/boardThemeThree"
         app:layout_constraintHorizontal_bias="0.88"
