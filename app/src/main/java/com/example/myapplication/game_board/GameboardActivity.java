@@ -146,6 +146,7 @@ public class GameboardActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GameboardActivity.this, MainActivity.class);
+                intent.putExtra("profile", user);
                 startActivity(intent);
             }
         });
