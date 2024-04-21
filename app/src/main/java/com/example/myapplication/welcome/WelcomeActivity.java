@@ -26,6 +26,8 @@ public class WelcomeActivity extends AppCompatActivity {
         binding = ActivityWelcomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        User user = (User) getIntent().getSerializableExtra("profile");
+
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
             @Override
@@ -42,6 +44,7 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
+                intent.putExtra("profile", user);
                 startActivity(intent);
             }
         });
@@ -51,6 +54,7 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(WelcomeActivity.this, SignupActivity.class);
+                intent.putExtra("profile", user);
                 startActivity(intent);
             }
         });
@@ -66,7 +70,11 @@ public class WelcomeActivity extends AppCompatActivity {
 
 
                 Intent intent = new Intent(WelcomeActivity.this, MainActivity.class);
-                intent.putExtra("profile", new User("guest", "guest", "guest"));
+                if (user == null) {
+                    intent.putExtra("profile", new User("guest", "guest", "guest"));
+                } else {
+                    intent.putExtra("profile", user);
+                }
                 startActivity(intent);
             }
         });
