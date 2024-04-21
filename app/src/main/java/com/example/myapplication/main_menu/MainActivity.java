@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.myapplication.R;
+import com.example.myapplication.User;
 import com.example.myapplication.customize.CustomizeActivity;
 import com.example.myapplication.difficulty_menu.DifficultyMenu;
 import com.example.myapplication.leaderboard.LeaderboardActivity;
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         // Use settings to update various elements
         pref = getSharedPreferences("User", Context.MODE_PRIVATE);
 
+        User user = (User) getIntent().getSerializableExtra("profile");
+
         Button playButton = (Button)findViewById(R.id.play);
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, LeaderboardActivity.class);
+                intent.putExtra("profile", user);
                 startActivity(intent);
             }
         });
@@ -78,23 +82,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CustomizeActivity.class);
+                intent.putExtra("profile", user);
                 startActivity(intent);
             }
         });
 
         Button logoutButton = (Button)findViewById(R.id.logout);
-        boolean logged_in = pref.getBoolean("logged_in", false);
-        if (!logged_in) {
+        //boolean logged_in = pref.getBoolean("logged_in", false);
+        if (User.getKey().equals("guest")) {
             logoutButton.setText("Log In");
         }
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (logged_in) {
+                if (!User.getKey().equals("guest")) {
                     Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+                    intent.putExtra("profile", user);
                     startActivity(intent);
                 } else {
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    intent.putExtra("profile", user);
                     startActivity(intent);
                 }
             }
