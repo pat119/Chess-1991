@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.myapplication.R;
+import com.example.myapplication.User;
 import com.example.myapplication.game_board.GameboardActivity;
 import com.example.myapplication.main_menu.MainActivity;
 import com.example.myapplication.tutorial.Tutorial;
@@ -19,6 +20,8 @@ public class DifficultyMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_difficulty_menu);
+
+        User user = (User) getIntent().getSerializableExtra("profile");
 
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
@@ -43,6 +46,7 @@ public class DifficultyMenu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DifficultyMenu.this, GameboardActivity.class);
                 intent.putExtra("difficulty", 5);
+                intent.putExtra("profile", user);
                 startActivity(intent);
             }
         });
@@ -53,6 +57,7 @@ public class DifficultyMenu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DifficultyMenu.this, GameboardActivity.class);
                 intent.putExtra("difficulty", 4);
+                intent.putExtra("profile", user);
                 startActivity(intent);
             }
         });
@@ -63,6 +68,7 @@ public class DifficultyMenu extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DifficultyMenu.this, GameboardActivity.class);
                 intent.putExtra("difficulty", 3);
+                intent.putExtra("profile", user);
                 startActivity(intent);
             }
         });
