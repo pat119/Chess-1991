@@ -64,22 +64,15 @@ public class GameboardActivity extends AppCompatActivity {
     int power;
     int powerTurns;
 
-    Drawable redKnight;
-    Drawable redBishop;
-    Drawable redRook;
-    Drawable redQueen;
-    Drawable greyKnight;
-    Drawable greyBishop;
-    Drawable greyRook;
-    Drawable greyQueen;
-    Drawable greyAlert;
-    Drawable redAlert;
+    Drawable redKnight, redBishop, redRook, redQueen;
+    Drawable greyKnight, greyBishop, greyRook, greyQueen;
+    Drawable greyAlert, redAlert, blueAlert;
     Drawable playerStar;
     Drawable transparent;
-    Drawable heart;
-    Drawable armor;
-    Drawable blueAlert;
+    Drawable heart, armor;
+    Drawable primaryColor, secondaryColor;
     private View decorView;
+
     User user;
 
 
@@ -160,6 +153,32 @@ public class GameboardActivity extends AppCompatActivity {
 
         Toast confirm = Toast.makeText(this /* MyActivity */,
                 "You must select a tile before commiting!", Toast.LENGTH_SHORT);
+
+        int theme = user.getTheme();
+        switch (theme) {
+            case 0:
+                primaryColor = getDrawable(R.drawable.purplesquare);
+                secondaryColor = getDrawable(R.drawable.blacksquare);
+                break;
+            case 1:
+                primaryColor = getDrawable(R.drawable.marble);
+                secondaryColor = getDrawable(R.drawable.black_marble);
+                break;
+            case 2:
+                primaryColor = getDrawable(R.drawable.light_wood);
+                secondaryColor = getDrawable(R.drawable.dark_wood);
+                break;
+        }
+
+        // Set colors based on user's selected theme
+        for (Tile tile : tiles.values()) {
+            ImageButton tileButton = (ImageButton) findViewById(tile.id());
+
+            if (tile.color() == 0)
+                tileButton.setBackground(secondaryColor);
+            if (tile.color() == 1)
+                tileButton.setBackground(primaryColor);
+        }
 
 
         ImageButton leftButton = (ImageButton) findViewById(R.id.knightButton);
@@ -289,7 +308,8 @@ public class GameboardActivity extends AppCompatActivity {
 
         if (playerState != 0) {     // Checks to make sure we are selecting a move
             assert clicked != null;
-            if (clicked.compatible(playerTile, playerState) && inPath(playerTile, clicked, playerState)) {  // Check if selected tile is compatible with move
+            if (clicked.compatible(playerTile, playerState) &&
+                    inPath(playerTile, clicked, playerState)) {  // Check if selected tile is compatible with move
 
                 if (selectedButton != null) {   // Do we already have a tile selected
                     if (selectedTile.color() == 0)   // Makes the previously selected square unselected

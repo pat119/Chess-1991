@@ -31,6 +31,7 @@ public class CustomizeActivity extends AppCompatActivity {
     DatabaseReference dbref;
     protected ArrayList<User> myUsers;
     SharedPreferences pref;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +46,41 @@ public class CustomizeActivity extends AppCompatActivity {
                 decorView.setSystemUiVisibility(hideSystemBars());
             }
         });
+        user = (User) getIntent().getSerializableExtra("profile");
 
         Button backButton = findViewById(R.id.customizeBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("profile", user);
+                setResult(0, returnIntent);
                 finish();
+            }
+        });
+
+        Button themeOne = findViewById(R.id.boardThemeOne);
+        Button themeTwo = findViewById(R.id.boardThemeTwo);
+        Button themeThree = findViewById(R.id.boardThemeThree);
+
+        themeOne.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               user.setTheme(0);
+           }
+        });
+
+        themeTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user.setTheme(1);
+            }
+        });
+
+        themeThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                user.setTheme(2);
             }
         });
 
