@@ -70,7 +70,7 @@ public class GameboardActivity extends AppCompatActivity {
     Drawable playerStar, ;
     Drawable transparent;
     Drawable heart, armor;
-    Drawable primaryColor, secondaryColor;
+    int primaryColor, secondaryColor, primarySelected, secondarySelected, primarySelectable, secondarySelectable, primaryCaptured, secondaryCaptured;
     private View decorView;
 
     User user;
@@ -157,16 +157,34 @@ public class GameboardActivity extends AppCompatActivity {
         int theme = user.getTheme();
         switch (theme) {
             case 0:
-                primaryColor = getDrawable(R.drawable.purplesquare);
-                secondaryColor = getDrawable(R.drawable.blacksquare);
+                primaryColor = R.drawable.purplesquare;
+                secondaryColor = R.drawable.blacksquare;
+                primarySelectable = R.drawable.purple_selectable;
+                secondarySelectable = R.drawable.black_selectable;
+                primarySelected = R.drawable.purple_selected;
+                secondarySelected = R.drawable.black_selected;
+                primaryCaptured = R.drawable.purple_captured;
+                secondaryCaptured = R.drawable.black_captured;
                 break;
             case 1:
-                primaryColor = getDrawable(R.drawable.marble);
-                secondaryColor = getDrawable(R.drawable.black_marble);
+                primaryColor = R.drawable.marble;
+                secondaryColor = R.drawable.black_marble;
+                primarySelectable = R.drawable.marble_selectable;
+                secondarySelectable = R.drawable.black_marble_selectable;
+                primarySelected = R.drawable.marble_selected;
+                secondarySelected = R.drawable.black_marble_selected;
+                primaryCaptured = R.drawable.marble_captured;
+                secondaryCaptured = R.drawable.black_marble_captured;
                 break;
             case 2:
-                primaryColor = getDrawable(R.drawable.light_wood);
-                secondaryColor = getDrawable(R.drawable.dark_wood);
+                primaryColor = R.drawable.light_wood;
+                secondaryColor = R.drawable.dark_wood;
+                primarySelectable = R.drawable.light_wood_selectable;
+                secondarySelectable = R.drawable.dark_wood_bordered_selectable;
+                primarySelected = R.drawable.light_wood_selected;
+                secondarySelected = R.drawable.dark_wood_selected;
+                primaryCaptured = R.drawable.light_wood_captured;
+                secondaryCaptured = R.drawable.dark_wood_captured;
                 break;
         }
 
@@ -174,10 +192,11 @@ public class GameboardActivity extends AppCompatActivity {
         for (Tile tile : tiles.values()) {
             ImageButton tileButton = (ImageButton) findViewById(tile.id());
 
-            if (tile.color() == 0)
-                tileButton.setBackground(secondaryColor);
-            if (tile.color() == 1)
-                tileButton.setBackground(primaryColor);
+            if (tile.color() == 0) {
+                tileButton.setImageResource(primaryColor);
+            } else {
+                tileButton.setImageResource(secondaryColor);
+            }
         }
 
 
@@ -313,18 +332,18 @@ public class GameboardActivity extends AppCompatActivity {
 
                 if (selectedButton != null) {   // Do we already have a tile selected
                     if (selectedTile.color() == 0)   // Makes the previously selected square unselected
-                        selectedButton.setImageResource(R.drawable.purple_selectable);
-                    else selectedButton.setImageResource(R.drawable.black_selectable);
+                        selectedButton.setImageResource(primarySelectable);
+                    else selectedButton.setImageResource(secondarySelectable);
                 }
 
                 // Makes the new square selected
                 if (clicked.color() == 0) {
                     ImageButton btn = (ImageButton) view;
-                    btn.setImageResource(R.drawable.purple_selected);
+                    btn.setImageResource(primarySelected);
                 }
                 else {
                     ImageButton btn = (ImageButton) view;
-                    btn.setImageResource(R.drawable.black_selected);
+                    btn.setImageResource(secondarySelected);
                 }
 
                 rightButton.setBackgroundResource(R.drawable.confirm_good); // Makes the right button colored
@@ -362,9 +381,9 @@ public class GameboardActivity extends AppCompatActivity {
                     }
                     ImageButton btn = findViewById(enemy.id());
                     if (enemy.color() == 0) {
-                        btn.setImageResource(R.drawable.purple_captured);
+                        btn.setImageResource(primaryCaptured);
                     } else {
-                        btn.setImageResource(R.drawable.black_captured);
+                        btn.setImageResource(secondaryCaptured);
                     }
                     if (lives == 0) {
                         Intent intent = new Intent(GameboardActivity.this, CheckmateScreen.class);
@@ -621,9 +640,9 @@ public class GameboardActivity extends AppCompatActivity {
             ImageButton tileButton = (ImageButton) findViewById(tile.id());
             if (tile.compatible(playerTile, type) && inPath(playerTile, tile, playerState)) {
                 if (tile.color() == 0)
-                    tileButton.setImageResource(R.drawable.purple_selectable);
+                    tileButton.setImageResource(primarySelectable);
                 if (tile.color() == 1)
-                    tileButton.setImageResource(R.drawable.black_selectable);
+                    tileButton.setImageResource(secondarySelectable);
             }
         }
     }
@@ -634,9 +653,9 @@ public class GameboardActivity extends AppCompatActivity {
             ImageButton tileButton = (ImageButton) findViewById(tile.id());
 
             if (tile.color() == 0)
-                tileButton.setImageResource(R.drawable.purplesquare);
+                tileButton.setImageResource(primaryColor);
             if (tile.color() == 1)
-                tileButton.setImageResource(R.drawable.blacksquare);
+                tileButton.setImageResource(secondaryColor);
         }
     }
 
