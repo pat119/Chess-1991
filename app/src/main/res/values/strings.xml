@@ -37,4 +37,9 @@
     <string name="lives">Lives:</string>
     <string name="score">Score:</string>
     <string name="x">X</string>
+
+    <string name="boardThemeOne">Board Theme 1:</string>
+    <string name="boardThemeTwo">Board Theme 2:</string>
+    <string name="boardThemeThree">Board Theme 3:</string>
+    <string name="userPieceAppearance">User Piece Appearance:</string>
 </resources>

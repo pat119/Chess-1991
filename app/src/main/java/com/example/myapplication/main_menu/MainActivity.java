@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.myapplication.R;
+import com.example.myapplication.customize.CustomizeActivity;
 import com.example.myapplication.difficulty_menu.DifficultyMenu;
 import com.example.myapplication.leaderboard.LeaderboardActivity;
 import com.example.myapplication.welcome.LoginActivity;
@@ -68,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, LeaderboardActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button customizeButton = (Button)findViewById(R.id.customize);
+        customizeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CustomizeActivity.class);
                 startActivity(intent);
             }
         });

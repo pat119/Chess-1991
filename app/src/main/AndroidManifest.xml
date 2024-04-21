@@ -71,9 +71,14 @@
         <activity
             android:name=".main_menu.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.MyApplication"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".customize.CustomizeActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
