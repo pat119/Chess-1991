@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.myapplication.User;
 import com.example.myapplication.game_board.GameboardActivity;
 import com.example.myapplication.leaderboard.LeaderboardEntry;
 import com.example.myapplication.main_menu.MainActivity;
@@ -32,8 +31,6 @@ public class CheckmateScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_checkmate);
         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference();
-
-        User user = (User) getIntent().getSerializableExtra("profile");
 
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
@@ -78,9 +75,7 @@ public class CheckmateScreen extends AppCompatActivity {
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CheckmateScreen.this, MainActivity.class);
-                intent.putExtra("profile", user);
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -90,8 +85,8 @@ public class CheckmateScreen extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(CheckmateScreen.this, GameboardActivity.class);
                 intent.putExtra("difficulty", extras.getInt("difficulty"));
-                intent.putExtra("profile", user);
                 startActivity(intent);
+                finish();
             }
         });
 

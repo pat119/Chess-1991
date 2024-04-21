@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import com.example.myapplication.R;
 import com.example.myapplication.User;
+import com.example.myapplication.databinding.ActivitySignupBinding;
 import com.example.myapplication.main_menu.MainActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -133,9 +134,18 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 intent.putExtra("profile", prof);
                 startActivity(intent);
+                finish();
             }
         });
 
+        // Set up back button in the upper-left corner
+        Button backButton = (Button) findViewById(R.id.loginBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 

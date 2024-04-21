@@ -137,6 +137,16 @@ public class SignupActivity extends AppCompatActivity {
                 Intent intent = new Intent(SignupActivity.this, MainActivity.class);
                 intent.putExtra("profile", myUser);
                 startActivity(intent);
+                finish();
+            }
+        });
+
+        // Set up back button in the upper-left corner
+        Button backButton = (Button) findViewById(R.id.signupBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

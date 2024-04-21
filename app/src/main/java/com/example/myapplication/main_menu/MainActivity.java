@@ -29,6 +29,7 @@ import com.example.myapplication.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -104,9 +105,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (user.getKey().equals("guest")) {
-                    Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
-                    intent.putExtra("profile", user);
-                    startActivity(intent);
+//                    Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+//                    intent.putExtra("profile", user);
+//                    startActivity(intent);
+                    finish();
                 } else {
                     /*
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
@@ -116,6 +118,9 @@ public class MainActivity extends AppCompatActivity {
                      */
                     user = new User("guest", "guest", "guest");
                     logoutButton.setText("Log In");
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Logged out", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             }
         });

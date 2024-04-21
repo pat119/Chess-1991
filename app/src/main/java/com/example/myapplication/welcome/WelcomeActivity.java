@@ -19,6 +19,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private View decorView;
     SharedPreferences pref;
+    final int WANTS_LOGIN = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
