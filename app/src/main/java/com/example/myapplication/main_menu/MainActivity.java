@@ -1,5 +1,6 @@
 package com.example.myapplication.main_menu;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import com.example.myapplication.welcome.LoginActivity;
 import com.example.myapplication.welcome.WelcomeActivity;
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;

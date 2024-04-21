@@ -1,5 +1,6 @@
 package com.example.myapplication.customize;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myapplication.R;
@@ -52,10 +54,21 @@ public class CustomizeActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                /*
                 Intent returnIntent = new Intent();
                 returnIntent.putExtra("profile", user);
-                setResult(0, returnIntent);
+                setResult(Activity.RESULT_OK, returnIntent);
                 finish();
+
+
+                 */
+
+                // Temporary fix, bad for stack management
+                Intent intent = new Intent(CustomizeActivity.this, MainActivity.class);
+                intent.putExtra("profile", user);
+                startActivity(intent);
+
             }
         });
 
