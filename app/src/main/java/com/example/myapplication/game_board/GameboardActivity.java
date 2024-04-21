@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.R;
+import com.example.myapplication.User;
 import com.example.myapplication.checkmate.CheckmateScreen;
 import com.example.myapplication.checkmate.FragmentCheckmate;
 import com.example.myapplication.difficulty_menu.DifficultyMenu;
@@ -79,6 +80,7 @@ public class GameboardActivity extends AppCompatActivity {
     Drawable armor;
     Drawable blueAlert;
     private View decorView;
+    User user;
 
 
     @Override
@@ -93,6 +95,8 @@ public class GameboardActivity extends AppCompatActivity {
                 decorView.setSystemUiVisibility(hideSystemBars());
             }
         });
+
+        user = (User) getIntent().getSerializableExtra("profile");
 
         playerState = 0;
         waves = 0;
@@ -347,6 +351,7 @@ public class GameboardActivity extends AppCompatActivity {
                         intent.putExtra("difficulty", difficultyScale);
                         intent.putExtra("score",score);
                         intent.putExtra("wave", waves);
+                        intent.putExtra("profile", user);
                         startActivity(intent);
                         finish();
                     }
