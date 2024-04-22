@@ -172,8 +172,7 @@ public class GameboardActivity extends AppCompatActivity {
         pointList = new HashMap<>();
         initializePointList(pointList);
 
-        Toast confirm = Toast.makeText(this /* MyActivity */,
-                "You must select a tile before commiting!", Toast.LENGTH_SHORT);
+        Toast confirm = Toast.makeText(this, "You must select a tile before committing!", Toast.LENGTH_SHORT);
 
         int theme = user.getTheme();
         switch (theme) {
