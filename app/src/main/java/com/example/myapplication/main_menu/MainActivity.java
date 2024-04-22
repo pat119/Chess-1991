@@ -107,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (user.getKey().equals("guest")) {
-//                    Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
-//                    intent.putExtra("profile", user);
-//                    startActivity(intent);
-                    finish();
+                    Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
+                    intent.putExtra("profile", user);
+                    startActivity(intent);
+                    //finish();
                 } else {
                     /*
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);

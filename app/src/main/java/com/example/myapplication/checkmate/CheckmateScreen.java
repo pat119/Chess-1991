@@ -97,8 +97,8 @@ public class CheckmateScreen extends AppCompatActivity {
 
         int finalDifficultyValue = difficultyValue;
 
-        LeaderboardEntry waveEntry = new LeaderboardEntry("test", wave, 0);
-        LeaderboardEntry pointsEntry = new LeaderboardEntry("test", score, 0);
+        LeaderboardEntry waveEntry = new LeaderboardEntry(user.getUsername(), wave, 0);
+        LeaderboardEntry pointsEntry = new LeaderboardEntry(user.getUsername(), score, 0);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,8 +118,19 @@ public class CheckmateScreen extends AppCompatActivity {
                     default:
                         break;
                 }
+                Toast toast = Toast.makeText(getApplicationContext(),
+                        "Submitted!", Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
+
+        if (user.getUsername().equals("guest")) {
+            submit.setClickable(false);
+            submit.setText("Guests cannot submit to leaderboard.");
+            submit.setTextSize(20);
+        }
+
+
     }
 
     private int hideSystemBars() {
