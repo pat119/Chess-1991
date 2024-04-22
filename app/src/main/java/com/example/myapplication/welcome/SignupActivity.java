@@ -104,6 +104,20 @@ public class SignupActivity extends AppCompatActivity {
                     return;
                 }
 
+                if (password.length() < 8) {
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Password must be at least 8 characters", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
+
+                if (!isStrongPassword(password)) {
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Password must include uppercase, lowercase, and numerical characters" , Toast.LENGTH_LONG);
+                    toast.show();
+                    return;
+                }
+
                 // Add username/password to the database
 //                dbref.child("logins").child(username).setValue(password);
                 String hashedPassword = hashPassword(password);
@@ -153,6 +167,37 @@ public class SignupActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private boolean isStrongPassword(String password) {
+        // Define password strength criteria
+        int minLength = 8;
+        boolean hasUpperCase = false;
+        boolean hasLowerCase = false;
+        boolean hasDigit = false;
+        boolean hasSpecialChar = false;
+        String specialChars = "!@#$%^&*()-_+=<>?";
+
+        // Check password length
+        if (password.length() < minLength) {
+            return false;
+        }
+
+        // Check for uppercase, lowercase, digits, and special characters
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                hasUpperCase = true;
+            } else if (Character.isLowerCase(c)) {
+                hasLowerCase = true;
+            } else if (Character.isDigit(c)) {
+                hasDigit = true;
+            } else if (specialChars.contains(Character.toString(c))) {
+                hasSpecialChar = true;
+            }
+        }
+
+        // Password is strong if it meets all criteria
+        return hasUpperCase && hasLowerCase && hasDigit && hasSpecialChar;
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
