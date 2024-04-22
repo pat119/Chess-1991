@@ -187,7 +187,7 @@ public class GameboardActivity extends AppCompatActivity {
                 secondaryCaptured = R.drawable.black_captured;
                 break;
             case 1:
-                primaryColor = R.drawable.marble;
+                primaryColor = R.drawable.marble_square;
                 secondaryColor = R.drawable.black_marble;
                 primarySelectable = R.drawable.marble_selectable;
                 secondarySelectable = R.drawable.black_marble_selectable;
