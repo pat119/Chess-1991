@@ -50,6 +50,7 @@ public class CustomizeActivity extends AppCompatActivity {
             }
         });
         user = (User) getIntent().getSerializableExtra("profile");
+        Toast confirm = Toast.makeText(this, "SETTING SAVED", Toast.LENGTH_SHORT);
 
         Button backButton = findViewById(R.id.customizeBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -81,6 +82,7 @@ public class CustomizeActivity extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                user.setTheme(0);
+               confirm.show();
            }
         });
 
@@ -88,6 +90,7 @@ public class CustomizeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user.setTheme(1);
+                confirm.show();
             }
         });
 
@@ -95,6 +98,7 @@ public class CustomizeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user.setTheme(2);
+                confirm.show();
             }
         });
 
@@ -109,6 +113,7 @@ public class CustomizeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user.setPiece(0);
+                confirm.show();
             }
         });
 
@@ -116,6 +121,7 @@ public class CustomizeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user.setPiece(1);
+                confirm.show();
             }
         });
 
@@ -123,6 +129,7 @@ public class CustomizeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user.setPiece(2);
+                confirm.show();
             }
         });
 
@@ -130,6 +137,7 @@ public class CustomizeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user.setPiece(3);
+                confirm.show();
             }
         });
 
@@ -137,6 +145,7 @@ public class CustomizeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user.setPiece(4);
+                confirm.show();
             }
         });
 
@@ -144,6 +153,7 @@ public class CustomizeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 user.setPiece(5);
+                confirm.show();
             }
         });
 
