@@ -67,7 +67,7 @@ public class GameboardActivity extends AppCompatActivity {
     Drawable redKnight, redBishop, redRook, redQueen;
     Drawable greyKnight, greyBishop, greyRook, greyQueen;
     Drawable greyAlert, redAlert, blueAlert;
-    Drawable playerStar, ;
+    Drawable player;
     Drawable transparent;
     Drawable heart, armor;
     int primaryColor, secondaryColor, primarySelected, secondarySelected, primarySelectable, secondarySelectable, primaryCaptured, secondaryCaptured;
@@ -116,7 +116,6 @@ public class GameboardActivity extends AppCompatActivity {
         greyQueen = getResources().getDrawable(R.drawable.queen_grey, getTheme());
         greyAlert = getResources().getDrawable(R.drawable.grey_alert, getTheme());
         redAlert = getResources().getDrawable(R.drawable.red_alert, getTheme());
-        playerStar = getResources().getDrawable(R.drawable.player_star, getTheme());
         transparent = getResources().getDrawable(R.drawable.transparent, getTheme());
         heart = getResources().getDrawable(R.drawable.heart, getTheme());
         armor = getResources().getDrawable(R.drawable.helmet, getTheme());
@@ -146,7 +145,29 @@ public class GameboardActivity extends AppCompatActivity {
         playerTile = tiles.get(R.id.D5Button);  // Player always starts on D5, so set playerTile
         playerTile.setPiece(new PlayerPiece(0));    // Put a player piece in playerTile
         ImageButton playerButton = findViewById(playerTile.id());
-        playerButton.setForeground(playerStar);
+        switch (user.getPiece()) {
+            case 0:
+                player = getResources().getDrawable(R.drawable.player_star, getTheme());
+                break;
+            case 1:
+                player = getResources().getDrawable(R.drawable.jester, getTheme());
+                break;
+            case 2:
+                player = getResources().getDrawable(R.drawable.unlockable_sun_no_shade, getTheme());
+                break;
+            case 3:
+                player = getResources().getDrawable(R.drawable.unlockable_sun, getTheme());
+                break;
+            case 4:
+                player = getResources().getDrawable(R.drawable.da_prof, getTheme());
+                break;
+            case 5:
+                player = getResources().getDrawable(R.drawable.da_prof, getTheme());
+                break;
+            default:
+                player = getResources().getDrawable(R.drawable.player_star, getTheme());
+        }
+        playerButton.setForeground(player);
 
         pointList = new HashMap<>();
         initializePointList(pointList);
@@ -267,7 +288,7 @@ public class GameboardActivity extends AppCompatActivity {
 
 
                         // Move player piece to selected tile
-                        selectedButton.setForeground(playerStar);
+                        selectedButton.setForeground(player);
                         selectedButton.setForegroundGravity(Gravity.FILL);
                         ImageButton playerButton = findViewById(playerTile.id());
 

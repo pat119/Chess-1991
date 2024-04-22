@@ -108,42 +108,42 @@ public class CustomizeActivity extends AppCompatActivity {
         playerPieceOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setPiece(1);
+                user.setPiece(0);
             }
         });
 
         playerPieceTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setPiece(2);
+                user.setPiece(1);
             }
         });
 
         playerPieceThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setPiece(3);
+                user.setPiece(2);
             }
         });
 
         playerPieceFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setPiece(4);
+                user.setPiece(3);
             }
         });
 
         playerPieceFive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setPiece(5);
+                user.setPiece(4);
             }
         });
 
         playerPieceSix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setPiece(6);
+                user.setPiece(5);
             }
         });
 
