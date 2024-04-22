@@ -27,7 +27,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -55,6 +54,9 @@ public class LeaderboardActivity extends AppCompatActivity {
     private ArrayList<LeaderboardEntry> hardPoints;
     private ArrayList<LeaderboardEntry> hardWaves;
 
+    DatabaseReference dbref =
+            FirebaseDatabase.getInstance().getReference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,6 +82,7 @@ public class LeaderboardActivity extends AppCompatActivity {
         initList(hardWaves, getRef(3, 2));
 
 
+
         leaderboardEntries = new ArrayList<>();
 
 
@@ -89,9 +92,6 @@ public class LeaderboardActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
         listView.setEnabled(false);
         show();
-
-
-
 
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
@@ -310,7 +310,8 @@ public class LeaderboardActivity extends AppCompatActivity {
 
     private void show() {
         leaderboardEntries.clear();
-        leaderboardEntries.addAll(generateLeaderboardEntries(difficulty, dataType)); // Replace this with your actual data
+        List<LeaderboardEntry> entries = generateLeaderboardEntries(difficulty, dataType);
+        leaderboardEntries.addAll(entries); // Replace this with your actual data
         adapter.notifyDataSetChanged();
     }
 
@@ -412,6 +413,7 @@ public class LeaderboardActivity extends AppCompatActivity {
                 for (DataSnapshot entry : entries) {
                     list.add(entry.getValue(LeaderboardEntry.class));
                 }
+                show();
             }
 
             @Override
