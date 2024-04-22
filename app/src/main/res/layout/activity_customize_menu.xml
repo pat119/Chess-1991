@@ -35,7 +35,12 @@
         app:layout_constraintBottom_toTopOf="@+id/boardThemeOne"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="10dp"
+        android:shadowColor="@color/purple"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="15"/>
 
     <Button
         android:id="@id/boardThemeOne"
@@ -134,6 +139,11 @@
         android:text="@string/userPieceAppearance"
         android:textColor="@color/purple"
         android:textSize="40sp"
+        android:elevation="10dp"
+        android:shadowColor="@color/purple"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"

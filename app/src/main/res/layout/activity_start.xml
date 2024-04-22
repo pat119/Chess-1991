@@ -17,6 +17,11 @@
         android:textAlignment="center"
         android:textColor="@color/purple"
         android:textSize="90sp"
+        android:elevation="10dp"
+        android:shadowColor="@color/purple"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
