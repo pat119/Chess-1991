@@ -59,6 +59,7 @@
         android:backgroundTint="@color/purple"
         android:fontFamily="@font/jersey25"
         android:hint="Password"
+        android:inputType="textPassword"
         android:textColor="@color/purple"
         android:textColorHint="@color/purple"
         android:textSize="50sp"
