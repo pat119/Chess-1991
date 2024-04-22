@@ -25,6 +25,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
@@ -91,15 +93,15 @@ public class LoginActivity extends AppCompatActivity {
                 User prof = null;
 
                 // Check that username exists
-                String rightPassword = "";
+                String rightHashedPassword = "";
                 for (User user : myUsers) {
                     if (user.getUsername().equals(username)) {
-                        rightPassword = user.getPassword();
+                        rightHashedPassword = user.getPassword();
                         prof = user;
                         break;
                     }
                 }
-                if (rightPassword.isEmpty()) {
+                if (rightHashedPassword.isEmpty()) {
                     Toast toast = Toast.makeText(getApplicationContext(),
                             "No existing user with that name", Toast.LENGTH_SHORT);
                     toast.show();
@@ -107,8 +109,9 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+                String hashedPassword = hashPassword(password);
                 // Check that password is correct
-                if (!password.equals(rightPassword)) {
+                if (!hashedPassword.equals(rightHashedPassword)) {
                     Toast toast = Toast.makeText(getApplicationContext(),
                             "Incorrect password", Toast.LENGTH_SHORT);
                     toast.show();
@@ -147,6 +150,29 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private String hashPassword(String password) {
+        try {
+            // Create a MessageDigest instance for SHA-256
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+            // Apply the digest function to the input password
+            byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+
+            // Convert the byte array to a hexadecimal string
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (Exception e) {
+            return password;
+        }
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {

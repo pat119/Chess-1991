@@ -25,6 +25,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 
 public class SignupActivity extends AppCompatActivity {
@@ -104,9 +106,11 @@ public class SignupActivity extends AppCompatActivity {
 
                 // Add username/password to the database
 //                dbref.child("logins").child(username).setValue(password);
+                String hashedPassword = hashPassword(password);
+
 
                 String key = dbref.child("logins").push().getKey();
-                User myUser = new User(username, password, key);
+                User myUser = new User(username, hashedPassword, key);
 
 
                 for (User user : myUsers) {
@@ -160,6 +164,29 @@ public class SignupActivity extends AppCompatActivity {
                     | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                     | View.SYSTEM_UI_FLAG_FULLSCREEN
                     | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+        }
+    }
+
+    private String hashPassword(String password) {
+        try {
+            // Create a MessageDigest instance for SHA-256
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+
+            // Apply the digest function to the input password
+            byte[] hash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+
+            // Convert the byte array to a hexadecimal string
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                String hex = Integer.toHexString(0xff & b);
+                if (hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            return hexString.toString();
+        } catch (Exception e) {
+            return password;
         }
     }
 
