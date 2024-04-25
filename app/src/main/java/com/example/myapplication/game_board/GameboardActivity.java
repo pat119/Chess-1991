@@ -3,11 +3,14 @@ package com.example.myapplication.game_board;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -412,6 +415,23 @@ public class GameboardActivity extends AppCompatActivity {
                         intent.putExtra("wave", waves);
                         intent.putExtra("profile", user);
                         startActivity(intent);
+                        SharedPreferences pref = getSharedPreferences("User", Context.MODE_PRIVATE);
+                        if (waves >= 2) {
+                            pref.edit().putBoolean("piece1", true).apply();
+                            Toast.makeText(getApplicationContext(), "Unlocked piece 1 " + pref.getBoolean("piece1", false), Toast.LENGTH_SHORT).show();
+                        } if (waves >= 3) {
+                            pref.edit().putBoolean("piece2", true).apply();
+                            Toast.makeText(getApplicationContext(), "Unlocked piece 2 " + pref.getBoolean("piece2", false), Toast.LENGTH_SHORT).show();
+                        } if (waves >= 4) {
+                            pref.edit().putBoolean("piece3", true).apply();
+                            Toast.makeText(getApplicationContext(), "Unlocked piece 3 " + pref.getBoolean("piece3", false), Toast.LENGTH_SHORT).show();
+                        } if (waves >= 5) {
+                            pref.edit().putBoolean("piece4", true).apply();
+                            Toast.makeText(getApplicationContext(), "Unlocked piece 4 " + pref.getBoolean("piece4", false), Toast.LENGTH_SHORT).show();
+                        } if (waves >= 6) {
+                            pref.edit().putBoolean("piece5", true).apply();
+                            Toast.makeText(getApplicationContext(), "Unlocked piece 5 " + pref.getBoolean("piece5", false), Toast.LENGTH_SHORT).show();
+                        }
                         finish();
                     }
                     break;

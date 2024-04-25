@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,7 +42,6 @@ public class CustomizeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         com.example.myapplication.databinding.ActivityCustomizeMenuBinding binding = ActivityCustomizeMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener() {
             @Override
@@ -51,6 +51,8 @@ public class CustomizeActivity extends AppCompatActivity {
         });
         user = (User) getIntent().getSerializableExtra("profile");
         Toast confirm = Toast.makeText(this, "SETTING SAVED", Toast.LENGTH_SHORT);
+
+        pref = getSharedPreferences("User", Context.MODE_PRIVATE);
 
         Button backButton = findViewById(R.id.customizeBackButton);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -120,40 +122,60 @@ public class CustomizeActivity extends AppCompatActivity {
         playerPieceTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setPiece(1);
-                confirm.show();
+                if (pref.getBoolean("piece1", false)) {
+                    user.setPiece(1);
+                    confirm.show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "REQUIREMENTS", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         playerPieceThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setPiece(2);
-                confirm.show();
+                if (pref.getBoolean("piece2", false)) {
+                    user.setPiece(2);
+                    confirm.show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "REQUIREMENTS", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         playerPieceFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setPiece(3);
-                confirm.show();
+                if (pref.getBoolean("piece3", false)) {
+                    user.setPiece(3);
+                    confirm.show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "REQUIREMENTS", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         playerPieceFive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setPiece(4);
-                confirm.show();
+                if (pref.getBoolean("piece4", false)) {
+                    user.setPiece(4);
+                    confirm.show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "REQUIREMENTS", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         playerPieceSix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                user.setPiece(5);
-                confirm.show();
+                if (pref.getBoolean("piece5", false)) {
+                    user.setPiece(5);
+                    confirm.show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "REQUIREMENTS", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
