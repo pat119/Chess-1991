@@ -168,10 +168,10 @@ public class GameboardActivity extends AppCompatActivity {
                 player = getResources().getDrawable(R.drawable.unlockable_sun, getTheme());
                 break;
             case 4:
-                player = getResources().getDrawable(R.drawable.da_prof, getTheme());
+                player = getResources().getDrawable(R.drawable.moon2, getTheme());
                 break;
             case 5:
-                player = getResources().getDrawable(R.drawable.da_prof, getTheme());
+                player = getResources().getDrawable(R.drawable.mario2, getTheme());
                 break;
             default:
                 player = getResources().getDrawable(R.drawable.player_star, getTheme());
