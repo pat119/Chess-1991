@@ -37,6 +37,13 @@ public class CustomizeActivity extends AppCompatActivity {
     SharedPreferences pref;
     User user;
 
+    DatabaseReference ref;
+    boolean unlockable1;
+    boolean unlockable2;
+    boolean unlockable3;
+    boolean unlockable4;
+    boolean unlockable5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +59,7 @@ public class CustomizeActivity extends AppCompatActivity {
         user = (User) getIntent().getSerializableExtra("profile");
         Toast confirm = Toast.makeText(this, "SETTING SAVED", Toast.LENGTH_SHORT);
 
+        ref = FirebaseDatabase.getInstance().getReference();
         pref = getSharedPreferences("User", Context.MODE_PRIVATE);
 
         Button backButton = findViewById(R.id.customizeBackButton);
@@ -119,14 +127,41 @@ public class CustomizeActivity extends AppCompatActivity {
             }
         });
 
+        unlockable1 = user.isUnlock1();
+        unlockable2 = user.isUnlock2();
+        unlockable3 = user.isUnlock3();
+        unlockable4 = user.isUnlock4();
+        unlockable5 = user.isUnlock5();
+
+        ref.child("logins").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Iterable<DataSnapshot> clients = snapshot.getChildren();
+                for (DataSnapshot pair : clients) {
+                    User test = pair.getValue(User.class);
+                    if (user.getKey().equals(test.getKey())) {
+                        unlockable1 = test.isUnlock1();
+                        unlockable2 = test.isUnlock2();
+                        unlockable3 = test.isUnlock3();
+                        unlockable4 = test.isUnlock4();
+                        unlockable5 = test.isUnlock5();
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {}
+        });
+
         playerPieceTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (pref.getBoolean("piece1", false)) {
+                if (unlockable1 && !user.getKey().equals("guest")) {
                     user.setPiece(1);
                     confirm.show();
+                } else if (user.getKey().equals("guest")) {
+                    Toast.makeText(getApplicationContext(), "Must be signed in to unlock", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "REQUIREMENTS", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Reach wave 5 in any difficulty to unlock", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -134,11 +169,13 @@ public class CustomizeActivity extends AppCompatActivity {
         playerPieceThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (pref.getBoolean("piece2", false)) {
+                if (unlockable2 && !user.getKey().equals("guest")) {
                     user.setPiece(2);
                     confirm.show();
+                } else if (user.getKey().equals("guest")) {
+                    Toast.makeText(getApplicationContext(), "Must be signed in to unlock", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "REQUIREMENTS", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Reach wave 10 in any difficulty to unlock", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -146,11 +183,13 @@ public class CustomizeActivity extends AppCompatActivity {
         playerPieceFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (pref.getBoolean("piece3", false)) {
+                if (unlockable3 && !user.getKey().equals("guest")) {
                     user.setPiece(3);
                     confirm.show();
+                } else if (user.getKey().equals("guest")) {
+                    Toast.makeText(getApplicationContext(), "Must be signed in to unlock", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "REQUIREMENTS", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Reach wave 5 in normal difficulty to unlock", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -158,11 +197,13 @@ public class CustomizeActivity extends AppCompatActivity {
         playerPieceFive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (pref.getBoolean("piece4", false)) {
+                if (unlockable4 && !user.getKey().equals("guest")) {
                     user.setPiece(4);
                     confirm.show();
+                } else if (user.getKey().equals("guest")) {
+                    Toast.makeText(getApplicationContext(), "Must be signed in to unlock", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "REQUIREMENTS", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Reach wave 10 in normal difficulty to unlock", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -170,11 +211,13 @@ public class CustomizeActivity extends AppCompatActivity {
         playerPieceSix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (pref.getBoolean("piece5", false)) {
+                if (unlockable5 && !user.getKey().equals("guest")) {
                     user.setPiece(5);
                     confirm.show();
+                } else if (user.getKey().equals("guest")) {
+                    Toast.makeText(getApplicationContext(), "Must be signed in to unlock", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "REQUIREMENTS", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Reach wave 5 in hard difficulty to unlock", Toast.LENGTH_SHORT).show();
                 }
             }
         });

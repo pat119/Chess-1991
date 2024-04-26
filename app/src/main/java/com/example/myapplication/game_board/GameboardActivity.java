@@ -28,6 +28,8 @@ import com.example.myapplication.main_menu.MainActivity;
 import com.example.myapplication.pieces.PlayerPiece;
 import com.example.myapplication.pieces.Tile;
 import com.example.myapplication.tutorial.Tutorial;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -78,6 +80,8 @@ public class GameboardActivity extends AppCompatActivity {
 
     User user;
 
+    DatabaseReference ref;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +95,8 @@ public class GameboardActivity extends AppCompatActivity {
                 decorView.setSystemUiVisibility(hideSystemBars());
             }
         });
+
+        ref = FirebaseDatabase.getInstance().getReference();
 
         user = (User) getIntent().getSerializableExtra("profile");
 
@@ -415,22 +421,21 @@ public class GameboardActivity extends AppCompatActivity {
                         intent.putExtra("wave", waves);
                         intent.putExtra("profile", user);
                         startActivity(intent);
-                        SharedPreferences pref = getSharedPreferences("User", Context.MODE_PRIVATE);
                         if (waves >= 2) {
-                            pref.edit().putBoolean("piece1", true).apply();
-                            Toast.makeText(getApplicationContext(), "Unlocked piece 1 " + pref.getBoolean("piece1", false), Toast.LENGTH_SHORT).show();
-                        } if (waves >= 3) {
-                            pref.edit().putBoolean("piece2", true).apply();
-                            Toast.makeText(getApplicationContext(), "Unlocked piece 2 " + pref.getBoolean("piece2", false), Toast.LENGTH_SHORT).show();
-                        } if (waves >= 4) {
-                            pref.edit().putBoolean("piece3", true).apply();
-                            Toast.makeText(getApplicationContext(), "Unlocked piece 3 " + pref.getBoolean("piece3", false), Toast.LENGTH_SHORT).show();
-                        } if (waves >= 5) {
-                            pref.edit().putBoolean("piece4", true).apply();
-                            Toast.makeText(getApplicationContext(), "Unlocked piece 4 " + pref.getBoolean("piece4", false), Toast.LENGTH_SHORT).show();
-                        } if (waves >= 6) {
-                            pref.edit().putBoolean("piece5", true).apply();
-                            Toast.makeText(getApplicationContext(), "Unlocked piece 5 " + pref.getBoolean("piece5", false), Toast.LENGTH_SHORT).show();
+                            ref.child("logins").child(user.getKey()).child("unlock1").setValue(true);
+                            Toast.makeText(getApplicationContext(), "Unlocked piece 2", Toast.LENGTH_SHORT).show();
+                        } if (waves >= 10) {
+                            ref.child("logins").child(user.getKey()).child("unlock2").setValue(true);
+                            Toast.makeText(getApplicationContext(), "Unlocked piece 3", Toast.LENGTH_SHORT).show();
+                        } if (waves >= 5 && difficultyScale == 4) {
+                            ref.child("logins").child(user.getKey()).child("unlock3").setValue(true);
+                            Toast.makeText(getApplicationContext(), "Unlocked piece 4", Toast.LENGTH_SHORT).show();
+                        } if (waves >= 10 && difficultyScale == 4) {
+                            ref.child("logins").child(user.getKey()).child("unlock4").setValue(true);
+                            Toast.makeText(getApplicationContext(), "Unlocked piece 5", Toast.LENGTH_SHORT).show();
+                        } if (waves >= 5 && difficultyScale == 3) {
+                            ref.child("logins").child(user.getKey()).child("unlock5").setValue(true);
+                            Toast.makeText(getApplicationContext(), "Unlocked piece 6", Toast.LENGTH_SHORT).show();
                         }
                         finish();
                     }
